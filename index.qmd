@@ -1,0 +1,54 @@
+---
+title: "Untitled"
+format: revealjs
+---
+
+# Intro
+
+## Something about popup books
+
+## Three books
+
+- OpenIntro::IMS2
+
+- R4DS
+
+- Quarto TDG
+
+# OpenIntro::IMS2
+
+## pdf/latex things
+
+- custom divs in HTML and CSS
+- pagebreak hell (due to self-publishing) 
+
+## accessibility
+
+- fig-alt -- is this old news?
+- colors in light and dark themes
+
+# R4DS
+
+## R code things
+
+- `_common.R`
+- ??? actions for checking daily?
+
+## webR
+
+Not done yet but someone implemented a version, could have a version by conf
+
+# Quarto TDG
+
+## multiple languages
+
+- embedded computations from notebooks for side-by-side multi-language executed code
+- inline code in multiple languages
+
+## ???
+
+???
+
+# Outro
+
+## some closing about pop-up books
