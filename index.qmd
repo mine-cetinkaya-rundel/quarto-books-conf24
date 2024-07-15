@@ -9,41 +9,273 @@ format: revealjs
 
 ## Three books
 
-- OpenIntro::IMS2
+-   OpenIntro::IMS2
 
-- R4DS
+-   R4DS2
 
-- Quarto TDG
+-   Quarto TDG
 
 # OpenIntro::IMS2
 
 ## pdf/latex things
 
-- custom divs in HTML and CSS
-- pagebreak hell (due to self-publishing) 
+-   custom divs in HTML and CSS
+-   pagebreak hell (due to self-publishing)
 
-## accessibility
+## One input...
 
-- fig-alt -- is this old news?
-- colors in light and dark themes
+``` {.markdown filename="data-hello.qmd"}
+::: {.chapterintro data-latex=""}
+Scientists seek to answer questions using rigorous methods and careful observations.
+These observations -- collected from the likes of field notes, surveys, and experiments -- form the backbone of a statistical investigation and are called **data**.
+Statistics is the study of how best to collect, analyze, and draw conclusions from data.
+In this first chapter, we focus on both the properties of data and on the collection of data.
+:::
+```
+
+--\> two outputs
+
+## Output 1: HTML
+
+Styled with SCSS:
+
+``` {.scss filename="ims-style.scss"}
+.chapterintro {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #d5e6ef 5px center/3em no-repeat;
+  border-top: 3px solid #569BBD;    /* openintro::COL[1,1] */ 
+  border-bottom: 3px solid #569BBD; /* openintro::COL[1,1] */ 
+  background-image: url("images/_icons/chapterintro.png");
+  background-position: 0.5em 1.5em;
+}
+```
+
+## Output 1: HTML
+
+![](images/chapterintro-html-light.png)
+
+## Output 2: PDF
+
+Styled with TeX:
+
+``` {.latex filename="ims-style.tex"}
+\newenvironment{mdframedwithfootChapterintro}
+{   
+    \savenotes
+    \begin{mdframed}[%
+    topline=true, bottomline=true, linecolor=oiB, linewidth=1.4pt,
+    rightline=false, leftline=false,
+    backgroundcolor=oiLB]
+    %\stepcounter{footnote} % don't increment footnote counter
+    \renewcommand{\thempfootnote}{\arabic{footnote}}
+    }
+{
+    \end{mdframed}
+    \spewnotes
+}
+```
+
+## Output 2: PDF
+
+![](images/chapterintro-pdf.png)
+
+## HTML - dark
+
+With HTML, one more consideration... "dark mode"
+
+Styled with SCSS:
+
+``` {.scss filename="ims-style-dark.scss"}
+$body-bg: #222;
+
+.chapterintro {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: lighten($body-bg, 10%) 5px center/3em no-repeat;
+  border-top: 3px solid #569BBD;    /* openintro::COL[1,1] */ 
+  border-bottom: 3px solid #569BBD; /* openintro::COL[1,1] */ 
+  background-image: url("images/_icons/chapterintro.png");
+  background-position: 0.5em 1.5em;
+}
+```
+
+## HTML - dark
+
+![](images/chapterintro-html-dark.png)
+
+## `_quarto.yml`
+
+```{.yaml filename="_quarto.yml" code-line-numbers="|3-5|17"}
+format:
+  html:
+    theme:
+      light: [cosmo, scss/ims-style.scss]
+      dark: [cosmo, scss/ims-style-dark.scss]
+    code-link: true
+    mainfont: Atkinson Hyperlegible
+    monofont: Source Code Pro
+    author-meta: "Mine Çetinkaya-Rundel and Johanna Hardin"
+    lightbox: 
+      match: auto
+      loop: false
+    fig-dpi: 300
+    fig-show: hold
+    fig-align: center
+  pdf:
+    include-in-header: latex/ims-style.tex
+    include-after-body: latex/after-body.tex
+    documentclass: book
+    classoption: 
+      - 10pt
+      - openany
+    pdf-engine: xelatex
+    biblio-style: apalike
+    keep-tex: true
+    block-headings: false
+    top-level-division: chapter
+    fig-dpi: 300
+    fig-show: hold
+    fig-pos: H
+    tbl-pos: H
+    fig-align: center
+    toc: true
+    toc-depth: 2
+  ```
+
+## PDF pagebreaks
+
+All is not magical from 1 input -> 2 outputs
+
+Manually add `\clearpage`...
+
+HTML will just ignore these
+
+## index
+
+::: {.callout-warning appearance="simple"}
+Q: Is this interesting? It's another example of how HTML output will just ignore things in qmd and do something productive in PDF.
+:::
+
+```{.markdown filename="data-hello.qmd"}
+A **summary statistic** is a single number summarizing data from a sample.\index{summary statistic}
+```
+
+<br>
+
+```{.latex filename="after-body.tex"}
+\backmatter
+\printindex
+```
+
+<br>
+
+```{.yaml filename="_quarto.yml" code-line-numbers="|6"}
+format:
+  html:
+    ...
+  pdf:
+    include-in-header: latex/ims-style.tex
+    include-after-body: latex/after-body.tex
+    ...
+  ```
+
+## typst
+
+future -- table simplification? 
+
+## Accessibility - `fig-alt` 
+
+::: {.callout-warning appearance="simple"}
+Q: Is this old news?
+:::
+
+```{.r filename="data-hello.qmd" code-line-numbers="|6-10"}
+#| label: fig-county-multi-unit-homeownership
+#| fig-cap: A scatterplot of homeownership versus the percent of housing units that are
+#|   in multi-unit structures for US counties. The highlighted dot represents Chattahoochee
+#|   County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate
+#|   of 31.3%.
+#| fig-alt: A scatterplot of homeownership (on the y-axis) versus the percent of
+#|   housing units that are in multi-unit structures (on the x-axis) for US
+#|   counties. The observation from Chattahoochee County, Georgia
+#|   is highlighted as having a multi-unit rate of 39.4% and a
+#|   homeownership rate of 31.3%
+ggplot(county, aes(x = multi_unit, y = homeownership)) +
+  geom_point(alpha = 0.3, fill = IMSCOL["black", "full"], shape = 21) +
+  labs(
+    x = "Percent of housing units in that are multi-unit structures",
+    y = "Homeownership rate"
+  ) +
+  geom_point(
+    data = county |> filter(name == "Chattahoochee County"),
+    size = 3, stroke = 2, color = IMSCOL["red", "full"], shape = 1
+  ) +
+  ...
+```
+
+##
+
+![](images/fig-county-multi-unit-homeownership-1.png)
+
+##
+
+![](images/fig-county-multi-unit-homeownership-1-source.png)
 
 # R4DS
 
 ## R code things
 
-- `_common.R`
-- ??? actions for checking daily?
+-   `_common.R`
+-   ??? actions for checking daily?
 
-## webR
+## `_common.R`
 
-Not done yet but someone implemented a version, could have a version by conf
+<https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L1-L26>
+
+Q: Check to see if there's a different way?
+
+## using `_common.R` to set status?
+
+<https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L28-L55>
+
+Use R function writing skills to avoid duplication -- escape hatch
+
+## actions
+
+<https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/.github/workflows/build_book.yaml#L1-L10>
+
+````yaml
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+  # to be able to trigger a manual build
+  workflow_dispatch:
+  schedule:
+    # run every day at 11 PM
+    - cron: '0 23 * * *'
+````
+
+maybe also something about why we're not using freeze?
+
+another action thing  -- PR preview
+
+deploy to github pages so rendered product has a history (look at R packages book) -- mutli destination for different goodies
+
+https://github.com/hadley/r-pkgs/tree/gh-pages
+
+**TO DO: Add one more section on no-code book, edit on github for example and render with action -- either at the beginning or at the end**
 
 # Quarto TDG
 
 ## multiple languages
 
-- embedded computations from notebooks for side-by-side multi-language executed code
-- inline code in multiple languages
+-   embedded computations from notebooks for side-by-side multi-language executed code
+-   inline code in multiple languages
+
+* multiple collaborators - different ways to pull in computational results. your collaborators can still be writing in jupyter notebooks.
 
 ## ???
 
@@ -52,3 +284,20 @@ Not done yet but someone implemented a version, could have a version by conf
 # Outro
 
 ## some closing about pop-up books
+
+interactivity --- webR? Not done yet but someone implemented a version, could have a version by conf
+
+pyodide
+web assembly
+
+::: {.callout-warning appearance="simple"}
+Q: Order?
+:::
+
+
+https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63
+
+common.R alternative -> qmd filters that can prepend code blocks at the start of your document is the way to go. I opened an issue but the mechanism is not developed yet https://github.com/quarto-dev/quarto-cli/issues/10169
+
+* engines -- jupyter support
+
