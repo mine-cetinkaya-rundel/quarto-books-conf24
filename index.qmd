@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Reproducible, dynamic, and elegant books with Quarto"
 format: revealjs
 ---
 
@@ -7,7 +7,7 @@ format: revealjs
 
 ## Something about popup books
 
-## Three books
+## Books
 
 -   OpenIntro::IMS2
 
@@ -20,7 +20,7 @@ format: revealjs
 ## pdf/latex things
 
 -   custom divs in HTML and CSS
--   pagebreak hell (due to self-publishing)
+-   pagebreak hell
 
 ## One input...
 
@@ -37,6 +37,10 @@ In this first chapter, we focus on both the properties of data and on the collec
 
 ## Output 1: HTML
 
+![](images/chapterintro-html-light.png)
+
+## Output 1: HTML - How do we get there?
+
 Styled with SCSS:
 
 ``` {.scss filename="ims-style.scss"}
@@ -51,11 +55,11 @@ Styled with SCSS:
 }
 ```
 
-## Output 1: HTML
-
-![](images/chapterintro-html-light.png)
-
 ## Output 2: PDF
+
+![](images/chapterintro-pdf.png)
+
+## Output 2: PDF - How do we get there?
 
 Styled with TeX:
 
@@ -74,15 +78,27 @@ Styled with TeX:
     \end{mdframed}
     \spewnotes
 }
+
+\newenvironment{chapterintro}{
+    \vspace{4mm}
+    \begin{mdframedwithfootChapterintro}
+    \begin{minipage}[t]{0.10\textwidth}
+    {$\:$ \\ \setkeys{Gin}{width=2.5em,keepaspectratio}\includegraphics{images/_icons/chapterintro.png}}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.90\textwidth}
+    \setlength{\parskip}{1em}
+    \large
+    }{\end{minipage}
+    \end{mdframedwithfootChapterintro}
+    \vspace{4mm}
+}
 ```
+## HTML - no happiness without dark mode
 
-## Output 2: PDF
+![](images/chapterintro-html-dark.png)
 
-![](images/chapterintro-pdf.png)
-
-## HTML - dark
-
-With HTML, one more consideration... "dark mode"
+## HTML - dark mode
 
 Styled with SCSS:
 
@@ -99,10 +115,6 @@ $body-bg: #222;
   background-position: 0.5em 1.5em;
 }
 ```
-
-## HTML - dark
-
-![](images/chapterintro-html-dark.png)
 
 ## `_quarto.yml`
 
@@ -153,9 +165,7 @@ HTML will just ignore these
 
 ## index
 
-::: {.callout-warning appearance="simple"}
-Q: Is this interesting? It's another example of how HTML output will just ignore things in qmd and do something productive in PDF.
-:::
+Building on things HTML will happily ignore
 
 ```{.markdown filename="data-hello.qmd"}
 A **summary statistic** is a single number summarizing data from a sample.\index{summary statistic}
@@ -180,15 +190,13 @@ format:
     ...
   ```
 
-## typst
+## Maybe add for future: typst
 
-future -- table simplification? 
+table simplification for HTML and PDF tables
+
+one style file -> multi-putput
 
 ## Accessibility - `fig-alt` 
-
-::: {.callout-warning appearance="simple"}
-Q: Is this old news?
-:::
 
 ```{.r filename="data-hello.qmd" code-line-numbers="|6-10"}
 #| label: fig-county-multi-unit-homeownership
@@ -216,88 +224,152 @@ ggplot(county, aes(x = multi_unit, y = homeownership)) +
 
 ##
 
-![](images/fig-county-multi-unit-homeownership-1.png)
-
-##
-
 ![](images/fig-county-multi-unit-homeownership-1-source.png)
+
+## Making sure you have alt text
+
+Share code snippet for checking all figures have alt-text
 
 # R4DS
 
 ## R code things
 
 -   `_common.R`
--   ??? actions for checking daily?
+-   GitHub Actions
 
-## `_common.R`
+## `_common.R` for global options {.smaller}
 
+```{.r filename="_common.R" code-line-numbers="|1|3-11|13-24|27"}
+set.seed(1014)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  # cache = TRUE,
+  fig.retina = 2,
+  fig.width = 6,
+  fig.asp = 2/3,
+  fig.show = "hold"
+)
+
+options(
+  dplyr.print_min = 6,
+  dplyr.print_max = 6,
+  pillar.max_footer_lines = 2,
+  pillar.min_chars = 15,
+  stringr.view_n = 6,
+  # Temporarily deactivate cli output for quarto
+  cli.num_colors = 0,
+  cli.hyperlink = FALSE,
+  pillar.bold = TRUE,
+  width = 77 # 80 - 3 for #> comment
+)
+
+
+ggplot2::theme_set(ggplot2::theme_gray(12))
+```
+
+**TO DO:** Check to see if there's a different way -- follow up with https://github.com/quarto-dev/quarto-cli/issues/10169, qmd filters that can prepend code blocks at the start of your document is the way to go. I opened an issue but the mechanism is not developed yet 
+
+::: notes
 <https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L1-L26>
+:::
 
-Q: Check to see if there's a different way?
+## `_common.R` for setting a status {.smaller}
 
-## using `_common.R` to set status?
+Using R as an escape hatch -- use your R function writing skills to avoid duplication
 
-<https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L28-L55>
+```{.r filename="_common.R"}
+# use results: "asis" when setting a status for a chapter
+status <- function(type) {
+  status <- switch(type,
+    polishing = "should be readable but is currently undergoing final polishing",
+    restructuring = "is undergoing heavy restructuring and may be confusing or incomplete",
+    drafting = "is currently a dumping ground for ideas, and we don't recommend reading it",
+    complete = "is largely complete and just needs final proof reading",
+    stop("Invalid `type`", call. = FALSE)
+  )
 
-Use R function writing skills to avoid duplication -- escape hatch
+  class <- switch(type,
+    polishing = "note",
+    restructuring = "important",
+    drafting = "important",
+    complete = "note"
+  )
 
-## actions
+  cat(paste0(
+    "\n",
+    ":::: status\n",
+    "::: callout-", class, " \n",
+    "You are reading the work-in-progress second edition of R for Data Science. ",
+    "This chapter ", status, ". ",
+    "You can find the complete first edition at <https://r4ds.had.co.nz>.\n",
+    ":::\n",
+    "::::\n"
+  ))
+}
+```
 
-<https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/.github/workflows/build_book.yaml#L1-L10>
+**TO DO:** Consider mentioning announcement banner from Quarto 1.5 -- not available while we worked on the book
 
-````yaml
+::: notes
+https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L28-L55
+:::
+
+## GitHub actions - daily checks
+
+don't rely on freeze
+
+````{.yaml filename=".github/workflows
+/build_book.yaml"}
 on:
   push:
     branches: main
   pull_request:
     branches: main
-  # to be able to trigger a manual build
-  workflow_dispatch:
   schedule:
     # run every day at 11 PM
     - cron: '0 23 * * *'
 ````
 
-maybe also something about why we're not using freeze?
+::: notes
+https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/.github/workflows/build_book.yaml#L1-L10
+:::
 
-another action thing  -- PR preview
+## GitHub actions - 2
+
+**TO DO:** Develop this idea further
+
+PR preview
 
 deploy to github pages so rendered product has a history (look at R packages book) -- mutli destination for different goodies
 
-https://github.com/hadley/r-pkgs/tree/gh-pages
+- https://github.com/hadley/r-pkgs/tree/gh-pages
+- https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63
 
-**TO DO: Add one more section on no-code book, edit on github for example and render with action -- either at the beginning or at the end**
+## Maybe: no code book
+
+**TO DO:** Add one more section on no-code book, edit on github for example and render with action -- either at the beginning (increasing complexity) or at the end (wrap-up thoughts) or maybe here because it builds on GitHub actions
 
 # Quarto TDG
 
 ## multiple languages
 
+-   inline code in multiple languages with same syntax
+
 -   embedded computations from notebooks for side-by-side multi-language executed code
--   inline code in multiple languages
 
-* multiple collaborators - different ways to pull in computational results. your collaborators can still be writing in jupyter notebooks.
-
-## ???
-
-???
+-   maybe also: multiple collaborators - different ways to pull in computational results. your collaborators can still be writing in jupyter notebooks.
 
 # Outro
 
-## some closing about pop-up books
+## pop-up books and interactivity
+
+**TO DO:** Develop this idea further
 
 interactivity --- webR? Not done yet but someone implemented a version, could have a version by conf
 
-pyodide
-web assembly
+things to mention here:
 
-::: {.callout-warning appearance="simple"}
-Q: Order?
-:::
-
-
-https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63
-
-common.R alternative -> qmd filters that can prepend code blocks at the start of your document is the way to go. I opened an issue but the mechanism is not developed yet https://github.com/quarto-dev/quarto-cli/issues/10169
-
-* engines -- jupyter support
-
+- pyodide for python
+- web assembly as a bigger idea
