@@ -3,9 +3,9 @@ title: "Reproducible, dynamic, and elegant books with Quarto"
 format: revealjs
 ---
 
-# Intro
+# "Making" books
 
-## Something about popup books
+## {background-image="images/lp-1.png" background-size="contain"}
 
 ## Books
 
@@ -22,7 +22,26 @@ format: revealjs
 -   custom divs in HTML and CSS
 -   pagebreak hell
 
-## One input...
+## Two outputs
+
+:::: {.columns}
+
+::: {.column}
+**HTML**
+
+![](images/chapterintro-html-light.png)
+:::
+
+::: {.column}
+**PDF**
+
+![](images/chapterintro-pdf.png)
+:::
+
+::::
+
+
+## From one input
 
 ``` {.markdown filename="data-hello.qmd"}
 ::: {.chapterintro data-latex=""}
@@ -33,35 +52,25 @@ In this first chapter, we focus on both the properties of data and on the collec
 :::
 ```
 
---\> two outputs
+## With the help of meticulous styling
 
-## Output 1: HTML
-
-![](images/chapterintro-html-light.png)
-
-## Output 1: HTML - How do we get there?
-
-Styled with SCSS:
+Styled with SCSS for HTML:
 
 ``` {.scss filename="ims-style.scss"}
 .chapterintro {
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;
   background: #d5e6ef 5px center/3em no-repeat;
-  border-top: 3px solid #569BBD;    /* openintro::COL[1,1] */ 
-  border-bottom: 3px solid #569BBD; /* openintro::COL[1,1] */ 
+  border-top: 3px solid #569BBD;
+  border-bottom: 3px solid #569BBD;
   background-image: url("images/_icons/chapterintro.png");
   background-position: 0.5em 1.5em;
 }
 ```
 
-## Output 2: PDF
+## With the help of meticulous styling
 
-![](images/chapterintro-pdf.png)
-
-## Output 2: PDF - How do we get there?
-
-Styled with TeX:
+and with TeX for PDF:
 
 ``` {.latex filename="ims-style.tex"}
 \newenvironment{mdframedwithfootChapterintro}
@@ -92,27 +101,6 @@ Styled with TeX:
     }{\end{minipage}
     \end{mdframedwithfootChapterintro}
     \vspace{4mm}
-}
-```
-## HTML - no happiness without dark mode
-
-![](images/chapterintro-html-dark.png)
-
-## HTML - dark mode
-
-Styled with SCSS:
-
-``` {.scss filename="ims-style-dark.scss"}
-$body-bg: #222;
-
-.chapterintro {
-  padding: 1em 1em 1em 4em;
-  margin-bottom: 10px;
-  background: lighten($body-bg, 10%) 5px center/3em no-repeat;
-  border-top: 3px solid #569BBD;    /* openintro::COL[1,1] */ 
-  border-bottom: 3px solid #569BBD; /* openintro::COL[1,1] */ 
-  background-image: url("images/_icons/chapterintro.png");
-  background-position: 0.5em 1.5em;
 }
 ```
 
@@ -155,11 +143,35 @@ format:
     toc-depth: 2
   ```
 
-## PDF pagebreaks
+## HTML - dark mode
 
-All is not magical from 1 input -> 2 outputs
+:::: {.columns}
 
-Manually add `\clearpage`...
+::: {.column}
+``` {.scss filename="ims-style-dark.scss"}
+$body-bg: #222;
+
+.chapterintro {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: lighten($body-bg, 10%) 5px center/3em no-repeat;
+  border-top: 3px solid #569BBD;
+  border-bottom: 3px solid #569BBD;
+  background-image: url("images/_icons/chapterintro.png");
+  background-position: 0.5em 1.5em;
+}
+```
+:::
+
+::: {.column}
+![](images/chapterintro-html-dark.png)
+:::
+
+::::
+
+## But all is not magiv...
+
+PDF pagebreaks require manually adding `\clearpage`...
 
 HTML will just ignore these
 
@@ -190,7 +202,7 @@ format:
     ...
   ```
 
-## Maybe add for future: typst
+## Maybe add "for future": typst
 
 table simplification for HTML and PDF tables
 
@@ -344,10 +356,10 @@ PR preview
 
 deploy to github pages so rendered product has a history (look at R packages book) -- mutli destination for different goodies
 
-- https://github.com/hadley/r-pkgs/tree/gh-pages
-- https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63
+- <https://github.com/hadley/r-pkgs/tree/gh-pages>
+- <https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63>
 
-## Maybe: no code book
+# Maybe: no code book
 
 **TO DO:** Add one more section on no-code book, edit on github for example and render with action -- either at the beginning (increasing complexity) or at the end (wrap-up thoughts) or maybe here because it builds on GitHub actions
 
@@ -361,11 +373,13 @@ deploy to github pages so rendered product has a history (look at R packages boo
 
 -   maybe also: multiple collaborators - different ways to pull in computational results. your collaborators can still be writing in jupyter notebooks.
 
-# Outro
+# "Making" books, that are not just pretty, but also functional...
 
 ## pop-up books and interactivity
 
-**TO DO:** Develop this idea further
+<iframe width="560" height="315" src="https://www.youtube.com/embed/l6XFQHTtt7M?si=YmybYrTPosdl8IN3&amp;start=152" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+**TO DO:** Update video
 
 interactivity --- webR? Not done yet but someone implemented a version, could have a version by conf
 

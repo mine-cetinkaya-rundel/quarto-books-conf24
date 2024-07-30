@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.37">
+  <meta name="generator" content="quarto-1.5.55">
 
   <title>Reproducible, dynamic, and elegant books with Quarto</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -397,12 +397,12 @@
 
 </section>
 <section>
-<section id="intro" class="title-slide slide level1 center">
-<h1>Intro</h1>
+<section id="making-books" class="title-slide slide level1 center">
+<h1>“Making” books</h1>
 
 </section>
-<section id="something-about-popup-books" class="slide level2">
-<h2>Something about popup books</h2>
+<section id="section" class="slide level2" data-background-image="images/lp-1.png" data-background-size="contain">
+<h2></h2>
 </section>
 <section id="books" class="slide level2">
 <h2>Books</h2>
@@ -424,8 +424,19 @@
 <li>pagebreak hell</li>
 </ul>
 </section>
-<section id="one-input" class="slide level2">
-<h2>One input…</h2>
+<section id="two-outputs" class="slide level2">
+<h2>Two outputs</h2>
+<div class="columns">
+<div class="column">
+<p><strong>HTML</strong></p>
+<p><img data-src="images/chapterintro-html-light.png"></p>
+</div><div class="column">
+<p><strong>PDF</strong></p>
+<p><img data-src="images/chapterintro-pdf.png"></p>
+</div></div>
+</section>
+<section id="from-one-input" class="slide level2">
+<h2>From one input</h2>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>data-hello.qmd</strong></pre>
@@ -437,15 +448,10 @@
 <span id="cb1-5"><a href=""></a>In this first chapter, we focus on both the properties of data and on the collection of data.</span>
 <span id="cb1-6"><a href=""></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>–&gt; two outputs</p>
 </section>
-<section id="output-1-html" class="slide level2">
-<h2>Output 1: HTML</h2>
-
-<img data-src="images/chapterintro-html-light.png" class="r-stretch"></section>
-<section id="output-1-html---how-do-we-get-there" class="slide level2">
-<h2>Output 1: HTML - How do we get there?</h2>
-<p>Styled with SCSS:</p>
+<section id="with-the-help-of-meticulous-styling" class="slide level2">
+<h2>With the help of meticulous styling</h2>
+<p>Styled with SCSS for HTML:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>ims-style.scss</strong></pre>
@@ -454,20 +460,16 @@
 <span id="cb2-2"><a href=""></a>  <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">4</span><span class="dt">em</span><span class="op">;</span></span>
 <span id="cb2-3"><a href=""></a>  <span class="kw">margin-bottom</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
 <span id="cb2-4"><a href=""></a>  <span class="kw">background</span>: <span class="cn">#d5e6ef</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">center</span><span class="op">/</span><span class="dv">3</span><span class="dt">em</span> <span class="dv">no-repeat</span><span class="op">;</span></span>
-<span id="cb2-5"><a href=""></a>  <span class="kw">border-top</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span>    <span class="co">/* openintro::COL[1,1] */</span> </span>
-<span id="cb2-6"><a href=""></a>  <span class="kw">border-bottom</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span> <span class="co">/* openintro::COL[1,1] */</span> </span>
+<span id="cb2-5"><a href=""></a>  <span class="kw">border-top</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span></span>
+<span id="cb2-6"><a href=""></a>  <span class="kw">border-bottom</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span></span>
 <span id="cb2-7"><a href=""></a>  <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">"images/_icons/chapterintro.png"</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb2-8"><a href=""></a>  <span class="kw">background-position</span>: <span class="dv">0.5</span><span class="dt">em</span> <span class="dv">1.5</span><span class="dt">em</span><span class="op">;</span></span>
 <span id="cb2-9"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="output-2-pdf" class="slide level2">
-<h2>Output 2: PDF</h2>
-
-<img data-src="images/chapterintro-pdf.png" class="r-stretch"></section>
-<section id="output-2-pdf---how-do-we-get-there" class="slide level2">
-<h2>Output 2: PDF - How do we get there?</h2>
-<p>Styled with TeX:</p>
+<section id="with-the-help-of-meticulous-styling-1" class="slide level2">
+<h2>With the help of meticulous styling</h2>
+<p>and with TeX for PDF:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>ims-style.tex</strong></pre>
@@ -503,76 +505,75 @@
 <span id="cb3-29"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="html---no-happiness-without-dark-mode" class="slide level2">
-<h2>HTML - no happiness without dark mode</h2>
-
-<img data-src="images/chapterintro-html-dark.png" class="r-stretch"></section>
-<section id="html---dark-mode" class="slide level2">
-<h2>HTML - dark mode</h2>
-<p>Styled with SCSS:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>ims-style-dark.scss</strong></pre>
-</div>
-<div class="sourceCode" id="cb4" data-filename="ims-style-dark.scss"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb4-1"><a href=""></a><span class="va">$body-bg</span>: <span class="cn">#222</span><span class="op">;</span></span>
-<span id="cb4-2"><a href=""></a></span>
-<span id="cb4-3"><a href=""></a><span class="fu">.chapterintro</span> {</span>
-<span id="cb4-4"><a href=""></a>  <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">4</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb4-5"><a href=""></a>  <span class="kw">margin-bottom</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb4-6"><a href=""></a>  <span class="kw">background</span>: <span class="fu">lighten(</span><span class="va">$body-bg</span><span class="op">,</span> <span class="dv">10</span><span class="dt">%</span><span class="fu">)</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">center</span><span class="op">/</span><span class="dv">3</span><span class="dt">em</span> <span class="dv">no-repeat</span><span class="op">;</span></span>
-<span id="cb4-7"><a href=""></a>  <span class="kw">border-top</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span>    <span class="co">/* openintro::COL[1,1] */</span> </span>
-<span id="cb4-8"><a href=""></a>  <span class="kw">border-bottom</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span> <span class="co">/* openintro::COL[1,1] */</span> </span>
-<span id="cb4-9"><a href=""></a>  <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">"images/_icons/chapterintro.png"</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-10"><a href=""></a>  <span class="kw">background-position</span>: <span class="dv">0.5</span><span class="dt">em</span> <span class="dv">1.5</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb4-11"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 <section id="quarto.yml" class="slide level2">
 <h2><code>_quarto.yml</code></h2>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>_quarto.yml</strong></pre>
 </div>
-<div class="sourceCode" id="cb5" data-filename="_quarto.yml" data-code-line-numbers="|3-5|17"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb5-2"><a href=""></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb5-3"><a href=""></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
-<span id="cb5-4"><a href=""></a><span class="at">      </span><span class="fu">light</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">cosmo</span><span class="kw">,</span><span class="at"> scss/ims-style.scss</span><span class="kw">]</span></span>
-<span id="cb5-5"><a href=""></a><span class="at">      </span><span class="fu">dark</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">cosmo</span><span class="kw">,</span><span class="at"> scss/ims-style-dark.scss</span><span class="kw">]</span></span>
-<span id="cb5-6"><a href=""></a><span class="at">    </span><span class="fu">code-link</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-7"><a href=""></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Atkinson Hyperlegible</span></span>
-<span id="cb5-8"><a href=""></a><span class="at">    </span><span class="fu">monofont</span><span class="kw">:</span><span class="at"> Source Code Pro</span></span>
-<span id="cb5-9"><a href=""></a><span class="at">    </span><span class="fu">author-meta</span><span class="kw">:</span><span class="at"> </span><span class="st">"Mine Çetinkaya-Rundel and Johanna Hardin"</span></span>
-<span id="cb5-10"><a href=""></a><span class="at">    </span><span class="fu">lightbox</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb5-11"><a href=""></a><span class="at">      </span><span class="fu">match</span><span class="kw">:</span><span class="at"> auto</span></span>
-<span id="cb5-12"><a href=""></a><span class="at">      </span><span class="fu">loop</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb5-13"><a href=""></a><span class="at">    </span><span class="fu">fig-dpi</span><span class="kw">:</span><span class="at"> </span><span class="dv">300</span></span>
-<span id="cb5-14"><a href=""></a><span class="at">    </span><span class="fu">fig-show</span><span class="kw">:</span><span class="at"> hold</span></span>
-<span id="cb5-15"><a href=""></a><span class="at">    </span><span class="fu">fig-align</span><span class="kw">:</span><span class="at"> center</span></span>
-<span id="cb5-16"><a href=""></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
-<span id="cb5-17"><a href=""></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span><span class="at"> latex/ims-style.tex</span></span>
-<span id="cb5-18"><a href=""></a><span class="at">    </span><span class="fu">include-after-body</span><span class="kw">:</span><span class="at"> latex/after-body.tex</span></span>
-<span id="cb5-19"><a href=""></a><span class="at">    </span><span class="fu">documentclass</span><span class="kw">:</span><span class="at"> book</span></span>
-<span id="cb5-20"><a href=""></a><span class="at">    </span><span class="fu">classoption</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb5-21"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> 10pt</span></span>
-<span id="cb5-22"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> openany</span></span>
-<span id="cb5-23"><a href=""></a><span class="at">    </span><span class="fu">pdf-engine</span><span class="kw">:</span><span class="at"> xelatex</span></span>
-<span id="cb5-24"><a href=""></a><span class="at">    </span><span class="fu">biblio-style</span><span class="kw">:</span><span class="at"> apalike</span></span>
-<span id="cb5-25"><a href=""></a><span class="at">    </span><span class="fu">keep-tex</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-26"><a href=""></a><span class="at">    </span><span class="fu">block-headings</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb5-27"><a href=""></a><span class="at">    </span><span class="fu">top-level-division</span><span class="kw">:</span><span class="at"> chapter</span></span>
-<span id="cb5-28"><a href=""></a><span class="at">    </span><span class="fu">fig-dpi</span><span class="kw">:</span><span class="at"> </span><span class="dv">300</span></span>
-<span id="cb5-29"><a href=""></a><span class="at">    </span><span class="fu">fig-show</span><span class="kw">:</span><span class="at"> hold</span></span>
-<span id="cb5-30"><a href=""></a><span class="at">    </span><span class="fu">fig-pos</span><span class="kw">:</span><span class="at"> H</span></span>
-<span id="cb5-31"><a href=""></a><span class="at">    </span><span class="fu">tbl-pos</span><span class="kw">:</span><span class="at"> H</span></span>
-<span id="cb5-32"><a href=""></a><span class="at">    </span><span class="fu">fig-align</span><span class="kw">:</span><span class="at"> center</span></span>
-<span id="cb5-33"><a href=""></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-34"><a href=""></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4" data-filename="_quarto.yml" data-code-line-numbers="|3-5|17"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href=""></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href=""></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
+<span id="cb4-4"><a href=""></a><span class="at">      </span><span class="fu">light</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">cosmo</span><span class="kw">,</span><span class="at"> scss/ims-style.scss</span><span class="kw">]</span></span>
+<span id="cb4-5"><a href=""></a><span class="at">      </span><span class="fu">dark</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">cosmo</span><span class="kw">,</span><span class="at"> scss/ims-style-dark.scss</span><span class="kw">]</span></span>
+<span id="cb4-6"><a href=""></a><span class="at">    </span><span class="fu">code-link</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-7"><a href=""></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Atkinson Hyperlegible</span></span>
+<span id="cb4-8"><a href=""></a><span class="at">    </span><span class="fu">monofont</span><span class="kw">:</span><span class="at"> Source Code Pro</span></span>
+<span id="cb4-9"><a href=""></a><span class="at">    </span><span class="fu">author-meta</span><span class="kw">:</span><span class="at"> </span><span class="st">"Mine Çetinkaya-Rundel and Johanna Hardin"</span></span>
+<span id="cb4-10"><a href=""></a><span class="at">    </span><span class="fu">lightbox</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb4-11"><a href=""></a><span class="at">      </span><span class="fu">match</span><span class="kw">:</span><span class="at"> auto</span></span>
+<span id="cb4-12"><a href=""></a><span class="at">      </span><span class="fu">loop</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb4-13"><a href=""></a><span class="at">    </span><span class="fu">fig-dpi</span><span class="kw">:</span><span class="at"> </span><span class="dv">300</span></span>
+<span id="cb4-14"><a href=""></a><span class="at">    </span><span class="fu">fig-show</span><span class="kw">:</span><span class="at"> hold</span></span>
+<span id="cb4-15"><a href=""></a><span class="at">    </span><span class="fu">fig-align</span><span class="kw">:</span><span class="at"> center</span></span>
+<span id="cb4-16"><a href=""></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb4-17"><a href=""></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span><span class="at"> latex/ims-style.tex</span></span>
+<span id="cb4-18"><a href=""></a><span class="at">    </span><span class="fu">include-after-body</span><span class="kw">:</span><span class="at"> latex/after-body.tex</span></span>
+<span id="cb4-19"><a href=""></a><span class="at">    </span><span class="fu">documentclass</span><span class="kw">:</span><span class="at"> book</span></span>
+<span id="cb4-20"><a href=""></a><span class="at">    </span><span class="fu">classoption</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb4-21"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> 10pt</span></span>
+<span id="cb4-22"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> openany</span></span>
+<span id="cb4-23"><a href=""></a><span class="at">    </span><span class="fu">pdf-engine</span><span class="kw">:</span><span class="at"> xelatex</span></span>
+<span id="cb4-24"><a href=""></a><span class="at">    </span><span class="fu">biblio-style</span><span class="kw">:</span><span class="at"> apalike</span></span>
+<span id="cb4-25"><a href=""></a><span class="at">    </span><span class="fu">keep-tex</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-26"><a href=""></a><span class="at">    </span><span class="fu">block-headings</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb4-27"><a href=""></a><span class="at">    </span><span class="fu">top-level-division</span><span class="kw">:</span><span class="at"> chapter</span></span>
+<span id="cb4-28"><a href=""></a><span class="at">    </span><span class="fu">fig-dpi</span><span class="kw">:</span><span class="at"> </span><span class="dv">300</span></span>
+<span id="cb4-29"><a href=""></a><span class="at">    </span><span class="fu">fig-show</span><span class="kw">:</span><span class="at"> hold</span></span>
+<span id="cb4-30"><a href=""></a><span class="at">    </span><span class="fu">fig-pos</span><span class="kw">:</span><span class="at"> H</span></span>
+<span id="cb4-31"><a href=""></a><span class="at">    </span><span class="fu">tbl-pos</span><span class="kw">:</span><span class="at"> H</span></span>
+<span id="cb4-32"><a href=""></a><span class="at">    </span><span class="fu">fig-align</span><span class="kw">:</span><span class="at"> center</span></span>
+<span id="cb4-33"><a href=""></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-34"><a href=""></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="pdf-pagebreaks" class="slide level2">
-<h2>PDF pagebreaks</h2>
-<p>All is not magical from 1 input -&gt; 2 outputs</p>
-<p>Manually add <code>\clearpage</code>…</p>
+<section id="html---dark-mode" class="slide level2">
+<h2>HTML - dark mode</h2>
+<div class="columns">
+<div class="column">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>ims-style-dark.scss</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" data-filename="ims-style-dark.scss"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb5-1"><a href=""></a><span class="va">$body-bg</span>: <span class="cn">#222</span><span class="op">;</span></span>
+<span id="cb5-2"><a href=""></a></span>
+<span id="cb5-3"><a href=""></a><span class="fu">.chapterintro</span> {</span>
+<span id="cb5-4"><a href=""></a>  <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">4</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb5-5"><a href=""></a>  <span class="kw">margin-bottom</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb5-6"><a href=""></a>  <span class="kw">background</span>: <span class="fu">lighten(</span><span class="va">$body-bg</span><span class="op">,</span> <span class="dv">10</span><span class="dt">%</span><span class="fu">)</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">center</span><span class="op">/</span><span class="dv">3</span><span class="dt">em</span> <span class="dv">no-repeat</span><span class="op">;</span></span>
+<span id="cb5-7"><a href=""></a>  <span class="kw">border-top</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span></span>
+<span id="cb5-8"><a href=""></a>  <span class="kw">border-bottom</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span></span>
+<span id="cb5-9"><a href=""></a>  <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">"images/_icons/chapterintro.png"</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb5-10"><a href=""></a>  <span class="kw">background-position</span>: <span class="dv">0.5</span><span class="dt">em</span> <span class="dv">1.5</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb5-11"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<p><img data-src="images/chapterintro-html-dark.png"></p>
+</div></div>
+</section>
+<section id="but-all-is-not-magiv" class="slide level2">
+<h2>But all is not magiv…</h2>
+<p>PDF pagebreaks require manually adding <code>\clearpage</code>…</p>
 <p>HTML will just ignore these</p>
 </section>
 <section id="index" class="slide level2">
@@ -607,7 +608,7 @@
 </div>
 </section>
 <section id="maybe-add-for-future-typst" class="slide level2">
-<h2>Maybe add for future: typst</h2>
+<h2>Maybe add “for future”: typst</h2>
 <p>table simplification for HTML and PDF tables</p>
 <p>one style file -&gt; multi-putput</p>
 </section>
@@ -640,7 +641,7 @@
 <span id="cb9-21"><a href=""></a>  ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="section" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 
 <img data-src="images/fig-county-multi-unit-homeownership-1-source.png" class="r-stretch"></section>
@@ -796,14 +797,15 @@
 <p>PR preview</p>
 <p>deploy to github pages so rendered product has a history (look at R packages book) – mutli destination for different goodies</p>
 <ul>
-<li>https://github.com/hadley/r-pkgs/tree/gh-pages</li>
-<li>https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63</li>
+<li><a href="https://github.com/hadley/r-pkgs/tree/gh-pages" class="uri">https://github.com/hadley/r-pkgs/tree/gh-pages</a></li>
+<li><a href="https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63" class="uri">https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63</a></li>
 </ul>
-</section>
-<section id="maybe-no-code-book" class="slide level2">
-<h2>Maybe: no code book</h2>
-<p><strong>TO DO:</strong> Add one more section on no-code book, edit on github for example and render with action – either at the beginning (increasing complexity) or at the end (wrap-up thoughts) or maybe here because it builds on GitHub actions</p>
 </section></section>
+<section id="maybe-no-code-book" class="title-slide slide level1 center">
+<h1>Maybe: no code book</h1>
+<p><strong>TO DO:</strong> Add one more section on no-code book, edit on github for example and render with action – either at the beginning (increasing complexity) or at the end (wrap-up thoughts) or maybe here because it builds on GitHub actions</p>
+</section>
+
 <section>
 <section id="quarto-tdg" class="title-slide slide level1 center">
 <h1>Quarto TDG</h1>
@@ -818,13 +820,15 @@
 </ul>
 </section></section>
 <section>
-<section id="outro" class="title-slide slide level1 center">
-<h1>Outro</h1>
+<section id="making-books-that-are-not-just-pretty-but-also-functional" class="title-slide slide level1 center">
+<h1>“Making” books, that are not just pretty, but also functional…</h1>
 
 </section>
 <section id="pop-up-books-and-interactivity" class="slide level2">
 <h2>pop-up books and interactivity</h2>
-<p><strong>TO DO:</strong> Develop this idea further</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/l6XFQHTtt7M?si=YmybYrTPosdl8IN3&amp;start=152" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<p><strong>TO DO:</strong> Update video</p>
 <p>interactivity — webR? Not done yet but someone implemented a version, could have a version by conf</p>
 <p>things to mention here:</p>
 <ul>
