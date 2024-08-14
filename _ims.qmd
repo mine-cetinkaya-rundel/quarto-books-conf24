@@ -354,7 +354,7 @@ One source \
 
 [**TODAY**]{.lion}
 
-``` {.r filename="data-hello.qmd" code-line-numbers="szz4-12"}
+``` {.r filename="data-hello.qmd" code-line-numbers="|4-12"}
 county |>
   select(name, state, pop2017, pop_change, unemployment_rate, median_edu) |>
   slice_head(n = 6) |>
