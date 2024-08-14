@@ -9,7 +9,7 @@ title-slide-attributes:
 format: 
   revealjs:
     theme: style/slides.scss
-    css: fonts/fonts.css
+    css: style/fonts.css
 ---
 
 # "Making" books {background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%"}
@@ -44,10 +44,13 @@ format:
 :::
 :::
 
+<!--
 {{< include _ims.qmd >}}
+-->
 
 {{< include _r4ds.qmd >}}
 
+<!--
 {{< include _quarto.qmd >}}
 
 # "Making" books, that are not just pretty, but also functional...
@@ -66,3 +69,4 @@ things to mention here:
 
 -   pyodide for python
 -   web assembly as a bigger idea
+-->

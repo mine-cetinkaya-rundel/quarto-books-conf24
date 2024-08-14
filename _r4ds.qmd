@@ -25,15 +25,14 @@
 :::
 :::
 
-## `_common.R` for global options {.smaller}
+## Set global options with `_common.R` {.smaller}
 
-``` {.r filename="_common.R" code-line-numbers="|1|3-11|13-24|27"}
+``` {.r filename="_common.R" code-line-numbers="|1|3-11|12-22|24"}
 set.seed(1014)
 
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
-  # cache = TRUE,
   fig.retina = 2,
   fig.width = 6,
   fig.asp = 2/3,
@@ -46,28 +45,24 @@ options(
   pillar.max_footer_lines = 2,
   pillar.min_chars = 15,
   stringr.view_n = 6,
-  # Temporarily deactivate cli output for quarto
   cli.num_colors = 0,
   cli.hyperlink = FALSE,
   pillar.bold = TRUE,
   width = 77 # 80 - 3 for #> comment
 )
 
-
 ggplot2::theme_set(ggplot2::theme_gray(12))
 ```
-
-**TO DO:** Check to see if there's a different way -- follow up with https://github.com/quarto-dev/quarto-cli/issues/10169, qmd filters that can prepend code blocks at the start of your document is the way to go. I opened an issue but the mechanism is not developed yet
 
 ::: notes
 <https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L1-L26>
 :::
 
-## `_common.R` for setting a status {.smaller}
+## Set status with `_common.R` {.smaller}
 
-Using R as an escape hatch -- use your R function writing skills to avoid duplication
+Use your R function writing skills to avoid duplication:
 
-``` {.r filename="_common.R"}
+``` {.r filename="_common.R" code-line-numbers="|2-9|11-16|18-27"}
 # use results: "asis" when setting a status for a chapter
 status <- function(type) {
   status <- switch(type,
@@ -98,15 +93,28 @@ status <- function(type) {
 }
 ```
 
-**TO DO:** Consider mentioning announcement banner from Quarto 1.5 -- not available while we worked on the book
-
 ::: notes
 https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/\_common.R#L28-L55
 :::
 
-## GitHub actions - daily checks
+## Call `status()` in `.qmd`
 
-don't rely on freeze
+```{.r filename="EDA.qmd"}
+#| results: "asis"
+#| echo: false
+source("_common.R")
+status("complete")
+```
+
+## R `status()` $\rightarrow$ Quarto `announcement`
+
+```{=html}
+<iframe src="https://quarto.org/docs/websites/website-tools.html#announcement-bar" title = "Announcement bar" frameborder="1" height="600" width="1000"></iframe>
+```
+
+## Daily checks with GitHub actions
+
+Intentionally avoiding freeze:
 
 ``` {.yaml filename=".github/workflows /build_book.yaml"}
 on:
