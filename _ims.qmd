@@ -21,7 +21,7 @@
 ![](images/little-prince-star-gold.png){width="8%"} multiple outputs
 :::
 ::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} accessibility
+![](images/little-prince-star-gold.png){width="8%"} accessibility checks
 :::
 :::
 
@@ -420,6 +420,79 @@ ggplot(county, aes(x = multi_unit, y = homeownership)) +
 ![](images/fig-county-multi-unit-homeownership-1-source.png)
 :::
 
-## Making sure you have alt text
+## Do all my figures have `fig-alt`s?
 
-TO DO: Share code snippet for checking all figures have alt-text
+![](images/ims-ggplot-search-github.png)
+
+## Do all my figures have `fig-alt`s?
+
+![](images/ims-ggplot-search-positron.png)
+
+## Checking for missing `fig-alt`s {auto-animate="true"}
+
+Load packages:
+
+```{r}
+# pak::pak("rundel/parsermd") # need dev version
+library(parsermd)
+library(here)
+```
+
+## Checking for missing `fig-alt`s {auto-animate="true"}
+
+Find cells that have `ggplot()` but not `fig-alt`:
+
+```{r}
+#| code-line-numbers: "5-10"
+# pak::pak("rundel/parsermd") # need dev version
+library(parsermd)
+library(here)
+
+missing_fig_alt <- here::here("fig-alt-check/data-hello.qmd") |>
+  parse_qmd() |> 
+  rmd_select(
+    has_type("rmd_chunk") & 
+    has_code("ggplot\\(") & 
+    !has_option("fig-alt")
+  )
+```
+
+## Checking for missing `fig-alt`s {auto-animate="true"}
+
+Get labels of cells without `fig-alt`:
+
+```{r}
+#| code-line-numbers: "12"
+# pak::pak("rundel/parsermd") # need dev version
+library(parsermd)
+library(here)
+
+missing_fig_alt <- parse_qmd(here::here("fig-alt-check/data-hello.qmd")) |> 
+  rmd_select(
+    has_type("rmd_chunk") & 
+    has_code("ggplot\\(") & 
+    !has_option("fig-alt")
+  )
+
+rmd_node_label(missing_fig_alt)
+```
+
+## Checking for missing `fig-alt`s {.smaller auto-animate="true"}
+
+Get contents of cells without `fig-alt`:
+
+```{r}
+#| code-line-numbers: "12"
+# pak::pak("rundel/parsermd") # need dev version
+library(parsermd)
+library(here)
+
+missing_fig_alt <- parse_qmd(here::here("fig-alt-check/data-hello.qmd")) |> 
+  rmd_select(
+    has_type("rmd_chunk") & 
+    has_code("ggplot\\(") & 
+    !has_option("fig-alt")
+  )
+
+as_document(missing_fig_alt)
+```

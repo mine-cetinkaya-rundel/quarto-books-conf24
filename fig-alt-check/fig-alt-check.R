@@ -4,9 +4,10 @@
 library(parsermd)
 library(here)
 
-# find chunks that has ggplot() but not fig-alt
+# find cells that have ggplot() but not fig-alt
 
-missing_fig_alt <- parse_qmd(here::here("fig-alt-check/data-hello.qmd")) |> 
+missing_fig_alt <- here::here("fig-alt-check/data-hello.qmd") |>
+  parse_qmd() |> 
   rmd_select(
     has_type("rmd_chunk") & 
     has_code("ggplot\\(") & 
