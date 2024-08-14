@@ -53,19 +53,38 @@ execute:
 
 {{< include _quarto.qmd >}}
 
-# "Making" books, that are not just pretty, but also functional...
+# "Making" books,<br>that are not just pretty,<br>but also functional...
 
-## pop-up books and interactivity
+## {.center}
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/l6XFQHTtt7M?si=YmybYrTPosdl8IN3&amp;start=152" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+![](images/little-prince-text.mov){fig-align="center" width="900px"} 
 
-</iframe>
+## {.center}
 
-**TO DO:** Update video
+![](images/little-prince-snake.mov){fig-align="center" width="350px"}
 
-interactivity --- webR? Not done yet but someone implemented a version, could have a version by conf
+## ![](images/little-prince-star-blue.png) `r-wasm/quarto-live`
 
-things to mention here:
+::: center-align
+```{=html}
+<iframe src="https://r-wasm.github.io/quarto-live/" title = "Quarto live" frameborder="1" height="550" width="1200"></iframe>
+```
+:::
 
--   pyodide for python
--   web assembly as a bigger idea
+## {background-image="images/little-prince-seattle.png"}
+
+<br><br><br><br><br><br>
+
+::: {.center-align}
+
+::: {.hand .huge .white}
+**thank you!**
+:::
+
+<br>
+
+::: {.large .white}
+🔗 bit.ly/books-conf24
+:::
+
+:::

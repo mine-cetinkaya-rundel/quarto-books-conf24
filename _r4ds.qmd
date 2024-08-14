@@ -103,25 +103,6 @@ https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/\_c
 
 Use your R function writing skills to avoid duplication:
 
-:::smallest
-``` {.r filename="_common.R" code-line-numbers="15"}
-status <- function(type) {
-  ...
-
-  cat(paste0(
-    "\n",
-    ":::: status\n",
-    "::: callout-", class, " \n",
-    "You are reading the work-in-progress second edition of R for Data Science. ",
-    "This chapter ", status, ". ",
-    "You can find the complete first edition at <https://r4ds.had.co.nz>.\n",
-    ":::\n",
-    "::::\n"
-  ))
-}
-```
-:::
-
 <br>
 
 ```{.r filename="EDA.qmd"}
@@ -132,6 +113,12 @@ status("complete")
 ```
 
 ## Today's solution: `announcement`
+
+::: {.center-align .medium}
+🔗 [quarto.org/docs/websites/website-tools.html#announcement-bar](https://quarto.org/docs/websites/website-tools.html#announcement-bar)
+:::
+
+<br>
 
 ```{.yaml filename="_quarto.yml"}
 website:
@@ -148,13 +135,19 @@ website:
     position: below-navbar
 ```
 
-## Keeping things in check with GitHub actions
+## Keeping things in check daily
 
-#[](images/r4ds-action-fail-email.png)
+::: fragment
+![](images/r4ds-action-fail-email.png){fig-align="center"}
+:::
 
-## Daily checks with GitHub actions
+## Leveraging GitHub actions
 
-Intentionally avoiding `freeze`:
+- Avoid `freeze`
+
+. . .
+
+- Set daily checks
 
 ``` {.yaml filename=".github/workflows /build_book.yaml"}
 on:
@@ -175,7 +168,7 @@ https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/.gi
 
 <br><br><br><br>
 
-> Whenever faced with a problem, some people say "Lets use regular expressions."
+> Whenever faced with a problem, some people say "Let's use regular expressions."
 > Now, they have two problems.
 
 ::: aside
@@ -186,7 +179,7 @@ Source: <https://news.ycombinator.com/item?id=25415441>
 
 <br><br><br><br>
 
-> Whenever faced with a problem, some people say "Lets use ~~regular expressions~~[GitHub actions]{.red}."
+> Whenever faced with a problem, some people say "Let's use ~~regular expressions~~[GitHub actions]{.red}."
 > Now, they have ~~two~~[so many more]{.red} problems.
 
 ::: aside

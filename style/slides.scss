@@ -80,6 +80,10 @@ $presentation-font-size-root: 36px !default;
   font-size: 1.8em;
 }
 
+.huge {
+  font-size: 3em;
+}
+
 // alignment
 
 .center-align {
@@ -95,63 +99,10 @@ $presentation-font-size-root: 36px !default;
   color: $red-cmyk;
 }
 
+.reveal .white {
+  color: $white;
+}
+
 .reveal .hand {
   font-family: 'Little Days', cursive;
-}
-
-// custom divs
-
-.reveal .slide .your-turn {
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  margin-bottom: 6px;
-  margin-top: 6px;
-  border-left: solid 5px #7A9857;
-  background-color: #7A985750;
-}
-
-.reveal .slide .our-turn {
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  margin-bottom: 6px;
-  margin-top: 6px;
-  border-left: solid 5px #589398;
-  background-color: #58939850;
-}
-
-.reveal .slide .r-box {
-  padding: 0.5em 1em 0.5em 2.5em;
-  margin-bottom: 6px;
-  margin-top: 6px;
-  border-left: solid 5px #3767B6;
-  background: #BBBDC050 center no-repeat;
-  background-image: url("../../../../images/r-logo.png");
-  background-position: 0.5em 0.5em;
-  background-size: 50px;
-}
-
-.reveal .slide .python-box {
-  padding: 0.5em 1em 0.5em 2.5em;
-  margin-bottom: 6px;
-  margin-top: 6px;
-  border-left: solid 5px #5482B0;
-  background: #FADF6F50 center no-repeat;
-  background-image: url("../../../../images/python-logo.png");
-  background-position: 0.5em 0.5em;
-  background-size: 50px;
-}
-
-.reveal .slide .code-box {
-  padding: 0.5em 1em 0.5em 2.5em;
-  margin-bottom: 6px;
-  margin-top: 6px;
-  border-left: solid 5px #797979;
-  background: #79797950 center no-repeat;
-  background-image: url("../../../../images/code-icon.png");
-  background-position: 0.5em 0.5em;
-  background-size: 50px;
 }

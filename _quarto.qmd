@@ -21,14 +21,113 @@
 ![](images/little-prince-star-gold.png){width="8%"} multiple languages
 :::
 ::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} multiple collaborators
+![](images/little-prince-star-gold.png){width="8%"} multiple environments
 :::
 :::
 
-## multiple languages
+## Two languages in one `.qmd`
 
--   inline code in multiple languages with same syntax
+Each being executed with their own engine:
 
--   embedded computations from notebooks for side-by-side multi-language executed code
+. . .
 
--   maybe also: multiple collaborators - different ways to pull in computational results. your collaborators can still be writing in jupyter notebooks.
+```{.yaml filename="authoring.qmd"}
+## Code cells
+
+::: panel-tabset
+### R
+
+{{< embed notebooks/authoring-r.qmd#plot echo=true >}}
+
+### Python
+
+{{< embed notebooks/authoring-python.qmd#plot echo=true >}}
+:::
+```
+
+## From two source notebooks
+
+::: {.columns}
+::: {.column .center-align}
+
+````{.yaml filename="notebooks/authoring-r.qmd" code-line-numbers="|16-22"}
+---
+title: "Authoring - R"
+---
+
+## Markdown text
+
+Hello.
+
+## Code cells
+
+```{{r}}
+#| label: add
+1 + 1
+```
+
+```{{r}}
+#| label: plot
+df <- data.frame(x = 1:8, y = 3:10)
+m <- lm(y ~ x, data = df)
+plot(df$x, df$y)
+abline(m)
+```
+
+````
+:::
+::: {.column .center-align .fragment}
+
+````{.yaml filename="notebooks/authoring-py.qmd" code-line-numbers="|16-26"}
+---
+title: Authoring - Python
+---
+
+## Markdown text
+
+Hello.
+
+## Code cells
+
+```{{python}}
+#| label: add
+1 + 1
+```
+
+```{{python}}
+#| label: plot
+import matplotlib.pyplot as plt
+import numpy as np
+
+xpoints = np.array([1, 8])
+ypoints = np.array([3, 10])
+
+plt.plot(xpoints, ypoints)
+plt.show()
+```
+
+````
+:::
+:::
+
+## Two recognizable outputs on a single page
+
+![](images/quarto-tdg-r-python-plot.gif){fig-align="center"}
+
+## Productivity with `freeze`
+
+<br><br>
+
+```{.yaml filename="_quarto.yml"}
+execute:
+  freeze: auto
+```
+
+## ~~Productivity~~Safeguarding your sanity with `freeze`
+
+<br>
+
+```{.yaml filename="_quarto.yml"}
+execute:
+  freeze: auto
+```

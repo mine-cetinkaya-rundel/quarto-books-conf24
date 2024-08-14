@@ -210,11 +210,11 @@ $body-bg: #222;
 
 :::::
 
-## Unfortunately, not all is not magic... {.nostretch auto-animate="true"}
+## Unfortunately, it's not all magic... {.nostretch auto-animate="true"}
 
 ![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=0 left=900}
 
-## Unfortunately, not all is not magic... {.nostretch auto-animate="true"}
+## Unfortunately, it's not all magic... {.nostretch auto-animate="true"}
 
 ![](images/little-prince-star-gold.png){fig-width="5%" .absolute bottom=40 left=20}
 
@@ -236,7 +236,7 @@ While the chance a coin lands heads in any given coin flip is 50%, we probably w
 This type of variation is part of almost any type of data generating process.
 ````
 
-## Unfortunately, not all is not magic...
+## Unfortunately, it's not all magic...
 
 and another...
 
@@ -254,7 +254,7 @@ Alternatively, graphs can be used to visually explore the data, potentially prov
 Each point on the plot represents a single county.
 ```
 
-## Unfortunately, not all is not magic... {auto-animate="true"}
+## Unfortunately, it's not all magic... {auto-animate="true"}
 
 ![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=220 left=50}
 
@@ -279,10 +279,15 @@ By building on things qmd $\rightarrow$ HTML will happily ignore and qmd $\right
 
 <br>
 
-``` {.markdown filename="data-hello.qmd" code-line-numbers="2"}
-We can compute summary statistics from the table to give us a better idea of how the impact of the stent treatment differed between the two groups.
-A **summary statistic** is a single number summarizing data from a sample.\index{summary statistic}
-For instance, the primary results of the study after 1 year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and control groups.
+``` {.markdown filename="data-hello.qmd" code-line-numbers="4-5"}
+We can compute summary statistics from the table to give us a 
+better idea of how the impact of the stent treatment differed 
+between the two groups.
+A **summary statistic** is a single number summarizing data 
+from a sample.\index{summary statistic}
+For instance, the primary results of the study after 1 year 
+could be described by two summary statistics: the proportion 
+of people who had a stroke in the treatment and control groups.
 ```
 
 ## In three components {.smaller auto-animate="true"}
@@ -306,7 +311,7 @@ For instance, the primary results of the study after 1 year could be described b
 
 . . .
 
-3. Calling that file from `_quarto.yml`: 
+3. Including that file with `_quarto.yml`: 
 
 ``` {.yaml filename="_quarto.yml" code-line-numbers="6"}
 format:
@@ -403,7 +408,7 @@ county |>
 
 ## Accessibility: `fig-alt` {.nostretch}
 
-``` {.r filename="data-hello.qmd" code-line-numbers="|3-7"}
+``` {.r filename="data-hello.qmd" code-line-numbers="3-7"}
 #| label: fig-county-multi-unit-homeownership
 #| ...
 #| fig-alt: A scatterplot of homeownership (on the y-axis) versus the percent of
