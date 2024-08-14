@@ -411,7 +411,7 @@ Mine Çetinkaya-Rundel
 <h1>“Making” books</h1>
 
 </section>
-<section id="section" class="slide level2" data-background-image="images/little-prince-on-mountain.png" data-background-size="contain">
+<section id="section" class="slide level2" data-background-image="images/little-prince-on-mountain.png" data-background-size="90% 90%">
 <h2></h2>
 </section>
 <section id="the-books" class="slide level2">
@@ -433,438 +433,436 @@ Mine Çetinkaya-Rundel
 <p><img data-src="images/little-prince-star-red.png" width="50"></p>
 </div>
 </div></div>
-<!--
-
-# {slide-title="IMS2" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
-
-![](images/ims2.png){fig-align="center" width="30%" fig-alt="Cover of the OpenIntro textbook Introduction to Modern Statistics, 2nd Edition."}
-
-::: {.absolute top=-60 right=70 data-id="red-star"}
-![](images/little-prince-star-red.png){width="50px"}
-:::
-
-# {slide-title="IMS2" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
-
-::: {.absolute left=25 top=20}
-![](images/ims2.png){width="230px" fig-alt="Cover of the OpenIntro textbook Introduction to Modern Statistics, 2nd Edition."}
-:::
-
-::: {.absolute top=0 left=5 data-id="red-star"}
-![](images/little-prince-star-red.png){width="50px"}
-:::
-
-::: {.hand .xlarge .absolute left=275 top=50}
-::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} multiple outputs
-:::
-::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} accessibility
-:::
-:::
-
-## Two outputs
-
-::::: columns
-::: {.column .center-align}
-[**HTML**]{.lion}
-
-![](images/chapterintro-html-light.png)
-:::
-
-::: {.column width="40%" .center-align}
-[**PDF**]{.lion}
-
-![](images/chapterintro-pdf.png)
-:::
-:::::
-
-## From one source
-
-``` {.markdown filename="data-hello.qmd"}
-::: {.chapterintro data-latex=""}
-Scientists seek to answer questions using rigorous methods and careful observations.
-These observations -- collected from the likes of field notes, surveys, and experiments -- form the backbone of a statistical investigation and are called **data**.
-Statistics is the study of how best to collect, analyze, and draw conclusions from data.
-In this first chapter, we focus on both the properties of data and on the collection of data.
-:::
-```
-
-## With the help of meticulous styling
-
-With SCSS for HTML:
-
-``` {.scss filename="ims-style.scss"}
-.chapterintro {
-  padding: 1em 1em 1em 4em;
-  margin-bottom: 10px;
-  background: #d5e6ef 5px center/3em no-repeat;
-  border-top: 3px solid #569BBD;
-  border-bottom: 3px solid #569BBD;
-  background-image: url("images/_icons/chapterintro.png");
-  background-position: 0.5em 1.5em;
-}
-```
-
-## With the help of meticulous styling
-
-With TeX for PDF:
-
-``` {.latex filename="ims-style.tex"}
-\newenvironment{mdframedwithfootChapterintro}
-{   
-    \savenotes
-    \begin{mdframed}[%
-    topline=true, bottomline=true, linecolor=oiB, linewidth=1.4pt,
-    rightline=false, leftline=false,
-    backgroundcolor=oiLB]
-    \renewcommand{\thempfootnote}{\arabic{footnote}}
-    }
-{
-    \end{mdframed}
-    \spewnotes
-}
-
-\newenvironment{chapterintro}{
-    \vspace{4mm}
-    \begin{mdframedwithfootChapterintro}
-    \begin{minipage}[t]{0.10\textwidth}
-    {$\:$ \\ \setkeys{Gin}{width=2.5em,keepaspectratio}\includegraphics{images/_icons/chapterintro.png}}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.90\textwidth}
-    \setlength{\parskip}{1em}
-    \large
-    }{\end{minipage}
-    \end{mdframedwithfootChapterintro}
-    \vspace{4mm}
-}
-```
-
-## `_quarto.yml`
-
-``` {.yaml filename="_quarto.yml" code-line-numbers="|3-5|17"}
-format:
-  html:
-    theme:
-      light: [cosmo, scss/ims-style.scss]
-      dark: [cosmo, scss/ims-style-dark.scss]
-    code-link: true
-    mainfont: Atkinson Hyperlegible
-    monofont: Source Code Pro
-    author-meta: "Mine Çetinkaya-Rundel and Johanna Hardin"
-    lightbox: 
-      match: auto
-      loop: false
-    fig-dpi: 300
-    fig-show: hold
-    fig-align: center
-  pdf:
-    include-in-header: latex/ims-style.tex
-    include-after-body: latex/after-body.tex
-    documentclass: book
-    classoption: 
-      - 10pt
-      - openany
-    pdf-engine: xelatex
-    biblio-style: apalike
-    keep-tex: true
-    block-headings: false
-    top-level-division: chapter
-    fig-dpi: 300
-    fig-show: hold
-    fig-pos: H
-    tbl-pos: H
-    fig-align: center
-    toc: true
-    toc-depth: 2
-```
-
-## Two outputs {auto-animate="true"}
-
-::::: columns
-::: {.column .center-align}
-[**HTML**]{.lion}
-
-![](images/chapterintro-html-light.png)
-:::
-
-::: {.column width="40%" .center-align}
-[**PDF**]{.lion}
-
-![](images/chapterintro-pdf.png)
-:::
-:::::
-
-## Three outputs {auto-animate="true"}
-
-::::: columns
-::: {.column width="25%" .center-align}
-[**HTML - Light**]{.lion}
-
-![](images/chapterintro-html-light.png)
-:::
-
-::: {.column width="50%" .center-align}
-[**HTML - Dark**]{.lion}
-
-::: {data-id="html-dark"}
-![](images/chapterintro-html-dark.png)
-:::
-:::
-
-::: {.column width="25%" .center-align}
-[**PDF**]{.lion}
-
-![](images/chapterintro-pdf.png)
-:::
-:::::
-
-## With even more meticulous styling {auto-animate="true"}
-
-::::: columns
-
-::: {.column width="80%"}
-``` {.scss filename="ims-style-dark.scss" code-line-numbers="1,6"}
-$body-bg: #222;
-
-.chapterintro {
-  padding: 1em 1em 1em 4em;
-  margin-bottom: 10px;
-  background: lighten($body-bg, 10%) 5px center/3em no-repeat;
-  border-top: 3px solid #569BBD;
-  border-bottom: 3px solid #569BBD;
-  background-image: url("images/_icons/chapterintro.png");
-  background-position: 0.5em 1.5em;
-}
-```
-:::
-
-::: {.column width="20%"}
-::: {data-id="html-dark"}
-![](images/chapterintro-html-dark.png)
-:::
-:::
-
-:::::
-
-## Unfortunately, not all is not magic... {.nostretch auto-animate="true"}
-
-![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=0 left=900}
-
-## Unfortunately, not all is not magic... {.nostretch auto-animate="true"}
-
-![](images/little-prince-star-gold.png){fig-width="5%" .absolute bottom=40 left=20}
-
-Painstakingly add `\clearpage` that qmd $\rightarrow$ LaTeX will process and qmd $\rightarrow$ HTML will ignore:
-
-<br>
-
-``` {.markdown filename="data-hello.qmd" code-line-numbers="6"}
-These two summary statistics are useful in looking for differences in the groups, and we are in for a surprise: an additional 8% of patients in the treatment group had a stroke!
-This is important for two reasons.
-First, it is contrary to what doctors expected, which was that stents would *reduce* the rate of strokes.
-Second, it leads to a statistical question: do the data show a "real" difference between the groups?
-
-\clearpage
-
-This second question is subtle.
-Suppose you flip a coin 100 times.
-While the chance a coin lands heads in any given coin flip is 50%, we probably won't observe exactly 50 heads.
-This type of variation is part of almost any type of data generating process.
-````
-
-## Unfortunately, not all is not magic...
-
-and another...
-
-<br>
-
-``` {.markdown filename="data-hello.qmd" code-line-numbers="5"}
-To answer these questions, data must be collected, such as the `county` dataset shown in @tbl-county-df.
-Examining \index{summary statistic}**summary statistics** can provide numerical insights about the specifics of each of these questions.
-Alternatively, graphs can be used to visually explore the data, potentially providing more insight than a summary statistic.
-
-\clearpage
-
-\index{scatterplot}**Scatterplots** are one type of graph used to study the relationship between two numerical variables.
-@fig-county-multi-unit-homeownership displays the relationship between the variables `homeownership` and `multi_unit`, which is the percent of housing units that are in multi-unit structures (e.g., apartments, condos).
-Each point on the plot represents a single county.
-```
-
-## Unfortunately, not all is not magic... {auto-animate="true"}
-
-![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=220 left=50}
-
-and another...
-
-<br>
-
-``` {.markdown filename="data-hello.qmd" code-line-numbers="2"}
-
-\clearpage
-
-## Exercises {#sec-chp1-exercises}
-
-Answers to odd-numbered exercises can be found in [Appendix -@sec-exercise-solutions-01].
-```
-
-## Bring back the magic {auto-animate="true"}
-
-![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=0 left=900}
-
-By building on things qmd $\rightarrow$ HTML will happily ignore and qmd $\rightarrow$ will process: `\index{}`
-
-<br>
-
-``` {.markdown filename="data-hello.qmd" code-line-numbers="2"}
-We can compute summary statistics from the table to give us a better idea of how the impact of the stent treatment differed between the two groups.
-A **summary statistic** is a single number summarizing data from a sample.\index{summary statistic}
-For instance, the primary results of the study after 1 year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and control groups.
-```
-
-## In three components {.smaller auto-animate="true"}
-
-1. `\index{}` tags:
-
-``` {.markdown filename="data-hello.qmd" code-line-numbers="2"}
-We can compute summary statistics from the table to give us a better idea of how the impact of the stent treatment differed between the two groups.
-A **summary statistic** is a single number summarizing data from a sample.\index{summary statistic}
-For instance, the primary results of the study after 1 year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and control groups.
-```
-
-. . .
-
-2. A `.tex` file to be appended to the end during render:
-
-``` {.latex filename="after-body.tex"}
-\backmatter
-\printindex
-```
-
-. . .
-
-3. Calling that file from `_quarto.yml`: 
-
-``` {.yaml filename="_quarto.yml" code-line-numbers="6"}
-format:
-  html:
-    ...
-  pdf:
-    include-in-header: latex/ims-style.tex
-    include-after-body: latex/after-body.tex
-    ...
-```
-
-## Looking forward to `typst` for styling {auto-animate="true"}
-
-![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=0 left=900}
-
-::: {.columns}
-::: {.column .center-align}
-[**TODAY**]{.lion}
-
-One source \
-`+` \
-2 style files \
-[$\downarrow$]{.lion} \
-2 outputs
-:::
-::: {.column .center-align .fragment}
-[**FUTURE**]{.lion}
-
-One source \
-`+` \
-[**1**]{.red} style file \
-[$\downarrow$]{.lion} \
-2 outputs
-:::
-:::
-
-## Looking forward to `typst` for tables {auto-animate="true"}
-
-![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=50 left=900}
-
-[**TODAY**]{.lion}
-
-``` {.r filename="data-hello.qmd" code-line-numbers="szz4-12"}
-county |>
-  select(name, state, pop2017, pop_change, unemployment_rate, median_edu) |>
-  slice_head(n = 6) |>
-  kableExtra::kbl(
-    linesep = "", 
-    booktabs = TRUE,
-    format.args = list(big.mark = ",")
-  ) |>
-  kableExtra::kable_styling(
-    bootstrap_options = c("striped", "condensed"),
-    latex_options = c("striped")
-  )
-```
-
-## Looking forward to `typst` for tables {auto-animate="true"}
-
-![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=30 left=910}
-
-[**TODAY**]{.lion}
-
-::: smallest
-::: columns
-::: {.column width="60%"}
-``` {.r filename="data-hello.qmd" code-line-numbers="4-12"}
-county |>
-  select(name, state, pop2017, pop_change, unemployment_rate, median_edu) |>
-  slice_head(n = 6) |>
-  kableExtra::kbl(
-    linesep = "", 
-    booktabs = TRUE,
-    format.args = list(big.mark = ",")
-  ) |>
-  kableExtra::kable_styling(
-    bootstrap_options = c("striped", "condensed"),
-    latex_options = c("striped")
-  )
-```
-:::
-:::
-:::
-
-<br>
-[**FUTURE**]{.lion}
-
-``` {.r filename="data-hello.qmd" code-line-numbers="4"}
-county |>
-  select(name, state, pop2017, pop_change, unemployment_rate, median_edu) |>
-  slice_head(n = 6) |>
-  gt::gt()
-```
-
-## Accessibility: `fig-alt` {.nostretch}
-
-``` {.r filename="data-hello.qmd" code-line-numbers="|3-7"}
-#| label: fig-county-multi-unit-homeownership
-#| ...
-#| fig-alt: A scatterplot of homeownership (on the y-axis) versus the percent of
-#|   housing units that are in multi-unit structures (on the x-axis) for US
-#|   counties. The observation from Chattahoochee County, Georgia
-#|   is highlighted as having a multi-unit rate of 39.4% and a
-#|   homeownership rate of 31.3%
-ggplot(county, aes(x = multi_unit, y = homeownership)) +
-  geom_point(alpha = 0.3, fill = IMSCOL["black", "full"], shape = 21) +
-  ...
-```
-
-::: {.fragment .absolute left=50 bottom=50}
-![](images/fig-county-multi-unit-homeownership-1-source.png)
-:::
-
-## Making sure you have alt text
-
-TO DO: Share code snippet for checking all figures have alt-text
-
-
--->
 </section></section>
-<section id="section-1" class="title-slide slide level1 nostretch center" data-slide-title="R4DS" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
+<section id="section-1" class="title-slide slide level1 nostretch center" data-slide-title="IMS2" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
+<h1 data-id="quarto-animate-title"></h1>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ims2.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Cover of the OpenIntro textbook Introduction to Modern Statistics, 2nd Edition."></p>
+</figure>
+</div>
+<div class="absolute" data-id="red-star" style="top: -60px; right: 70px; ">
+<p><img data-src="images/little-prince-star-red.png" width="50"></p>
+</div>
+</section>
+
+<section>
+<section id="section-2" class="title-slide slide level1 nostretch center" data-slide-title="IMS2" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
+<h1 data-id="quarto-animate-title"></h1>
+<div class="absolute" style="top: 20px; left: 25px; ">
+<p><img data-src="images/ims2.png" alt="Cover of the OpenIntro textbook Introduction to Modern Statistics, 2nd Edition." width="230"></p>
+</div>
+<div class="absolute" data-id="red-star" style="top: 0px; left: 5px; ">
+<p><img data-src="images/little-prince-star-red.png" width="50"></p>
+</div>
+<div class="hand xlarge absolute" style="top: 50px; left: 275px; ">
+<div class="fragment">
+<p><img data-src="images/little-prince-star-gold.png" style="width:8.0%"> multiple outputs</p>
+</div>
+<div class="fragment">
+<p><img data-src="images/little-prince-star-gold.png" style="width:8.0%"> accessibility</p>
+</div>
+</div>
+</section>
+<section id="two-outputs" class="slide level2">
+<h2>Two outputs</h2>
+<div class="columns">
+<div class="column center-align">
+<p><span class="lion"><strong>HTML</strong></span></p>
+<p><img data-src="images/chapterintro-html-light.png"></p>
+</div><div class="column center-align" style="width:40%;">
+<p><span class="lion"><strong>PDF</strong></span></p>
+<p><img data-src="images/chapterintro-pdf.png"></p>
+</div></div>
+</section>
+<section id="from-one-source" class="slide level2">
+<h2>From one source</h2>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>data-hello.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="data-hello.qmd"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href=""></a>::: {.chapterintro data-latex=""}</span>
+<span id="cb1-2"><a href=""></a>Scientists seek to answer questions using rigorous methods and careful observations.</span>
+<span id="cb1-3"><a href=""></a>These observations -- collected from the likes of field notes, surveys, and experiments -- form the backbone of a statistical investigation and are called **data**.</span>
+<span id="cb1-4"><a href=""></a>Statistics is the study of how best to collect, analyze, and draw conclusions from data.</span>
+<span id="cb1-5"><a href=""></a>In this first chapter, we focus on both the properties of data and on the collection of data.</span>
+<span id="cb1-6"><a href=""></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="with-the-help-of-meticulous-styling" class="slide level2">
+<h2>With the help of meticulous styling</h2>
+<p>With SCSS for HTML:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>ims-style.scss</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="ims-style.scss"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb2-1"><a href=""></a><span class="fu">.chapterintro</span> {</span>
+<span id="cb2-2"><a href=""></a>  <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">4</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb2-3"><a href=""></a>  <span class="kw">margin-bottom</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb2-4"><a href=""></a>  <span class="kw">background</span>: <span class="cn">#d5e6ef</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">center</span><span class="op">/</span><span class="dv">3</span><span class="dt">em</span> <span class="dv">no-repeat</span><span class="op">;</span></span>
+<span id="cb2-5"><a href=""></a>  <span class="kw">border-top</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span></span>
+<span id="cb2-6"><a href=""></a>  <span class="kw">border-bottom</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span></span>
+<span id="cb2-7"><a href=""></a>  <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">"images/_icons/chapterintro.png"</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb2-8"><a href=""></a>  <span class="kw">background-position</span>: <span class="dv">0.5</span><span class="dt">em</span> <span class="dv">1.5</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb2-9"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="with-the-help-of-meticulous-styling-1" class="slide level2">
+<h2>With the help of meticulous styling</h2>
+<p>With TeX for PDF:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>ims-style.tex</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="ims-style.tex"><pre class="sourceCode numberSource latex number-lines code-with-copy"><code class="sourceCode latex"><span id="cb3-1"><a href=""></a><span class="fu">\newenvironment</span>{mdframedwithfootChapterintro}</span>
+<span id="cb3-2"><a href=""></a>{   </span>
+<span id="cb3-3"><a href=""></a>    <span class="fu">\savenotes</span></span>
+<span id="cb3-4"><a href=""></a>    <span class="kw">\begin</span>{<span class="ex">mdframed</span>}[<span class="co">%</span></span>
+<span id="cb3-5"><a href=""></a>    topline=true, bottomline=true, linecolor=oiB, linewidth=1.4pt,</span>
+<span id="cb3-6"><a href=""></a>    rightline=false, leftline=false,</span>
+<span id="cb3-7"><a href=""></a>    backgroundcolor=oiLB]</span>
+<span id="cb3-8"><a href=""></a>    <span class="fu">\renewcommand</span>{<span class="ex">\thempfootnote</span>}{<span class="fu">\arabic</span>{footnote}}</span>
+<span id="cb3-9"><a href=""></a>    }</span>
+<span id="cb3-10"><a href=""></a>{</span>
+<span id="cb3-11"><a href=""></a>    <span class="kw">\end</span>{<span class="ex">mdframed</span>}</span>
+<span id="cb3-12"><a href=""></a>    <span class="fu">\spewnotes</span></span>
+<span id="cb3-13"><a href=""></a>}</span>
+<span id="cb3-14"><a href=""></a></span>
+<span id="cb3-15"><a href=""></a><span class="fu">\newenvironment</span>{chapterintro}{</span>
+<span id="cb3-16"><a href=""></a>    <span class="fu">\vspace</span>{4mm}</span>
+<span id="cb3-17"><a href=""></a>    <span class="kw">\begin</span>{<span class="ex">mdframedwithfootChapterintro</span>}</span>
+<span id="cb3-18"><a href=""></a>    <span class="kw">\begin</span>{<span class="ex">minipage</span>}[t]{0.10<span class="fu">\textwidth</span>}</span>
+<span id="cb3-19"><a href=""></a>    {<span class="ss">$</span><span class="sc">\:</span><span class="ss">$</span> <span class="fu">\\</span> <span class="fu">\setkeys</span>{Gin}{width=2.5em,keepaspectratio}<span class="bu">\includegraphics</span>{<span class="ex">images/_icons/chapterintro.png</span>}}</span>
+<span id="cb3-20"><a href=""></a>    <span class="kw">\end</span>{<span class="ex">minipage</span>}</span>
+<span id="cb3-21"><a href=""></a>    <span class="fu">\hfill</span></span>
+<span id="cb3-22"><a href=""></a>    <span class="kw">\begin</span>{<span class="ex">minipage</span>}[t]{0.90<span class="fu">\textwidth</span>}</span>
+<span id="cb3-23"><a href=""></a>    <span class="fu">\setlength</span>{<span class="fu">\parskip</span>}{1em}</span>
+<span id="cb3-24"><a href=""></a>    <span class="fu">\large</span></span>
+<span id="cb3-25"><a href=""></a>    }{<span class="kw">\end</span>{<span class="ex">minipage</span>}</span>
+<span id="cb3-26"><a href=""></a>    <span class="kw">\end</span>{<span class="ex">mdframedwithfootChapterintro</span>}</span>
+<span id="cb3-27"><a href=""></a>    <span class="fu">\vspace</span>{4mm}</span>
+<span id="cb3-28"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="quarto.yml" class="slide level2">
+<h2><code>_quarto.yml</code></h2>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>_quarto.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb4" data-filename="_quarto.yml" data-code-line-numbers="|3-5|17"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href=""></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href=""></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
+<span id="cb4-4"><a href=""></a><span class="at">      </span><span class="fu">light</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">cosmo</span><span class="kw">,</span><span class="at"> scss/ims-style.scss</span><span class="kw">]</span></span>
+<span id="cb4-5"><a href=""></a><span class="at">      </span><span class="fu">dark</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">cosmo</span><span class="kw">,</span><span class="at"> scss/ims-style-dark.scss</span><span class="kw">]</span></span>
+<span id="cb4-6"><a href=""></a><span class="at">    </span><span class="fu">code-link</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-7"><a href=""></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Atkinson Hyperlegible</span></span>
+<span id="cb4-8"><a href=""></a><span class="at">    </span><span class="fu">monofont</span><span class="kw">:</span><span class="at"> Source Code Pro</span></span>
+<span id="cb4-9"><a href=""></a><span class="at">    </span><span class="fu">author-meta</span><span class="kw">:</span><span class="at"> </span><span class="st">"Mine Çetinkaya-Rundel and Johanna Hardin"</span></span>
+<span id="cb4-10"><a href=""></a><span class="at">    </span><span class="fu">lightbox</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb4-11"><a href=""></a><span class="at">      </span><span class="fu">match</span><span class="kw">:</span><span class="at"> auto</span></span>
+<span id="cb4-12"><a href=""></a><span class="at">      </span><span class="fu">loop</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb4-13"><a href=""></a><span class="at">    </span><span class="fu">fig-dpi</span><span class="kw">:</span><span class="at"> </span><span class="dv">300</span></span>
+<span id="cb4-14"><a href=""></a><span class="at">    </span><span class="fu">fig-show</span><span class="kw">:</span><span class="at"> hold</span></span>
+<span id="cb4-15"><a href=""></a><span class="at">    </span><span class="fu">fig-align</span><span class="kw">:</span><span class="at"> center</span></span>
+<span id="cb4-16"><a href=""></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb4-17"><a href=""></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span><span class="at"> latex/ims-style.tex</span></span>
+<span id="cb4-18"><a href=""></a><span class="at">    </span><span class="fu">include-after-body</span><span class="kw">:</span><span class="at"> latex/after-body.tex</span></span>
+<span id="cb4-19"><a href=""></a><span class="at">    </span><span class="fu">documentclass</span><span class="kw">:</span><span class="at"> book</span></span>
+<span id="cb4-20"><a href=""></a><span class="at">    </span><span class="fu">classoption</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb4-21"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> 10pt</span></span>
+<span id="cb4-22"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> openany</span></span>
+<span id="cb4-23"><a href=""></a><span class="at">    </span><span class="fu">pdf-engine</span><span class="kw">:</span><span class="at"> xelatex</span></span>
+<span id="cb4-24"><a href=""></a><span class="at">    </span><span class="fu">biblio-style</span><span class="kw">:</span><span class="at"> apalike</span></span>
+<span id="cb4-25"><a href=""></a><span class="at">    </span><span class="fu">keep-tex</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-26"><a href=""></a><span class="at">    </span><span class="fu">block-headings</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb4-27"><a href=""></a><span class="at">    </span><span class="fu">top-level-division</span><span class="kw">:</span><span class="at"> chapter</span></span>
+<span id="cb4-28"><a href=""></a><span class="at">    </span><span class="fu">fig-dpi</span><span class="kw">:</span><span class="at"> </span><span class="dv">300</span></span>
+<span id="cb4-29"><a href=""></a><span class="at">    </span><span class="fu">fig-show</span><span class="kw">:</span><span class="at"> hold</span></span>
+<span id="cb4-30"><a href=""></a><span class="at">    </span><span class="fu">fig-pos</span><span class="kw">:</span><span class="at"> H</span></span>
+<span id="cb4-31"><a href=""></a><span class="at">    </span><span class="fu">tbl-pos</span><span class="kw">:</span><span class="at"> H</span></span>
+<span id="cb4-32"><a href=""></a><span class="at">    </span><span class="fu">fig-align</span><span class="kw">:</span><span class="at"> center</span></span>
+<span id="cb4-33"><a href=""></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-34"><a href=""></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="two-outputs-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Two outputs</h2>
+<div class="columns">
+<div class="column center-align">
+<p><span class="lion"><strong>HTML</strong></span></p>
+<p><img data-src="images/chapterintro-html-light.png"></p>
+</div><div class="column center-align" style="width:40%;">
+<p><span class="lion"><strong>PDF</strong></span></p>
+<p><img data-src="images/chapterintro-pdf.png"></p>
+</div></div>
+</section>
+<section id="three-outputs" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Three outputs</h2>
+<div class="columns">
+<div class="column center-align" style="width:25%;">
+<p><span class="lion"><strong>HTML - Light</strong></span></p>
+<p><img data-src="images/chapterintro-html-light.png"></p>
+</div><div class="column center-align" style="width:50%;">
+<p><span class="lion"><strong>HTML - Dark</strong></span></p>
+<div data-id="html-dark">
+<p><img data-src="images/chapterintro-html-dark.png"></p>
+</div>
+</div><div class="column center-align" style="width:25%;">
+<p><span class="lion"><strong>PDF</strong></span></p>
+<p><img data-src="images/chapterintro-pdf.png"></p>
+</div></div>
+</section>
+<section id="with-even-more-meticulous-styling" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">With even more meticulous styling</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div data-id="html-dark">
+<p><img data-src="images/chapterintro-html-dark.png"></p>
+</div>
+</div><div class="column" style="width:80%;">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>ims-style-dark.scss</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" data-filename="ims-style-dark.scss" data-code-line-numbers="1,6"><pre class="sourceCode numberSource scss number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode scss hljs"><span id="cb5-1" class="hljs-ln-code"><a href=""></a><span class="va">$body-bg</span>: <span class="cn">#222</span><span class="op">;</span></span>
+<span id="cb5-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb5-3" class="hljs-ln-code"><a href=""></a><span class="fu">.chapterintro</span> {</span>
+<span id="cb5-4" class="hljs-ln-code"><a href=""></a>  <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">4</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb5-5" class="hljs-ln-code"><a href=""></a>  <span class="kw">margin-bottom</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb5-6" class="hljs-ln-code"><a href=""></a>  <span class="kw">background</span>: <span class="fu">lighten(</span><span class="va">$body-bg</span><span class="op">,</span> <span class="dv">10</span><span class="dt">%</span><span class="fu">)</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">center</span><span class="op">/</span><span class="dv">3</span><span class="dt">em</span> <span class="dv">no-repeat</span><span class="op">;</span></span>
+<span id="cb5-7" class="hljs-ln-code"><a href=""></a>  <span class="kw">border-top</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span></span>
+<span id="cb5-8" class="hljs-ln-code"><a href=""></a>  <span class="kw">border-bottom</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#569BBD</span><span class="op">;</span></span>
+<span id="cb5-9" class="hljs-ln-code"><a href=""></a>  <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">"images/_icons/chapterintro.png"</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb5-10" class="hljs-ln-code"><a href=""></a>  <span class="kw">background-position</span>: <span class="dv">0.5</span><span class="dt">em</span> <span class="dv">1.5</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb5-11" class="hljs-ln-code"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div>
+</section>
+<section id="unfortunately-not-all-is-not-magic" class="slide level2 nostretch" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Unfortunately, not all is not magic…</h2>
+<p><img data-src="images/little-prince-star-gold.png" class="absolute" style="top: 0px; left: 900px; " data-fig-width="5%"></p>
+</section>
+<section id="unfortunately-not-all-is-not-magic-1" class="slide level2 nostretch" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Unfortunately, not all is not magic…</h2>
+<p><img data-src="images/little-prince-star-gold.png" class="absolute" style="left: 20px; bottom: 40px; " data-fig-width="5%"></p>
+<p>Painstakingly add <code>\clearpage</code> that qmd <span class="math inline">\(\rightarrow\)</span> LaTeX will process and qmd <span class="math inline">\(\rightarrow\)</span> HTML will ignore:</p>
+<p><br></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>data-hello.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb6" data-filename="data-hello.qmd" data-code-line-numbers="6"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb6-1" class="hljs-ln-code"><a href=""></a>These two summary statistics are useful in looking for differences in the groups, and we are in for a surprise: an additional 8% of patients in the treatment group had a stroke!</span>
+<span id="cb6-2" class="hljs-ln-code"><a href=""></a>This is important for two reasons.</span>
+<span id="cb6-3" class="hljs-ln-code"><a href=""></a>First, it is contrary to what doctors expected, which was that stents would *reduce* the rate of strokes.</span>
+<span id="cb6-4" class="hljs-ln-code"><a href=""></a>Second, it leads to a statistical question: do the data show a "real" difference between the groups?</span>
+<span id="cb6-5" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb6-6" class="hljs-ln-code"><a href=""></a>\clearpage</span>
+<span id="cb6-7" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb6-8" class="hljs-ln-code"><a href=""></a>This second question is subtle.</span>
+<span id="cb6-9" class="hljs-ln-code"><a href=""></a>Suppose you flip a coin 100 times.</span>
+<span id="cb6-10" class="hljs-ln-code"><a href=""></a>While the chance a coin lands heads in any given coin flip is 50%, we probably won't observe exactly 50 heads.</span>
+<span id="cb6-11" class="hljs-ln-code"><a href=""></a>This type of variation is part of almost any type of data generating process.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="unfortunately-not-all-is-not-magic-2" class="slide level2">
+<h2>Unfortunately, not all is not magic…</h2>
+<p>and another…</p>
+<p><br></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>data-hello.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="data-hello.qmd" data-code-line-numbers="5"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href=""></a>To answer these questions, data must be collected, such as the <span class="in">`county`</span> dataset shown in @tbl-county-df.</span>
+<span id="cb7-2"><a href=""></a>Examining \index{summary statistic}**summary statistics** can provide numerical insights about the specifics of each of these questions.</span>
+<span id="cb7-3"><a href=""></a>Alternatively, graphs can be used to visually explore the data, potentially providing more insight than a summary statistic.</span>
+<span id="cb7-4"><a href=""></a></span>
+<span id="cb7-5"><a href=""></a>\clearpage</span>
+<span id="cb7-6"><a href=""></a></span>
+<span id="cb7-7"><a href=""></a>\index{scatterplot}**Scatterplots** are one type of graph used to study the relationship between two numerical variables.</span>
+<span id="cb7-8"><a href=""></a>@fig-county-multi-unit-homeownership displays the relationship between the variables <span class="in">`homeownership`</span> and <span class="in">`multi_unit`</span>, which is the percent of housing units that are in multi-unit structures (e.g., apartments, condos).</span>
+<span id="cb7-9"><a href=""></a>Each point on the plot represents a single county.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="unfortunately-not-all-is-not-magic-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Unfortunately, not all is not magic…</h2>
+<p><img data-src="images/little-prince-star-gold.png" class="absolute" style="top: 220px; left: 50px; " data-fig-width="5%"></p>
+<p>and another…</p>
+<p><br></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>data-hello.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb8" data-filename="data-hello.qmd" data-code-line-numbers="2"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb8-1" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb8-2" class="hljs-ln-code"><a href=""></a>\clearpage</span>
+<span id="cb8-3" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb8-4" class="hljs-ln-code"><a href=""></a><span class="fu">## Exercises {#sec-chp1-exercises}</span></span>
+<span id="cb8-5" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb8-6" class="hljs-ln-code"><a href=""></a>Answers to odd-numbered exercises can be found in <span class="co">[</span><span class="ot">Appendix -@sec-exercise-solutions-01</span><span class="co">]</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bring-back-the-magic" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Bring back the magic</h2>
+<p><img data-src="images/little-prince-star-gold.png" class="absolute" style="top: 0px; left: 900px; " data-fig-width="5%"></p>
+<p>By building on things qmd <span class="math inline">\(\rightarrow\)</span> HTML will happily ignore and qmd <span class="math inline">\(\rightarrow\)</span> will process: <code>\index{}</code></p>
+<p><br></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>data-hello.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb9" data-filename="data-hello.qmd" data-code-line-numbers="2"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb9-1" class="hljs-ln-code"><a href=""></a>We can compute summary statistics from the table to give us a better idea of how the impact of the stent treatment differed between the two groups.</span>
+<span id="cb9-2" class="hljs-ln-code"><a href=""></a>A **summary statistic** is a single number summarizing data from a sample.\index{summary statistic}</span>
+<span id="cb9-3" class="hljs-ln-code"><a href=""></a>For instance, the primary results of the study after 1 year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and control groups.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="in-three-components" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">In three components</h2>
+<ol type="1">
+<li><code>\index{}</code> tags:</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>data-hello.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb10" data-filename="data-hello.qmd" data-code-line-numbers="2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href=""></a>We can compute summary statistics from the table to give us a better idea of how the impact of the stent treatment differed between the two groups.</span>
+<span id="cb10-2"><a href=""></a>A **summary statistic** is a single number summarizing data from a sample.\index{summary statistic}</span>
+<span id="cb10-3"><a href=""></a>For instance, the primary results of the study after 1 year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and control groups.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li>A <code>.tex</code> file to be appended to the end during render:</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>after-body.tex</strong></pre>
+</div>
+<div class="sourceCode" id="cb11" data-filename="after-body.tex"><pre class="sourceCode numberSource latex number-lines code-with-copy"><code class="sourceCode latex"><span id="cb11-1"><a href=""></a><span class="fu">\backmatter</span></span>
+<span id="cb11-2"><a href=""></a><span class="fu">\printindex</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li>Calling that file from <code>_quarto.yml</code>:</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>_quarto.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb12" data-filename="_quarto.yml" data-code-line-numbers="6"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href=""></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb12-3"><a href=""></a><span class="at">    ...</span></span>
+<span id="cb12-4"><a href=""></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb12-5"><a href=""></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span><span class="at"> latex/ims-style.tex</span></span>
+<span id="cb12-6"><a href=""></a><span class="at">    </span><span class="fu">include-after-body</span><span class="kw">:</span><span class="at"> latex/after-body.tex</span></span>
+<span id="cb12-7"><a href=""></a><span class="at">    ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="looking-forward-to-typst-for-styling" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Looking forward to <code>typst</code> for styling</h2>
+<p><img data-src="images/little-prince-star-blue.png" class="absolute" style="top: 0px; left: 900px; " data-fig-width="5%"></p>
+<div class="columns">
+<div class="column center-align">
+<p><span class="lion"><strong>TODAY</strong></span></p>
+<p>One source<br>
+<code>+</code><br>
+2 style files<br>
+<span class="lion"><span class="math inline">\(\downarrow\)</span></span><br>
+2 outputs</p>
+</div><div class="column center-align fragment">
+<p><span class="lion"><strong>FUTURE</strong></span></p>
+<p>One source<br>
+<code>+</code><br>
+<span class="red"><strong>1</strong></span> style file<br>
+<span class="lion"><span class="math inline">\(\downarrow\)</span></span><br>
+2 outputs</p>
+</div></div>
+</section>
+<section id="looking-forward-to-typst-for-tables" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Looking forward to <code>typst</code> for tables</h2>
+<p><img data-src="images/little-prince-star-blue.png" class="absolute" style="top: 50px; left: 900px; " data-fig-width="5%"></p>
+<p><span class="lion"><strong>TODAY</strong></span></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>data-hello.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb13" data-filename="data-hello.qmd" data-code-line-numbers="szz4-12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb13-1" class="hljs-ln-code"><a href=""></a>county <span class="sc">|&gt;</span></span>
+<span id="cb13-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">select</span>(name, state, pop2017, pop_change, unemployment_rate, median_edu) <span class="sc">|&gt;</span></span>
+<span id="cb13-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-4" class="hljs-ln-code"><a href=""></a>  kableExtra<span class="sc">::</span><span class="fu">kbl</span>(</span>
+<span id="cb13-5" class="hljs-ln-code"><a href=""></a>    <span class="at">linesep =</span> <span class="st">""</span>, </span>
+<span id="cb13-6" class="hljs-ln-code"><a href=""></a>    <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-7" class="hljs-ln-code"><a href=""></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>)</span>
+<span id="cb13-8" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb13-9" class="hljs-ln-code"><a href=""></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(</span>
+<span id="cb13-10" class="hljs-ln-code"><a href=""></a>    <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"condensed"</span>),</span>
+<span id="cb13-11" class="hljs-ln-code"><a href=""></a>    <span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>)</span>
+<span id="cb13-12" class="hljs-ln-code"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="looking-forward-to-typst-for-tables-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Looking forward to <code>typst</code> for tables</h2>
+<p><img data-src="images/little-prince-star-blue.png" class="absolute" style="top: 30px; left: 910px; " data-fig-width="5%"></p>
+<p><span class="lion"><strong>TODAY</strong></span></p>
+<div class="smallest">
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>data-hello.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb14" data-filename="data-hello.qmd" data-code-line-numbers="4-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>county <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href=""></a>  <span class="fu">select</span>(name, state, pop2017, pop_change, unemployment_rate, median_edu) <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href=""></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-4"><a href=""></a>  kableExtra<span class="sc">::</span><span class="fu">kbl</span>(</span>
+<span id="cb14-5"><a href=""></a>    <span class="at">linesep =</span> <span class="st">""</span>, </span>
+<span id="cb14-6"><a href=""></a>    <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-7"><a href=""></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>)</span>
+<span id="cb14-8"><a href=""></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb14-9"><a href=""></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(</span>
+<span id="cb14-10"><a href=""></a>    <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"condensed"</span>),</span>
+<span id="cb14-11"><a href=""></a>    <span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>)</span>
+<span id="cb14-12"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div>
+</div>
+<p><br> <span class="lion"><strong>FUTURE</strong></span></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>data-hello.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb15" data-filename="data-hello.qmd" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>county <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href=""></a>  <span class="fu">select</span>(name, state, pop2017, pop_change, unemployment_rate, median_edu) <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href=""></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb15-4"><a href=""></a>  gt<span class="sc">::</span><span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="accessibility-fig-alt" class="slide level2 nostretch">
+<h2>Accessibility: <code>fig-alt</code></h2>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>data-hello.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb16" data-filename="data-hello.qmd" data-code-line-numbers="|3-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="co">#| label: fig-county-multi-unit-homeownership</span></span>
+<span id="cb16-2"><a href=""></a><span class="co">#| ...</span></span>
+<span id="cb16-3"><a href=""></a><span class="co">#| fig-alt: A scatterplot of homeownership (on the y-axis) versus the percent of</span></span>
+<span id="cb16-4"><a href=""></a><span class="co">#|   housing units that are in multi-unit structures (on the x-axis) for US</span></span>
+<span id="cb16-5"><a href=""></a><span class="co">#|   counties. The observation from Chattahoochee County, Georgia</span></span>
+<span id="cb16-6"><a href=""></a><span class="co">#|   is highlighted as having a multi-unit rate of 39.4% and a</span></span>
+<span id="cb16-7"><a href=""></a><span class="co">#|   homeownership rate of 31.3%</span></span>
+<span id="cb16-8"><a href=""></a><span class="fu">ggplot</span>(county, <span class="fu">aes</span>(<span class="at">x =</span> multi_unit, <span class="at">y =</span> homeownership)) <span class="sc">+</span></span>
+<span id="cb16-9"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">fill =</span> IMSCOL[<span class="st">"black"</span>, <span class="st">"full"</span>], <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb16-10"><a href=""></a>  ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment absolute" style="left: 50px; bottom: 50px; ">
+<p><img data-src="images/fig-county-multi-unit-homeownership-1-source.png"></p>
+</div>
+</section>
+<section id="making-sure-you-have-alt-text" class="slide level2">
+<h2>Making sure you have alt text</h2>
+<p>TO DO: Share code snippet for checking all figures have alt-text</p>
+</section></section>
+<section id="section-3" class="title-slide slide level1 nostretch center" data-slide-title="R4DS" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
 <h1 data-id="quarto-animate-title"></h1>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -877,7 +875,7 @@ TO DO: Share code snippet for checking all figures have alt-text
 </section>
 
 <section>
-<section id="section-2" class="title-slide slide level1 nostretch center" data-slide-title="R4DS" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
+<section id="section-4" class="title-slide slide level1 nostretch center" data-slide-title="R4DS" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
 <h1 data-id="quarto-animate-title"></h1>
 <div class="absolute" style="top: 20px; left: 25px; ">
 <p><img data-src="images/r4ds2.jpg" alt="Cover of the book R for Data Science, 2nd Edition." width="230"></p>
@@ -900,30 +898,30 @@ TO DO: Share code snippet for checking all figures have alt-text
 <div class="code-with-filename-file">
 <pre><strong>_common.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb1" data-filename="_common.R" data-code-line-numbers="|1|3-11|12-22|24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">1014</span>)</span>
-<span id="cb1-2"><a href=""></a></span>
-<span id="cb1-3"><a href=""></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb1-4"><a href=""></a>  <span class="at">comment =</span> <span class="st">"#&gt;"</span>,</span>
-<span id="cb1-5"><a href=""></a>  <span class="at">collapse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-6"><a href=""></a>  <span class="at">fig.retina =</span> <span class="dv">2</span>,</span>
-<span id="cb1-7"><a href=""></a>  <span class="at">fig.width =</span> <span class="dv">6</span>,</span>
-<span id="cb1-8"><a href=""></a>  <span class="at">fig.asp =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>,</span>
-<span id="cb1-9"><a href=""></a>  <span class="at">fig.show =</span> <span class="st">"hold"</span></span>
-<span id="cb1-10"><a href=""></a>)</span>
-<span id="cb1-11"><a href=""></a></span>
-<span id="cb1-12"><a href=""></a><span class="fu">options</span>(</span>
-<span id="cb1-13"><a href=""></a>  <span class="at">dplyr.print_min =</span> <span class="dv">6</span>,</span>
-<span id="cb1-14"><a href=""></a>  <span class="at">dplyr.print_max =</span> <span class="dv">6</span>,</span>
-<span id="cb1-15"><a href=""></a>  <span class="at">pillar.max_footer_lines =</span> <span class="dv">2</span>,</span>
-<span id="cb1-16"><a href=""></a>  <span class="at">pillar.min_chars =</span> <span class="dv">15</span>,</span>
-<span id="cb1-17"><a href=""></a>  <span class="at">stringr.view_n =</span> <span class="dv">6</span>,</span>
-<span id="cb1-18"><a href=""></a>  <span class="at">cli.num_colors =</span> <span class="dv">0</span>,</span>
-<span id="cb1-19"><a href=""></a>  <span class="at">cli.hyperlink =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-20"><a href=""></a>  <span class="at">pillar.bold =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-21"><a href=""></a>  <span class="at">width =</span> <span class="dv">77</span> <span class="co"># 80 - 3 for #&gt; comment</span></span>
-<span id="cb1-22"><a href=""></a>)</span>
-<span id="cb1-23"><a href=""></a></span>
-<span id="cb1-24"><a href=""></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_gray</span>(<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17" data-filename="_common.R" data-code-line-numbers="|1|3-11|12-22|24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">1014</span>)</span>
+<span id="cb17-2"><a href=""></a></span>
+<span id="cb17-3"><a href=""></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb17-4"><a href=""></a>  <span class="at">comment =</span> <span class="st">"#&gt;"</span>,</span>
+<span id="cb17-5"><a href=""></a>  <span class="at">collapse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb17-6"><a href=""></a>  <span class="at">fig.retina =</span> <span class="dv">2</span>,</span>
+<span id="cb17-7"><a href=""></a>  <span class="at">fig.width =</span> <span class="dv">6</span>,</span>
+<span id="cb17-8"><a href=""></a>  <span class="at">fig.asp =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>,</span>
+<span id="cb17-9"><a href=""></a>  <span class="at">fig.show =</span> <span class="st">"hold"</span></span>
+<span id="cb17-10"><a href=""></a>)</span>
+<span id="cb17-11"><a href=""></a></span>
+<span id="cb17-12"><a href=""></a><span class="fu">options</span>(</span>
+<span id="cb17-13"><a href=""></a>  <span class="at">dplyr.print_min =</span> <span class="dv">6</span>,</span>
+<span id="cb17-14"><a href=""></a>  <span class="at">dplyr.print_max =</span> <span class="dv">6</span>,</span>
+<span id="cb17-15"><a href=""></a>  <span class="at">pillar.max_footer_lines =</span> <span class="dv">2</span>,</span>
+<span id="cb17-16"><a href=""></a>  <span class="at">pillar.min_chars =</span> <span class="dv">15</span>,</span>
+<span id="cb17-17"><a href=""></a>  <span class="at">stringr.view_n =</span> <span class="dv">6</span>,</span>
+<span id="cb17-18"><a href=""></a>  <span class="at">cli.num_colors =</span> <span class="dv">0</span>,</span>
+<span id="cb17-19"><a href=""></a>  <span class="at">cli.hyperlink =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb17-20"><a href=""></a>  <span class="at">pillar.bold =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb17-21"><a href=""></a>  <span class="at">width =</span> <span class="dv">77</span> <span class="co"># 80 - 3 for #&gt; comment</span></span>
+<span id="cb17-22"><a href=""></a>)</span>
+<span id="cb17-23"><a href=""></a></span>
+<span id="cb17-24"><a href=""></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_gray</span>(<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p><a href="https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L1-L26" class="uri">https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L1-L26</a></p>
@@ -946,34 +944,34 @@ TO DO: Share code snippet for checking all figures have alt-text
 <div class="code-with-filename-file">
 <pre><strong>_common.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb2" data-filename="_common.R" data-code-line-numbers="|2-9|11-16|18-27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># use results: "asis" when setting a status for a chapter</span></span>
-<span id="cb2-2"><a href=""></a>status <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
-<span id="cb2-3"><a href=""></a>  status <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
-<span id="cb2-4"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"should be readable but is currently undergoing final polishing"</span>,</span>
-<span id="cb2-5"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"is undergoing heavy restructuring and may be confusing or incomplete"</span>,</span>
-<span id="cb2-6"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"is currently a dumping ground for ideas, and we don't recommend reading it"</span>,</span>
-<span id="cb2-7"><a href=""></a>    <span class="at">complete =</span> <span class="st">"is largely complete and just needs final proof reading"</span>,</span>
-<span id="cb2-8"><a href=""></a>    <span class="fu">stop</span>(<span class="st">"Invalid `type`"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-9"><a href=""></a>  )</span>
-<span id="cb2-10"><a href=""></a></span>
-<span id="cb2-11"><a href=""></a>  class <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
-<span id="cb2-12"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"note"</span>,</span>
-<span id="cb2-13"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"important"</span>,</span>
-<span id="cb2-14"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"important"</span>,</span>
-<span id="cb2-15"><a href=""></a>    <span class="at">complete =</span> <span class="st">"note"</span></span>
-<span id="cb2-16"><a href=""></a>  )</span>
-<span id="cb2-17"><a href=""></a></span>
-<span id="cb2-18"><a href=""></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(</span>
-<span id="cb2-19"><a href=""></a>    <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb2-20"><a href=""></a>    <span class="st">":::: status</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb2-21"><a href=""></a>    <span class="st">"::: callout-"</span>, class, <span class="st">" </span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb2-22"><a href=""></a>    <span class="st">"You are reading the work-in-progress second edition of R for Data Science. "</span>,</span>
-<span id="cb2-23"><a href=""></a>    <span class="st">"This chapter "</span>, status, <span class="st">". "</span>,</span>
-<span id="cb2-24"><a href=""></a>    <span class="st">"You can find the complete first edition at &lt;https://r4ds.had.co.nz&gt;.</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb2-25"><a href=""></a>    <span class="st">":::</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb2-26"><a href=""></a>    <span class="st">"::::</span><span class="sc">\n</span><span class="st">"</span></span>
-<span id="cb2-27"><a href=""></a>  ))</span>
-<span id="cb2-28"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18" data-filename="_common.R" data-code-line-numbers="|2-9|11-16|18-27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="co"># use results: "asis" when setting a status for a chapter</span></span>
+<span id="cb18-2"><a href=""></a>status <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
+<span id="cb18-3"><a href=""></a>  status <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
+<span id="cb18-4"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"should be readable but is currently undergoing final polishing"</span>,</span>
+<span id="cb18-5"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"is undergoing heavy restructuring and may be confusing or incomplete"</span>,</span>
+<span id="cb18-6"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"is currently a dumping ground for ideas, and we don't recommend reading it"</span>,</span>
+<span id="cb18-7"><a href=""></a>    <span class="at">complete =</span> <span class="st">"is largely complete and just needs final proof reading"</span>,</span>
+<span id="cb18-8"><a href=""></a>    <span class="fu">stop</span>(<span class="st">"Invalid `type`"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-9"><a href=""></a>  )</span>
+<span id="cb18-10"><a href=""></a></span>
+<span id="cb18-11"><a href=""></a>  class <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
+<span id="cb18-12"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"note"</span>,</span>
+<span id="cb18-13"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"important"</span>,</span>
+<span id="cb18-14"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"important"</span>,</span>
+<span id="cb18-15"><a href=""></a>    <span class="at">complete =</span> <span class="st">"note"</span></span>
+<span id="cb18-16"><a href=""></a>  )</span>
+<span id="cb18-17"><a href=""></a></span>
+<span id="cb18-18"><a href=""></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(</span>
+<span id="cb18-19"><a href=""></a>    <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb18-20"><a href=""></a>    <span class="st">":::: status</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb18-21"><a href=""></a>    <span class="st">"::: callout-"</span>, class, <span class="st">" </span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb18-22"><a href=""></a>    <span class="st">"You are reading the work-in-progress second edition of R for Data Science. "</span>,</span>
+<span id="cb18-23"><a href=""></a>    <span class="st">"This chapter "</span>, status, <span class="st">". "</span>,</span>
+<span id="cb18-24"><a href=""></a>    <span class="st">"You can find the complete first edition at &lt;https://r4ds.had.co.nz&gt;.</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb18-25"><a href=""></a>    <span class="st">":::</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb18-26"><a href=""></a>    <span class="st">"::::</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb18-27"><a href=""></a>  ))</span>
+<span id="cb18-28"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p>https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L28-L55</p>
@@ -995,10 +993,10 @@ TO DO: Share code snippet for checking all figures have alt-text
 <div class="code-with-filename-file">
 <pre><strong>EDA.qmd</strong></pre>
 </div>
-<div class="sourceCode" id="cb3" data-filename="EDA.qmd"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co">#| results: "asis"</span></span>
-<span id="cb3-2"><a href=""></a><span class="co">#| echo: false</span></span>
-<span id="cb3-3"><a href=""></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
-<span id="cb3-4"><a href=""></a><span class="fu">status</span>(<span class="st">"complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19" data-filename="EDA.qmd"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="co">#| results: "asis"</span></span>
+<span id="cb19-2"><a href=""></a><span class="co">#| echo: false</span></span>
+<span id="cb19-3"><a href=""></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
+<span id="cb19-4"><a href=""></a><span class="fu">status</span>(<span class="st">"complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="r-status-rightarrow-quarto-announcement" class="slide level2">
@@ -1012,14 +1010,14 @@ TO DO: Share code snippet for checking all figures have alt-text
 <div class="code-with-filename-file">
 <pre><strong>.github/workflows /build_book.yaml</strong></pre>
 </div>
-<div class="sourceCode" id="cb4" data-filename=".github/workflows /build_book.yaml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href=""></a><span class="fu">on</span><span class="kw">:</span></span>
-<span id="cb4-2"><a href=""></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
-<span id="cb4-3"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
-<span id="cb4-4"><a href=""></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
-<span id="cb4-5"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
-<span id="cb4-6"><a href=""></a><span class="at">  </span><span class="fu">schedule</span><span class="kw">:</span></span>
-<span id="cb4-7"><a href=""></a><span class="co">    # run every day at 11 PM</span></span>
-<span id="cb4-8"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">cron</span><span class="kw">:</span><span class="at"> </span><span class="st">'0 23 * * *'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20" data-filename=".github/workflows /build_book.yaml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb20-1"><a href=""></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb20-2"><a href=""></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb20-3"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
+<span id="cb20-4"><a href=""></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
+<span id="cb20-5"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
+<span id="cb20-6"><a href=""></a><span class="at">  </span><span class="fu">schedule</span><span class="kw">:</span></span>
+<span id="cb20-7"><a href=""></a><span class="co">    # run every day at 11 PM</span></span>
+<span id="cb20-8"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">cron</span><span class="kw">:</span><span class="at"> </span><span class="st">'0 23 * * *'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p>https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/.github/workflows/build_book.yaml#L1-L10</p>
@@ -1048,68 +1046,68 @@ TO DO: Share code snippet for checking all figures have alt-text
 <section id="maybe-no-code-book" class="title-slide slide level1 center">
 <h1>Maybe: no code book</h1>
 <p><strong>TO DO:</strong> Add one more section on no-code book, edit on github for example and render with action – either at the beginning (increasing complexity) or at the end (wrap-up thoughts) or maybe here because it builds on GitHub actions</p>
-<!--
+</section>
 
-# {slide-title="Quarto TDG" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
+<section id="section-5" class="title-slide slide level1 nostretch center" data-slide-title="Quarto TDG" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
+<h1 data-id="quarto-animate-title"></h1>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/quarto-tdg.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Mockup of cover of the book Quarto - The Definitive Guide."></p>
+</figure>
+</div>
+<div class="absolute" data-id="red-star" style="top: -60px; right: 70px; ">
+<p><img data-src="images/little-prince-star-red.png" width="50"></p>
+</div>
+</section>
 
-![](images/quarto-tdg.png){fig-align="center" width="30%" fig-alt="Mockup of cover of the book Quarto - The Definitive Guide."}
-
-::: {.absolute top=-60 right=70 data-id="red-star"}
-![](images/little-prince-star-red.png){width="50px"}
-:::
-
-# {slide-title="Quarto TDG" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
-
-::: {.absolute left=25 top=20}
-![](images/quarto-tdg.png){width="230px" fig-alt="Mockup of cover of the book Quarto - The Definitive Guide."}
-:::
-
-::: {.absolute top=0 left=5 data-id="red-star"}
-![](images/little-prince-star-red.png){width="50px"}
-:::
-
-::: {.hand .xlarge .absolute left=275 top=50}
-::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} multiple languages
-:::
-::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} multiple collaborators
-:::
-:::
-
-## multiple languages
-
--   inline code in multiple languages with same syntax
-
--   embedded computations from notebooks for side-by-side multi-language executed code
-
--   maybe also: multiple collaborators - different ways to pull in computational results. your collaborators can still be writing in jupyter notebooks.
-
-
-
-# "Making" books, that are not just pretty, but also functional...
-
-## pop-up books and interactivity
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/l6XFQHTtt7M?si=YmybYrTPosdl8IN3&amp;start=152" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-
-</iframe>
-
-**TO DO:** Update video
-
-interactivity --- webR? Not done yet but someone implemented a version, could have a version by conf
-
-things to mention here:
-
--   pyodide for python
--   web assembly as a bigger idea
--->
-<div class="quarto-auto-generated-content">
-<div class="footer footer-default">
-
+<section>
+<section id="section-6" class="title-slide slide level1 nostretch center" data-slide-title="Quarto TDG" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
+<h1 data-id="quarto-animate-title"></h1>
+<div class="absolute" style="top: 20px; left: 25px; ">
+<p><img data-src="images/quarto-tdg.png" alt="Mockup of cover of the book Quarto - The Definitive Guide." width="230"></p>
+</div>
+<div class="absolute" data-id="red-star" style="top: 0px; left: 5px; ">
+<p><img data-src="images/little-prince-star-red.png" width="50"></p>
+</div>
+<div class="hand xlarge absolute" style="top: 50px; left: 275px; ">
+<div class="fragment">
+<p><img data-src="images/little-prince-star-gold.png" style="width:8.0%"> multiple languages</p>
+</div>
+<div class="fragment">
+<p><img data-src="images/little-prince-star-gold.png" style="width:8.0%"> multiple collaborators</p>
 </div>
 </div>
 </section>
+<section id="multiple-languages" class="slide level2">
+<h2>multiple languages</h2>
+<ul>
+<li><p>inline code in multiple languages with same syntax</p></li>
+<li><p>embedded computations from notebooks for side-by-side multi-language executed code</p></li>
+<li><p>maybe also: multiple collaborators - different ways to pull in computational results. your collaborators can still be writing in jupyter notebooks.</p></li>
+</ul>
+</section></section>
+<section>
+<section id="making-books-that-are-not-just-pretty-but-also-functional" class="title-slide slide level1 center">
+<h1>“Making” books, that are not just pretty, but also functional…</h1>
+
+</section>
+<section id="pop-up-books-and-interactivity" class="slide level2">
+<h2>pop-up books and interactivity</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/l6XFQHTtt7M?si=YmybYrTPosdl8IN3&amp;start=152" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<p><strong>TO DO:</strong> Update video</p>
+<p>interactivity — webR? Not done yet but someone implemented a version, could have a version by conf</p>
+<p>things to mention here:</p>
+<ul>
+<li>pyodide for python</li>
+<li>web assembly as a bigger idea</li>
+</ul>
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+<p>🔗 <a href="https://bit.ly/books-conf24">bit.ly/books-conf24</a></p>
+</div>
+</div>
+</section></section>
     </div>
   </div>
 

@@ -186,6 +186,12 @@ format:
 
 ::::: columns
 
+::: {.column width="20%"}
+::: {data-id="html-dark"}
+![](images/chapterintro-html-dark.png)
+:::
+:::
+
 ::: {.column width="80%"}
 ``` {.scss filename="ims-style-dark.scss" code-line-numbers="1,6"}
 $body-bg: #222;
@@ -200,12 +206,6 @@ $body-bg: #222;
   background-position: 0.5em 1.5em;
 }
 ```
-:::
-
-::: {.column width="20%"}
-::: {data-id="html-dark"}
-![](images/chapterintro-html-dark.png)
-:::
 :::
 
 :::::

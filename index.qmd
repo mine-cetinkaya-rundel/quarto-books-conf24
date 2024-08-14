@@ -10,11 +10,12 @@ format:
   revealjs:
     theme: style/slides.scss
     css: style/fonts.css
+footer: "🔗 [bit.ly/books-conf24](https://bit.ly/books-conf24)"
 ---
 
 # "Making" books {background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%"}
 
-##  {background-image="images/little-prince-on-mountain.png" background-size="contain"}
+##  {background-image="images/little-prince-on-mountain.png" background-size="90% 90%"}
 
 ## The books
 
@@ -44,13 +45,10 @@ format:
 :::
 :::
 
-<!--
 {{< include _ims.qmd >}}
--->
 
 {{< include _r4ds.qmd >}}
 
-<!--
 {{< include _quarto.qmd >}}
 
 # "Making" books, that are not just pretty, but also functional...
@@ -69,4 +67,3 @@ things to mention here:
 
 -   pyodide for python
 -   web assembly as a bigger idea
--->
