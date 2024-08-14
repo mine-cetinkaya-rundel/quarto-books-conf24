@@ -17,7 +17,15 @@ execute:
 
 # "Making" books {background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%"}
 
+::: {.sr-only}
+Illustration of stars from the cover of The Little Prince.
+:::
+
 ##  {background-image="images/little-prince-on-mountain.png" background-size="90% 90%"}
+
+::: {.sr-only}
+Photo of the pop-up version of the book The Little Prince, open to a page that shows the Little Prince sitting on top of a mountain.
+:::
 
 ## The books
 
@@ -26,7 +34,7 @@ execute:
 ![](images/ims2.png){fig-alt="Cover of the OpenIntro textbook Introduction to Modern Statistics, 2nd Edition."}
 
 ::: {.absolute top=50 left=-20 data-id="red-star" .fragment .fade-down fragment-index=1}
-![](images/little-prince-star-red.png){width="50px"}
+![](images/little-prince-star-red.png){width="50px" fig-alt="Illustration of a red star from the cover of The Little Prince."}
 :::
 :::
 
@@ -34,7 +42,7 @@ execute:
 ![](images/r4ds2.jpg){fig-alt="Cover of the book R for Data Science, 2nd Edition."}
 
 ::: {.absolute top=50 left=330 data-id="red-star" .fragment .fade-down fragment-index=2}
-![](images/little-prince-star-red.png){width="50px"}
+![](images/little-prince-star-red.png){width="50px" fig-alt="Illustration of a red star from the cover of The Little Prince."}
 :::
 :::
 
@@ -42,7 +50,7 @@ execute:
 ![](images/quarto-tdg.png){fig-alt="Mockup of cover of the book Quarto - The Definitive Guide."}
 
 ::: {.absolute top=50 left=675 data-id="red-star" .fragment .fade-down fragment-index=3}
-![](images/little-prince-star-red.png){width="50px"}
+![](images/little-prince-star-red.png){width="50px" fig-alt="Illustration of a red star from the cover of The Little Prince."}
 :::
 :::
 :::
@@ -57,13 +65,13 @@ execute:
 
 ## {.center}
 
-![](images/little-prince-text.mov){fig-align="center" width="900px"} 
+![](images/little-prince-text.mov){fig-align="center" width="900px" fig-alt="Movie of scrolling text in the pop-up book The Little Prince."} 
 
 ## {.center}
 
-![](images/little-prince-snake.mov){fig-align="center" width="350px"}
+![](images/little-prince-snake.mov){fig-align="center" width="350px" fig-alt="Movie of pulling a tag in the pop-up book The Little Prince to have a snake go up a wall towards the Little Prince who is sitting on top of the wall."}
 
-## ![](images/little-prince-star-blue.png) `r-wasm/quarto-live`
+## ![](images/little-prince-star-blue.png){fig-alt="Illustration of a blue star from the cover of The Little Prince."} `r-wasm/quarto-live`
 
 ::: center-align
 ```{=html}
@@ -72,6 +80,10 @@ execute:
 :::
 
 ## {background-image="images/little-prince-seattle.png"}
+
+::: {.sr-only}
+Photo of the pop-up version of the book The Little Prince, open to a page that shows the Little Prince sitting on top of a mountain, in front of Seattle skyline view.
+:::
 
 <br><br><br><br><br><br>
 

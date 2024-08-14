@@ -1,27 +1,35 @@
 # {slide-title="R4DS" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
 
+::: {.sr-only}
+Illustration of stars from the cover of The Little Prince.
+:::
+
 ![](images/r4ds2.jpg){fig-align="center" width="30%" fig-alt="Cover of the book R for Data Science, 2nd Edition."}
 
 ::: {.absolute top=-60 right=70 data-id="red-star"}
-![](images/little-prince-star-red.png){width="50px"}
+![](images/little-prince-star-red.png){width="50px" fig-alt="Illustration of a red star from the cover of The Little Prince."}
 :::
 
 # {slide-title="R4DS" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%"  auto-animate="true" .nostretch}
+
+::: {.sr-only}
+Illustration of stars from the cover of The Little Prince.
+:::
 
 ::: {.absolute left=25 top=20}
 ![](images/r4ds2.jpg){width="230px" fig-alt="Cover of the book R for Data Science, 2nd Edition."}
 :::
 
 ::: {.absolute top=0 left=5 data-id="red-star"}
-![](images/little-prince-star-red.png){width="50px"}
+![](images/little-prince-star-red.png){width="50px" fig-alt="Illustration of a red star from the cover of The Little Prince."}
 :::
 
 ::: {.hand .xlarge .absolute left=275 top=50}
 ::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} leveraging R
+![](images/little-prince-star-gold.png){width="8%" fig-alt="Illustration of a gold star from the cover of The Little Prince."} leveraging R
 :::
 ::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} GitHub actions
+![](images/little-prince-star-gold.png){width="8%" fig-alt="Illustration of a gold star from the cover of The Little Prince."} GitHub actions
 :::
 :::
 
@@ -138,7 +146,7 @@ website:
 ## Keeping things in check daily
 
 ::: fragment
-![](images/r4ds-action-fail-email.png){fig-align="center"}
+![](images/r4ds-action-fail-email.png){fig-align="center" fig-alt="Screenshot of GitHub Action failure email."}
 :::
 
 ## Leveraging GitHub actions
@@ -204,12 +212,12 @@ Source: Me, though others may have said this before too.
 ::: {.columns}
 ::: {.column width="50%" .fragment fragment-index=1}
 ::: {.center-align .medium}
-![](images/r4ds-render-deploy-action.png){fig-align="center"}
+![](images/r4ds-render-deploy-action.png){fig-align="center" fig-alt="Screenshot of GitHub action for rendering and deploying R for Data Science book from its GitHub repo."}
 :::
 :::
 ::: {.column width="50%" .fragment fragment-index=2}
 ::: {.center-align .medium}
-![](images/quarto-actions.png){fig-align="center"}
+![](images/quarto-actions.png){fig-align="center" fig-alt="Screenshot of GitHub action for rendering a Quarto document from the quarto-actions repo."}
 :::
 :::
 :::

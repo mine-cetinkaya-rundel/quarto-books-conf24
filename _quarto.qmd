@@ -1,27 +1,35 @@
 # {slide-title="Quarto TDG" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
 
+::: {.sr-only}
+Illustration of stars from the cover of The Little Prince.
+:::
+
 ![](images/quarto-tdg.png){fig-align="center" width="30%" fig-alt="Mockup of cover of the book Quarto - The Definitive Guide."}
 
 ::: {.absolute top=-60 right=70 data-id="red-star"}
-![](images/little-prince-star-red.png){width="50px"}
+![](images/little-prince-star-red.png){width="50px" fig-alt="Illustration of a red star from the cover of The Little Prince."}
 :::
 
 # {slide-title="Quarto TDG" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
+
+::: {.sr-only}
+Illustration of stars from the cover of The Little Prince.
+:::
 
 ::: {.absolute left=25 top=20}
 ![](images/quarto-tdg.png){width="230px" fig-alt="Mockup of cover of the book Quarto - The Definitive Guide."}
 :::
 
 ::: {.absolute top=0 left=5 data-id="red-star"}
-![](images/little-prince-star-red.png){width="50px"}
+![](images/little-prince-star-red.png){width="50px" fig-alt="Illustration of a red star from the cover of The Little Prince."}
 :::
 
 ::: {.hand .xlarge .absolute left=275 top=50}
 ::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} multiple languages
+![](images/little-prince-star-gold.png){width="8%" fig-alt="Illustration of a gold star from the cover of The Little Prince."} multiple languages
 :::
 ::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} multiple environments
+![](images/little-prince-star-gold.png){width="8%" fig-alt="Illustration of a gold star from the cover of The Little Prince."} multiple environments
 :::
 :::
 
@@ -112,7 +120,7 @@ plt.show()
 
 ## Two recognizable outputs on a single page
 
-![](images/quarto-tdg-r-python-plot.gif){fig-align="center"}
+![](images/quarto-tdg-r-python-plot.gif){fig-align="center" fig-alt="GIF of going between tabs of output that is the result of the code in the previous slide. One tab contains a plot made with R and the other with Python."}
 
 ## Productivity with `freeze`
 

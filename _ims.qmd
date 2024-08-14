@@ -3,25 +3,29 @@
 ![](images/ims2.png){fig-align="center" width="30%" fig-alt="Cover of the OpenIntro textbook Introduction to Modern Statistics, 2nd Edition."}
 
 ::: {.absolute top=-60 right=70 data-id="red-star"}
-![](images/little-prince-star-red.png){width="50px"}
+![](images/little-prince-star-red.png){width="50px" fig-alt="Illustration of a red star from the cover of The Little Prince."}
 :::
 
 # {slide-title="IMS2" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
+
+::: {.sr-only}
+Illustration of stars from the cover of The Little Prince.
+:::
 
 ::: {.absolute left=25 top=20}
 ![](images/ims2.png){width="230px" fig-alt="Cover of the OpenIntro textbook Introduction to Modern Statistics, 2nd Edition."}
 :::
 
 ::: {.absolute top=0 left=5 data-id="red-star"}
-![](images/little-prince-star-red.png){width="50px"}
+![](images/little-prince-star-red.png){width="50px" fig-alt="Illustration of a red star from the cover of The Little Prince."}
 :::
 
 ::: {.hand .xlarge .absolute left=275 top=50}
 ::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} multiple outputs
+![](images/little-prince-star-gold.png){width="8%" fig-alt="Illustration of a gold star from the cover of The Little Prince."} multiple outputs
 :::
 ::: {.fragment}
-![](images/little-prince-star-gold.png){width="8%"} accessibility checks
+![](images/little-prince-star-gold.png){width="8%" fig-alt="Illustration of a gold star from the cover of The Little Prince."} accessibility checks
 :::
 :::
 
@@ -31,13 +35,13 @@
 ::: {.column .center-align}
 [**HTML**]{.lion}
 
-![](images/chapterintro-html-light.png)
+![](images/chapterintro-html-light.png){fig-alt="Screenshot of introduction to Chapter 1 of Introduction to Modern Statistics in HTML in light mode."}
 :::
 
 ::: {.column width="40%" .center-align}
 [**PDF**]{.lion}
 
-![](images/chapterintro-pdf.png)
+![](images/chapterintro-pdf.png){fig-alt="Screenshot of introduction to Chapter 1 of Introduction to Modern Statistics in PDF."}
 :::
 :::::
 
@@ -148,13 +152,13 @@ format:
 ::: {.column .center-align}
 [**HTML**]{.lion}
 
-![](images/chapterintro-html-light.png)
+![](images/chapterintro-html-light.png){fig-alt="Screenshot of introduction to Chapter 1 of Introduction to Modern Statistics in HTML in light mode."}
 :::
 
 ::: {.column width="40%" .center-align}
 [**PDF**]{.lion}
 
-![](images/chapterintro-pdf.png)
+![](images/chapterintro-pdf.png){fig-alt="Screenshot of introduction to Chapter 1 of Introduction to Modern Statistics in PDF."}
 :::
 :::::
 
@@ -164,21 +168,21 @@ format:
 ::: {.column width="25%" .center-align}
 [**HTML - Light**]{.lion}
 
-![](images/chapterintro-html-light.png)
+![](images/chapterintro-html-light.png){fig-alt="Screenshot of introduction to Chapter 1 of Introduction to Modern Statistics in HTML in light mode."}
 :::
 
 ::: {.column width="50%" .center-align}
 [**HTML - Dark**]{.lion}
 
 ::: {data-id="html-dark"}
-![](images/chapterintro-html-dark.png)
+![](images/chapterintro-html-dark.png){fig-alt="Screenshot of introduction to Chapter 1 of Introduction to Modern Statistics in HTML in dark mode."}
 :::
 :::
 
 ::: {.column width="25%" .center-align}
 [**PDF**]{.lion}
 
-![](images/chapterintro-pdf.png)
+![](images/chapterintro-pdf.png){fig-alt="Screenshot of introduction to Chapter 1 of Introduction to Modern Statistics in PDF."}
 :::
 :::::
 
@@ -188,7 +192,7 @@ format:
 
 ::: {.column width="20%"}
 ::: {data-id="html-dark"}
-![](images/chapterintro-html-dark.png)
+![](images/chapterintro-html-dark.png){fig-alt="Screenshot of introduction to Chapter 1 of Introduction to Modern Statistics in HTML in dark mode."}
 :::
 :::
 
@@ -212,11 +216,11 @@ $body-bg: #222;
 
 ## Unfortunately, it's not all magic... {.nostretch auto-animate="true"}
 
-![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=0 left=900}
+![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=0 left=900 fig-alt="Illustration of a gold star from the cover of The Little Prince."}
 
 ## Unfortunately, it's not all magic... {.nostretch auto-animate="true"}
 
-![](images/little-prince-star-gold.png){fig-width="5%" .absolute bottom=40 left=20}
+![](images/little-prince-star-gold.png){fig-width="5%" .absolute bottom=40 left=20 fig-alt="Illustration of a gold star from the cover of The Little Prince."}
 
 Painstakingly add `\clearpage` that qmd $\rightarrow$ LaTeX will process and qmd $\rightarrow$ HTML will ignore:
 
@@ -256,7 +260,7 @@ Each point on the plot represents a single county.
 
 ## Unfortunately, it's not all magic... {auto-animate="true"}
 
-![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=220 left=50}
+![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=220 left=50 fig-alt="Illustration of a gold star from the cover of The Little Prince."}
 
 and another...
 
@@ -273,7 +277,7 @@ Answers to odd-numbered exercises can be found in [Appendix -@sec-exercise-solut
 
 ## Bring back the magic {auto-animate="true"}
 
-![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=0 left=900}
+![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=0 left=900 fig-alt="Illustration of a gold star from the cover of The Little Prince."}
 
 By building on things qmd $\rightarrow$ HTML will happily ignore and qmd $\rightarrow$ will process: `\index{}`
 
@@ -325,7 +329,7 @@ format:
 
 ## Looking forward to `typst` for styling {auto-animate="true"}
 
-![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=0 left=900}
+![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=0 left=900 fig-alt="Illustration of a blue star from the cover of The Little Prince."}
 
 ::: {.columns}
 ::: {.column .center-align}
@@ -350,7 +354,7 @@ One source \
 
 ## Looking forward to `typst` for tables {auto-animate="true"}
 
-![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=50 left=900}
+![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=50 left=900 fig-alt="Illustration of a blue star from the cover of The Little Prince."}
 
 [**TODAY**]{.lion}
 
@@ -371,7 +375,7 @@ county |>
 
 ## Looking forward to `typst` for tables {auto-animate="true"}
 
-![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=30 left=910}
+![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=30 left=910 fig-alt="Illustration of a blue star from the cover of The Little Prince."}
 
 [**TODAY**]{.lion}
 
@@ -415,23 +419,23 @@ county |>
 #|   housing units that are in multi-unit structures (on the x-axis) for US
 #|   counties. The observation from Chattahoochee County, Georgia
 #|   is highlighted as having a multi-unit rate of 39.4% and a
-#|   homeownership rate of 31.3%
+#|   homeownership rate of 31.3%.
 ggplot(county, aes(x = multi_unit, y = homeownership)) +
   geom_point(alpha = 0.3, fill = IMSCOL["black", "full"], shape = 21) +
   ...
 ```
 
 ::: {.fragment .absolute left=50 bottom=50}
-![](images/fig-county-multi-unit-homeownership-1-source.png)
+![](images/fig-county-multi-unit-homeownership-1-source.png){fig-alt="A scatterplot of homeownership (on the y-axis) versus the percent of housing units that are in multi-unit structures (on the x-axis) for US counties. The observation from Chattahoochee County, Georgia is highlighted as having a multi-unit rate of 39.4% and a homeownership rate of 31.3%."}
 :::
 
 ## Do all my figures have `fig-alt`s?
 
-![](images/ims-ggplot-search-github.png)
+![](images/ims-ggplot-search-github.png){fig-alt="Results for searching for ggplot keyword in the GitHub interface in the repo for Introduction to Modern Statistics. Search finds 46 files contain this text."}
 
 ## Do all my figures have `fig-alt`s?
 
-![](images/ims-ggplot-search-positron.png)
+![](images/ims-ggplot-search-positron.png){fig-alt="Results for searching for ggplot keyword in Positron in the folder for Introduction to Modern Statistics. Search finds 44 files contain this text and there are over 400 mentions of it across these files."}
 
 ## Checking for missing `fig-alt`s {auto-animate="true"}
 
