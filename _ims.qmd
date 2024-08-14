@@ -170,7 +170,9 @@ format:
 ::: {.column width="50%" .center-align}
 [**HTML - Dark**]{.lion}
 
+::: {data-id="html-dark"}
 ![](images/chapterintro-html-dark.png)
+:::
 :::
 
 ::: {.column width="25%" .center-align}
@@ -201,7 +203,9 @@ $body-bg: #222;
 :::
 
 ::: {.column width="20%"}
+::: {data-id="html-dark"}
 ![](images/chapterintro-html-dark.png)
+:::
 :::
 
 :::::
