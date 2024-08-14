@@ -10,7 +10,9 @@ format:
   revealjs:
     theme: style/slides.scss
     css: style/fonts.css
-footer: "🔗 [bit.ly/books-conf24](https://bit.ly/books-conf24)"
+    footer: "🔗 [bit.ly/books-conf24](https://bit.ly/books-conf24)"
+execute: 
+  echo: true
 ---
 
 # "Making" books {background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%"}

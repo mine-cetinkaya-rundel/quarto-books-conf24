@@ -460,7 +460,7 @@ Mine Çetinkaya-Rundel
 <p><img data-src="images/little-prince-star-gold.png" style="width:8.0%"> multiple outputs</p>
 </div>
 <div class="fragment">
-<p><img data-src="images/little-prince-star-gold.png" style="width:8.0%"> accessibility</p>
+<p><img data-src="images/little-prince-star-gold.png" style="width:8.0%"> accessibility checks</p>
 </div>
 </div>
 </section>
@@ -858,9 +858,120 @@ Mine Çetinkaya-Rundel
 <p><img data-src="images/fig-county-multi-unit-homeownership-1-source.png"></p>
 </div>
 </section>
-<section id="making-sure-you-have-alt-text" class="slide level2">
-<h2>Making sure you have alt text</h2>
-<p>TO DO: Share code snippet for checking all figures have alt-text</p>
+<section id="do-all-my-figures-have-fig-alts" class="slide level2">
+<h2>Do all my figures have <code>fig-alt</code>s?</h2>
+
+<img data-src="images/ims-ggplot-search-github.png" class="r-stretch"></section>
+<section id="do-all-my-figures-have-fig-alts-1" class="slide level2">
+<h2>Do all my figures have <code>fig-alt</code>s?</h2>
+
+<img data-src="images/ims-ggplot-search-positron.png" class="r-stretch"></section>
+<section id="checking-for-missing-fig-alts" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Checking for missing <code>fig-alt</code>s</h2>
+<p>Load packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb17-1" class="hljs-ln-code"><a href=""></a><span class="co"># pak::pak("rundel/parsermd") # need dev version</span></span>
+<span id="cb17-2" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(parsermd)</span>
+<span id="cb17-3" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="checking-for-missing-fig-alts-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Checking for missing <code>fig-alt</code>s</h2>
+<p>Find cells that have <code>ggplot()</code> but not <code>fig-alt</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="5-10"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb18-1" class="hljs-ln-code"><a href=""></a><span class="co"># pak::pak("rundel/parsermd") # need dev version</span></span>
+<span id="cb18-2" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(parsermd)</span>
+<span id="cb18-3" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(here)</span>
+<span id="cb18-4" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb18-5" class="hljs-ln-code"><a href=""></a>missing_fig_alt <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"fig-alt-check/data-hello.qmd"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">parse_qmd</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb18-7" class="hljs-ln-code"><a href=""></a>  <span class="fu">rmd_select</span>(</span>
+<span id="cb18-8" class="hljs-ln-code"><a href=""></a>    <span class="fu">has_type</span>(<span class="st">"rmd_chunk"</span>) <span class="sc">&amp;</span> </span>
+<span id="cb18-9" class="hljs-ln-code"><a href=""></a>    <span class="fu">has_code</span>(<span class="st">"ggplot</span><span class="sc">\\</span><span class="st">("</span>) <span class="sc">&amp;</span> </span>
+<span id="cb18-10" class="hljs-ln-code"><a href=""></a>    <span class="sc">!</span><span class="fu">has_option</span>(<span class="st">"fig-alt"</span>)</span>
+<span id="cb18-11" class="hljs-ln-code"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="checking-for-missing-fig-alts-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Checking for missing <code>fig-alt</code>s</h2>
+<p>Get labels of cells without <code>fig-alt</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb19-1" class="hljs-ln-code"><a href=""></a><span class="co"># pak::pak("rundel/parsermd") # need dev version</span></span>
+<span id="cb19-2" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(parsermd)</span>
+<span id="cb19-3" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(here)</span>
+<span id="cb19-4" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb19-5" class="hljs-ln-code"><a href=""></a>missing_fig_alt <span class="ot">&lt;-</span> <span class="fu">parse_qmd</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"fig-alt-check/data-hello.qmd"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb19-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">rmd_select</span>(</span>
+<span id="cb19-7" class="hljs-ln-code"><a href=""></a>    <span class="fu">has_type</span>(<span class="st">"rmd_chunk"</span>) <span class="sc">&amp;</span> </span>
+<span id="cb19-8" class="hljs-ln-code"><a href=""></a>    <span class="fu">has_code</span>(<span class="st">"ggplot</span><span class="sc">\\</span><span class="st">("</span>) <span class="sc">&amp;</span> </span>
+<span id="cb19-9" class="hljs-ln-code"><a href=""></a>    <span class="sc">!</span><span class="fu">has_option</span>(<span class="st">"fig-alt"</span>)</span>
+<span id="cb19-10" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb19-11" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb19-12" class="hljs-ln-code"><a href=""></a><span class="fu">rmd_node_label</span>(missing_fig_alt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "fig-county-multi-unit-homeownership"</code></pre>
+</div>
+</div>
+</section>
+<section id="checking-for-missing-fig-alts-3" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Checking for missing <code>fig-alt</code>s</h2>
+<p>Get contents of cells without <code>fig-alt</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb21-1" class="hljs-ln-code"><a href=""></a><span class="co"># pak::pak("rundel/parsermd") # need dev version</span></span>
+<span id="cb21-2" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(parsermd)</span>
+<span id="cb21-3" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(here)</span>
+<span id="cb21-4" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb21-5" class="hljs-ln-code"><a href=""></a>missing_fig_alt <span class="ot">&lt;-</span> <span class="fu">parse_qmd</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"fig-alt-check/data-hello.qmd"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb21-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">rmd_select</span>(</span>
+<span id="cb21-7" class="hljs-ln-code"><a href=""></a>    <span class="fu">has_type</span>(<span class="st">"rmd_chunk"</span>) <span class="sc">&amp;</span> </span>
+<span id="cb21-8" class="hljs-ln-code"><a href=""></a>    <span class="fu">has_code</span>(<span class="st">"ggplot</span><span class="sc">\\</span><span class="st">("</span>) <span class="sc">&amp;</span> </span>
+<span id="cb21-9" class="hljs-ln-code"><a href=""></a>    <span class="sc">!</span><span class="fu">has_option</span>(<span class="st">"fig-alt"</span>)</span>
+<span id="cb21-10" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb21-11" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb21-12" class="hljs-ln-code"><a href=""></a><span class="fu">as_document</span>(missing_fig_alt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "```{r}"                                                                                     
+ [2] "#| label: fig-county-multi-unit-homeownership"                                              
+ [3] "#| fig-cap: A scatterplot of homeownership versus the percent of housing units that are"    
+ [4] "#|   in multi-unit structures for US counties. The highlighted dot represents Chattahoochee"
+ [5] "#|   County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of"     
+ [6] "#|   31.3%."                                                                                
+ [7] "ggplot(county, aes(x = multi_unit, y = homeownership)) +"                                   
+ [8] "  geom_point(alpha = 0.3, fill = IMSCOL[\"black\", \"full\"], shape = 21) +"                
+ [9] "  labs("                                                                                    
+[10] "    x = \"Percent of housing units in that are multi-unit structures\","                    
+[11] "    y = \"Homeownership rate\""                                                             
+[12] "  ) +"                                                                                      
+[13] "  geom_point("                                                                              
+[14] "    data = county |&gt; filter(name == \"Chattahoochee County\"),"                             
+[15] "    size = 3, stroke = 2, color = IMSCOL[\"red\", \"full\"], shape = 1"                     
+[16] "  ) +"                                                                                      
+[17] "  geom_text("                                                                               
+[18] "    data = county |&gt; filter(name == \"Chattahoochee County\"),"                             
+[19] "    label = \"Chattahoochee County\", fontface = \"italic\","                               
+[20] "    nudge_x = 21, nudge_y = -5, color = IMSCOL[\"red\", \"full\"]"                          
+[21] "  ) +"                                                                                      
+[22] "  guides(color = FALSE) +"                                                                  
+[23] "  geom_segment("                                                                            
+[24] "    data = county |&gt; filter(name == \"Chattahoochee County\"),"                             
+[25] "    aes("                                                                                   
+[26] "      x = 0, y = homeownership, xend = multi_unit, yend = homeownership,"                   
+[27] "      color = IMSCOL[\"red\", \"full\"]"                                                    
+[28] "    ), linetype = \"dashed\""                                                               
+[29] "  ) +"                                                                                      
+[30] "  geom_segment("                                                                            
+[31] "    data = county |&gt; filter(name == \"Chattahoochee County\"),"                             
+[32] "    aes("                                                                                   
+[33] "      x = multi_unit, y = 0, xend = multi_unit, yend = homeownership,"                      
+[34] "      color = IMSCOL[\"red\", \"full\"]"                                                    
+[35] "    ), linetype = \"dashed\""                                                               
+[36] "  ) +"                                                                                      
+[37] "  scale_x_continuous(labels = percent_format(scale = 1)) +"                                 
+[38] "  scale_y_continuous(labels = percent_format(scale = 1))"                                   
+[39] "```"                                                                                        
+[40] ""                                                                                           </code></pre>
+</div>
+</div>
 </section></section>
 <section id="section-3" class="title-slide slide level1 nostretch center" data-slide-title="R4DS" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
 <h1 data-id="quarto-animate-title"></h1>
@@ -898,30 +1009,30 @@ Mine Çetinkaya-Rundel
 <div class="code-with-filename-file">
 <pre><strong>_common.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb17" data-filename="_common.R" data-code-line-numbers="|1|3-11|12-22|24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">1014</span>)</span>
-<span id="cb17-2"><a href=""></a></span>
-<span id="cb17-3"><a href=""></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb17-4"><a href=""></a>  <span class="at">comment =</span> <span class="st">"#&gt;"</span>,</span>
-<span id="cb17-5"><a href=""></a>  <span class="at">collapse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-6"><a href=""></a>  <span class="at">fig.retina =</span> <span class="dv">2</span>,</span>
-<span id="cb17-7"><a href=""></a>  <span class="at">fig.width =</span> <span class="dv">6</span>,</span>
-<span id="cb17-8"><a href=""></a>  <span class="at">fig.asp =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>,</span>
-<span id="cb17-9"><a href=""></a>  <span class="at">fig.show =</span> <span class="st">"hold"</span></span>
-<span id="cb17-10"><a href=""></a>)</span>
-<span id="cb17-11"><a href=""></a></span>
-<span id="cb17-12"><a href=""></a><span class="fu">options</span>(</span>
-<span id="cb17-13"><a href=""></a>  <span class="at">dplyr.print_min =</span> <span class="dv">6</span>,</span>
-<span id="cb17-14"><a href=""></a>  <span class="at">dplyr.print_max =</span> <span class="dv">6</span>,</span>
-<span id="cb17-15"><a href=""></a>  <span class="at">pillar.max_footer_lines =</span> <span class="dv">2</span>,</span>
-<span id="cb17-16"><a href=""></a>  <span class="at">pillar.min_chars =</span> <span class="dv">15</span>,</span>
-<span id="cb17-17"><a href=""></a>  <span class="at">stringr.view_n =</span> <span class="dv">6</span>,</span>
-<span id="cb17-18"><a href=""></a>  <span class="at">cli.num_colors =</span> <span class="dv">0</span>,</span>
-<span id="cb17-19"><a href=""></a>  <span class="at">cli.hyperlink =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb17-20"><a href=""></a>  <span class="at">pillar.bold =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-21"><a href=""></a>  <span class="at">width =</span> <span class="dv">77</span> <span class="co"># 80 - 3 for #&gt; comment</span></span>
-<span id="cb17-22"><a href=""></a>)</span>
-<span id="cb17-23"><a href=""></a></span>
-<span id="cb17-24"><a href=""></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_gray</span>(<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23" data-filename="_common.R" data-code-line-numbers="|1|3-11|12-22|24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">1014</span>)</span>
+<span id="cb23-2"><a href=""></a></span>
+<span id="cb23-3"><a href=""></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb23-4"><a href=""></a>  <span class="at">comment =</span> <span class="st">"#&gt;"</span>,</span>
+<span id="cb23-5"><a href=""></a>  <span class="at">collapse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb23-6"><a href=""></a>  <span class="at">fig.retina =</span> <span class="dv">2</span>,</span>
+<span id="cb23-7"><a href=""></a>  <span class="at">fig.width =</span> <span class="dv">6</span>,</span>
+<span id="cb23-8"><a href=""></a>  <span class="at">fig.asp =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>,</span>
+<span id="cb23-9"><a href=""></a>  <span class="at">fig.show =</span> <span class="st">"hold"</span></span>
+<span id="cb23-10"><a href=""></a>)</span>
+<span id="cb23-11"><a href=""></a></span>
+<span id="cb23-12"><a href=""></a><span class="fu">options</span>(</span>
+<span id="cb23-13"><a href=""></a>  <span class="at">dplyr.print_min =</span> <span class="dv">6</span>,</span>
+<span id="cb23-14"><a href=""></a>  <span class="at">dplyr.print_max =</span> <span class="dv">6</span>,</span>
+<span id="cb23-15"><a href=""></a>  <span class="at">pillar.max_footer_lines =</span> <span class="dv">2</span>,</span>
+<span id="cb23-16"><a href=""></a>  <span class="at">pillar.min_chars =</span> <span class="dv">15</span>,</span>
+<span id="cb23-17"><a href=""></a>  <span class="at">stringr.view_n =</span> <span class="dv">6</span>,</span>
+<span id="cb23-18"><a href=""></a>  <span class="at">cli.num_colors =</span> <span class="dv">0</span>,</span>
+<span id="cb23-19"><a href=""></a>  <span class="at">cli.hyperlink =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb23-20"><a href=""></a>  <span class="at">pillar.bold =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb23-21"><a href=""></a>  <span class="at">width =</span> <span class="dv">77</span> <span class="co"># 80 - 3 for #&gt; comment</span></span>
+<span id="cb23-22"><a href=""></a>)</span>
+<span id="cb23-23"><a href=""></a></span>
+<span id="cb23-24"><a href=""></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_gray</span>(<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p><a href="https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L1-L26" class="uri">https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L1-L26</a></p>
@@ -944,34 +1055,34 @@ Mine Çetinkaya-Rundel
 <div class="code-with-filename-file">
 <pre><strong>_common.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb18" data-filename="_common.R" data-code-line-numbers="|2-9|11-16|18-27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="co"># use results: "asis" when setting a status for a chapter</span></span>
-<span id="cb18-2"><a href=""></a>status <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
-<span id="cb18-3"><a href=""></a>  status <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
-<span id="cb18-4"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"should be readable but is currently undergoing final polishing"</span>,</span>
-<span id="cb18-5"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"is undergoing heavy restructuring and may be confusing or incomplete"</span>,</span>
-<span id="cb18-6"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"is currently a dumping ground for ideas, and we don't recommend reading it"</span>,</span>
-<span id="cb18-7"><a href=""></a>    <span class="at">complete =</span> <span class="st">"is largely complete and just needs final proof reading"</span>,</span>
-<span id="cb18-8"><a href=""></a>    <span class="fu">stop</span>(<span class="st">"Invalid `type`"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb18-9"><a href=""></a>  )</span>
-<span id="cb18-10"><a href=""></a></span>
-<span id="cb18-11"><a href=""></a>  class <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
-<span id="cb18-12"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"note"</span>,</span>
-<span id="cb18-13"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"important"</span>,</span>
-<span id="cb18-14"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"important"</span>,</span>
-<span id="cb18-15"><a href=""></a>    <span class="at">complete =</span> <span class="st">"note"</span></span>
-<span id="cb18-16"><a href=""></a>  )</span>
-<span id="cb18-17"><a href=""></a></span>
-<span id="cb18-18"><a href=""></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(</span>
-<span id="cb18-19"><a href=""></a>    <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb18-20"><a href=""></a>    <span class="st">":::: status</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb18-21"><a href=""></a>    <span class="st">"::: callout-"</span>, class, <span class="st">" </span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb18-22"><a href=""></a>    <span class="st">"You are reading the work-in-progress second edition of R for Data Science. "</span>,</span>
-<span id="cb18-23"><a href=""></a>    <span class="st">"This chapter "</span>, status, <span class="st">". "</span>,</span>
-<span id="cb18-24"><a href=""></a>    <span class="st">"You can find the complete first edition at &lt;https://r4ds.had.co.nz&gt;.</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb18-25"><a href=""></a>    <span class="st">":::</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb18-26"><a href=""></a>    <span class="st">"::::</span><span class="sc">\n</span><span class="st">"</span></span>
-<span id="cb18-27"><a href=""></a>  ))</span>
-<span id="cb18-28"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24" data-filename="_common.R" data-code-line-numbers="|2-9|11-16|18-27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="co"># use results: "asis" when setting a status for a chapter</span></span>
+<span id="cb24-2"><a href=""></a>status <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
+<span id="cb24-3"><a href=""></a>  status <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
+<span id="cb24-4"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"should be readable but is currently undergoing final polishing"</span>,</span>
+<span id="cb24-5"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"is undergoing heavy restructuring and may be confusing or incomplete"</span>,</span>
+<span id="cb24-6"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"is currently a dumping ground for ideas, and we don't recommend reading it"</span>,</span>
+<span id="cb24-7"><a href=""></a>    <span class="at">complete =</span> <span class="st">"is largely complete and just needs final proof reading"</span>,</span>
+<span id="cb24-8"><a href=""></a>    <span class="fu">stop</span>(<span class="st">"Invalid `type`"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb24-9"><a href=""></a>  )</span>
+<span id="cb24-10"><a href=""></a></span>
+<span id="cb24-11"><a href=""></a>  class <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
+<span id="cb24-12"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"note"</span>,</span>
+<span id="cb24-13"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"important"</span>,</span>
+<span id="cb24-14"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"important"</span>,</span>
+<span id="cb24-15"><a href=""></a>    <span class="at">complete =</span> <span class="st">"note"</span></span>
+<span id="cb24-16"><a href=""></a>  )</span>
+<span id="cb24-17"><a href=""></a></span>
+<span id="cb24-18"><a href=""></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(</span>
+<span id="cb24-19"><a href=""></a>    <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-20"><a href=""></a>    <span class="st">":::: status</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-21"><a href=""></a>    <span class="st">"::: callout-"</span>, class, <span class="st">" </span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-22"><a href=""></a>    <span class="st">"You are reading the work-in-progress second edition of R for Data Science. "</span>,</span>
+<span id="cb24-23"><a href=""></a>    <span class="st">"This chapter "</span>, status, <span class="st">". "</span>,</span>
+<span id="cb24-24"><a href=""></a>    <span class="st">"You can find the complete first edition at &lt;https://r4ds.had.co.nz&gt;.</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-25"><a href=""></a>    <span class="st">":::</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-26"><a href=""></a>    <span class="st">"::::</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb24-27"><a href=""></a>  ))</span>
+<span id="cb24-28"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p>https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L28-L55</p>
@@ -993,10 +1104,10 @@ Mine Çetinkaya-Rundel
 <div class="code-with-filename-file">
 <pre><strong>EDA.qmd</strong></pre>
 </div>
-<div class="sourceCode" id="cb19" data-filename="EDA.qmd"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="co">#| results: "asis"</span></span>
-<span id="cb19-2"><a href=""></a><span class="co">#| echo: false</span></span>
-<span id="cb19-3"><a href=""></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
-<span id="cb19-4"><a href=""></a><span class="fu">status</span>(<span class="st">"complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25" data-filename="EDA.qmd"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="co">#| results: "asis"</span></span>
+<span id="cb25-2"><a href=""></a><span class="co">#| echo: false</span></span>
+<span id="cb25-3"><a href=""></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
+<span id="cb25-4"><a href=""></a><span class="fu">status</span>(<span class="st">"complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="r-status-rightarrow-quarto-announcement" class="slide level2">
@@ -1010,14 +1121,14 @@ Mine Çetinkaya-Rundel
 <div class="code-with-filename-file">
 <pre><strong>.github/workflows /build_book.yaml</strong></pre>
 </div>
-<div class="sourceCode" id="cb20" data-filename=".github/workflows /build_book.yaml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb20-1"><a href=""></a><span class="fu">on</span><span class="kw">:</span></span>
-<span id="cb20-2"><a href=""></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
-<span id="cb20-3"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
-<span id="cb20-4"><a href=""></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
-<span id="cb20-5"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
-<span id="cb20-6"><a href=""></a><span class="at">  </span><span class="fu">schedule</span><span class="kw">:</span></span>
-<span id="cb20-7"><a href=""></a><span class="co">    # run every day at 11 PM</span></span>
-<span id="cb20-8"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">cron</span><span class="kw">:</span><span class="at"> </span><span class="st">'0 23 * * *'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26" data-filename=".github/workflows /build_book.yaml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb26-1"><a href=""></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb26-2"><a href=""></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb26-3"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
+<span id="cb26-4"><a href=""></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
+<span id="cb26-5"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
+<span id="cb26-6"><a href=""></a><span class="at">  </span><span class="fu">schedule</span><span class="kw">:</span></span>
+<span id="cb26-7"><a href=""></a><span class="co">    # run every day at 11 PM</span></span>
+<span id="cb26-8"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">cron</span><span class="kw">:</span><span class="at"> </span><span class="st">'0 23 * * *'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p>https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/.github/workflows/build_book.yaml#L1-L10</p>
@@ -1318,6 +1429,44 @@ Mine Çetinkaya-Rundel
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
