@@ -83,8 +83,12 @@ execute:
 
 <br>
 
-::: {.large .white}
+::: {.large .white style="background-color:#664739;"}
 🔗 bit.ly/books-conf24
+:::
+
+::: {.larger .white style="background-color:#334144;"}
+{{< fa brands github >}} mine-cetinkaya-rundel/quarto-books-conf24
 :::
 
 :::
