@@ -1,383 +1,62 @@
 ---
-title: "Reproducible, dynamic, and elegant books with Quarto"
-format: revealjs
+title: "Reproducible,<br>dynamic,<br>and elegant<br>books with Quarto"
+author: "Mine Çetinkaya-Rundel"
+institute: "Duke University + Posit, PBC"
+title-slide-attributes:
+  data-background-image: images/little-prince-planet-stars.png
+  data-background-size: 100% 100%
+  data-background-position: 100% 100%
+format: 
+  revealjs:
+    theme: style/slides.scss
+    css: fonts/fonts.css
 ---
 
-# "Making" books
+# "Making" books {background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%"}
 
-## {background-image="images/lp-1.png" background-size="contain"}
+##  {background-image="images/little-prince-on-mountain.png" background-size="contain"}
 
-## Books
+## The books
 
--   OpenIntro::IMS2
+::: columns
+::: {.column .fragment width="33%" fragment-index=1}
+![](images/ims2.png){fig-alt="Cover of the OpenIntro textbook Introduction to Modern Statistics, 2nd Edition."}
 
--   R4DS2
-
--   Quarto TDG
-
-# OpenIntro::IMS2
-
-## pdf/latex things
-
--   custom divs in HTML and CSS
--   pagebreak hell
-
-## Two outputs
-
-:::: {.columns}
-
-::: {.column}
-**HTML**
-
-![](images/chapterintro-html-light.png)
+::: {.absolute top=50 left=-20 data-id="red-star" .fragment .fade-down fragment-index=1}
+![](images/little-prince-star-red.png){width="50px"}
+:::
 :::
 
-::: {.column}
-**PDF**
+::: {.column .fragment width="33%" fragment-index=2}
+![](images/r4ds2.jpg){fig-alt="Cover of the book R for Data Science, 2nd Edition."}
 
-![](images/chapterintro-pdf.png)
+::: {.absolute top=50 left=330 data-id="red-star" .fragment .fade-down fragment-index=2}
+![](images/little-prince-star-red.png){width="50px"}
+:::
 :::
 
-::::
+::: {.column .fragment width="33%" fragment-index=3}
+![](images/quarto-tdg.png){fig-alt="Mockup of cover of the book Quarto - The Definitive Guide."}
 
-
-## From one input
-
-``` {.markdown filename="data-hello.qmd"}
-::: {.chapterintro data-latex=""}
-Scientists seek to answer questions using rigorous methods and careful observations.
-These observations -- collected from the likes of field notes, surveys, and experiments -- form the backbone of a statistical investigation and are called **data**.
-Statistics is the study of how best to collect, analyze, and draw conclusions from data.
-In this first chapter, we focus on both the properties of data and on the collection of data.
+::: {.absolute top=50 left=675 data-id="red-star" .fragment .fade-down fragment-index=3}
+![](images/little-prince-star-red.png){width="50px"}
 :::
-```
-
-## With the help of meticulous styling
-
-Styled with SCSS for HTML:
-
-``` {.scss filename="ims-style.scss"}
-.chapterintro {
-  padding: 1em 1em 1em 4em;
-  margin-bottom: 10px;
-  background: #d5e6ef 5px center/3em no-repeat;
-  border-top: 3px solid #569BBD;
-  border-bottom: 3px solid #569BBD;
-  background-image: url("images/_icons/chapterintro.png");
-  background-position: 0.5em 1.5em;
-}
-```
-
-## With the help of meticulous styling
-
-and with TeX for PDF:
-
-``` {.latex filename="ims-style.tex"}
-\newenvironment{mdframedwithfootChapterintro}
-{   
-    \savenotes
-    \begin{mdframed}[%
-    topline=true, bottomline=true, linecolor=oiB, linewidth=1.4pt,
-    rightline=false, leftline=false,
-    backgroundcolor=oiLB]
-    %\stepcounter{footnote} % don't increment footnote counter
-    \renewcommand{\thempfootnote}{\arabic{footnote}}
-    }
-{
-    \end{mdframed}
-    \spewnotes
-}
-
-\newenvironment{chapterintro}{
-    \vspace{4mm}
-    \begin{mdframedwithfootChapterintro}
-    \begin{minipage}[t]{0.10\textwidth}
-    {$\:$ \\ \setkeys{Gin}{width=2.5em,keepaspectratio}\includegraphics{images/_icons/chapterintro.png}}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.90\textwidth}
-    \setlength{\parskip}{1em}
-    \large
-    }{\end{minipage}
-    \end{mdframedwithfootChapterintro}
-    \vspace{4mm}
-}
-```
-
-## `_quarto.yml`
-
-```{.yaml filename="_quarto.yml" code-line-numbers="|3-5|17"}
-format:
-  html:
-    theme:
-      light: [cosmo, scss/ims-style.scss]
-      dark: [cosmo, scss/ims-style-dark.scss]
-    code-link: true
-    mainfont: Atkinson Hyperlegible
-    monofont: Source Code Pro
-    author-meta: "Mine Çetinkaya-Rundel and Johanna Hardin"
-    lightbox: 
-      match: auto
-      loop: false
-    fig-dpi: 300
-    fig-show: hold
-    fig-align: center
-  pdf:
-    include-in-header: latex/ims-style.tex
-    include-after-body: latex/after-body.tex
-    documentclass: book
-    classoption: 
-      - 10pt
-      - openany
-    pdf-engine: xelatex
-    biblio-style: apalike
-    keep-tex: true
-    block-headings: false
-    top-level-division: chapter
-    fig-dpi: 300
-    fig-show: hold
-    fig-pos: H
-    tbl-pos: H
-    fig-align: center
-    toc: true
-    toc-depth: 2
-  ```
-
-## HTML - dark mode
-
-:::: {.columns}
-
-::: {.column}
-``` {.scss filename="ims-style-dark.scss"}
-$body-bg: #222;
-
-.chapterintro {
-  padding: 1em 1em 1em 4em;
-  margin-bottom: 10px;
-  background: lighten($body-bg, 10%) 5px center/3em no-repeat;
-  border-top: 3px solid #569BBD;
-  border-bottom: 3px solid #569BBD;
-  background-image: url("images/_icons/chapterintro.png");
-  background-position: 0.5em 1.5em;
-}
-```
+:::
 :::
 
-::: {.column}
-![](images/chapterintro-html-dark.png)
-:::
+{{< include _ims.qmd >}}
 
-::::
+{{< include _r4ds.qmd >}}
 
-## But all is not magiv...
-
-PDF pagebreaks require manually adding `\clearpage`...
-
-HTML will just ignore these
-
-## index
-
-Building on things HTML will happily ignore
-
-```{.markdown filename="data-hello.qmd"}
-A **summary statistic** is a single number summarizing data from a sample.\index{summary statistic}
-```
-
-<br>
-
-```{.latex filename="after-body.tex"}
-\backmatter
-\printindex
-```
-
-<br>
-
-```{.yaml filename="_quarto.yml" code-line-numbers="|6"}
-format:
-  html:
-    ...
-  pdf:
-    include-in-header: latex/ims-style.tex
-    include-after-body: latex/after-body.tex
-    ...
-  ```
-
-## Maybe add "for future": typst
-
-table simplification for HTML and PDF tables
-
-one style file -> multi-putput
-
-## Accessibility - `fig-alt` 
-
-```{.r filename="data-hello.qmd" code-line-numbers="|6-10"}
-#| label: fig-county-multi-unit-homeownership
-#| fig-cap: A scatterplot of homeownership versus the percent of housing units that are
-#|   in multi-unit structures for US counties. The highlighted dot represents Chattahoochee
-#|   County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate
-#|   of 31.3%.
-#| fig-alt: A scatterplot of homeownership (on the y-axis) versus the percent of
-#|   housing units that are in multi-unit structures (on the x-axis) for US
-#|   counties. The observation from Chattahoochee County, Georgia
-#|   is highlighted as having a multi-unit rate of 39.4% and a
-#|   homeownership rate of 31.3%
-ggplot(county, aes(x = multi_unit, y = homeownership)) +
-  geom_point(alpha = 0.3, fill = IMSCOL["black", "full"], shape = 21) +
-  labs(
-    x = "Percent of housing units in that are multi-unit structures",
-    y = "Homeownership rate"
-  ) +
-  geom_point(
-    data = county |> filter(name == "Chattahoochee County"),
-    size = 3, stroke = 2, color = IMSCOL["red", "full"], shape = 1
-  ) +
-  ...
-```
-
-##
-
-![](images/fig-county-multi-unit-homeownership-1-source.png)
-
-## Making sure you have alt text
-
-Share code snippet for checking all figures have alt-text
-
-# R4DS
-
-## R code things
-
--   `_common.R`
--   GitHub Actions
-
-## `_common.R` for global options {.smaller}
-
-```{.r filename="_common.R" code-line-numbers="|1|3-11|13-24|27"}
-set.seed(1014)
-
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
-  # cache = TRUE,
-  fig.retina = 2,
-  fig.width = 6,
-  fig.asp = 2/3,
-  fig.show = "hold"
-)
-
-options(
-  dplyr.print_min = 6,
-  dplyr.print_max = 6,
-  pillar.max_footer_lines = 2,
-  pillar.min_chars = 15,
-  stringr.view_n = 6,
-  # Temporarily deactivate cli output for quarto
-  cli.num_colors = 0,
-  cli.hyperlink = FALSE,
-  pillar.bold = TRUE,
-  width = 77 # 80 - 3 for #> comment
-)
-
-
-ggplot2::theme_set(ggplot2::theme_gray(12))
-```
-
-**TO DO:** Check to see if there's a different way -- follow up with https://github.com/quarto-dev/quarto-cli/issues/10169, qmd filters that can prepend code blocks at the start of your document is the way to go. I opened an issue but the mechanism is not developed yet 
-
-::: notes
-<https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L1-L26>
-:::
-
-## `_common.R` for setting a status {.smaller}
-
-Using R as an escape hatch -- use your R function writing skills to avoid duplication
-
-```{.r filename="_common.R"}
-# use results: "asis" when setting a status for a chapter
-status <- function(type) {
-  status <- switch(type,
-    polishing = "should be readable but is currently undergoing final polishing",
-    restructuring = "is undergoing heavy restructuring and may be confusing or incomplete",
-    drafting = "is currently a dumping ground for ideas, and we don't recommend reading it",
-    complete = "is largely complete and just needs final proof reading",
-    stop("Invalid `type`", call. = FALSE)
-  )
-
-  class <- switch(type,
-    polishing = "note",
-    restructuring = "important",
-    drafting = "important",
-    complete = "note"
-  )
-
-  cat(paste0(
-    "\n",
-    ":::: status\n",
-    "::: callout-", class, " \n",
-    "You are reading the work-in-progress second edition of R for Data Science. ",
-    "This chapter ", status, ". ",
-    "You can find the complete first edition at <https://r4ds.had.co.nz>.\n",
-    ":::\n",
-    "::::\n"
-  ))
-}
-```
-
-**TO DO:** Consider mentioning announcement banner from Quarto 1.5 -- not available while we worked on the book
-
-::: notes
-https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L28-L55
-:::
-
-## GitHub actions - daily checks
-
-don't rely on freeze
-
-````{.yaml filename=".github/workflows
-/build_book.yaml"}
-on:
-  push:
-    branches: main
-  pull_request:
-    branches: main
-  schedule:
-    # run every day at 11 PM
-    - cron: '0 23 * * *'
-````
-
-::: notes
-https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/.github/workflows/build_book.yaml#L1-L10
-:::
-
-## GitHub actions - 2
-
-**TO DO:** Develop this idea further
-
-PR preview
-
-deploy to github pages so rendered product has a history (look at R packages book) -- mutli destination for different goodies
-
-- <https://github.com/hadley/r-pkgs/tree/gh-pages>
-- <https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63>
-
-# Maybe: no code book
-
-**TO DO:** Add one more section on no-code book, edit on github for example and render with action -- either at the beginning (increasing complexity) or at the end (wrap-up thoughts) or maybe here because it builds on GitHub actions
-
-# Quarto TDG
-
-## multiple languages
-
--   inline code in multiple languages with same syntax
-
--   embedded computations from notebooks for side-by-side multi-language executed code
-
--   maybe also: multiple collaborators - different ways to pull in computational results. your collaborators can still be writing in jupyter notebooks.
+{{< include _quarto.qmd >}}
 
 # "Making" books, that are not just pretty, but also functional...
 
 ## pop-up books and interactivity
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/l6XFQHTtt7M?si=YmybYrTPosdl8IN3&amp;start=152" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/l6XFQHTtt7M?si=YmybYrTPosdl8IN3&amp;start=152" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
 
 **TO DO:** Update video
 
@@ -385,5 +64,5 @@ interactivity --- webR? Not done yet but someone implemented a version, could ha
 
 things to mention here:
 
-- pyodide for python
-- web assembly as a bigger idea
+-   pyodide for python
+-   web assembly as a bigger idea

@@ -1,0 +1,34 @@
+# {slide-title="Quarto TDG" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
+
+![](images/quarto-tdg.png){fig-align="center" width="30%" fig-alt="Mockup of cover of the book Quarto - The Definitive Guide."}
+
+::: {.absolute top=-60 right=70 data-id="red-star"}
+![](images/little-prince-star-red.png){width="50px"}
+:::
+
+# {slide-title="Quarto TDG" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
+
+::: {.absolute left=25 top=20}
+![](images/quarto-tdg.png){width="230px" fig-alt="Mockup of cover of the book Quarto - The Definitive Guide."}
+:::
+
+::: {.absolute top=0 left=5 data-id="red-star"}
+![](images/little-prince-star-red.png){width="50px"}
+:::
+
+::: {.hand .xlarge .absolute left=275 top=50}
+::: {.fragment}
+![](images/little-prince-star-gold.png){width="8%"} multiple languages
+:::
+::: {.fragment}
+![](images/little-prince-star-gold.png){width="8%"} multiple collaborators
+:::
+:::
+
+## multiple languages
+
+-   inline code in multiple languages with same syntax
+
+-   embedded computations from notebooks for side-by-side multi-language executed code
+
+-   maybe also: multiple collaborators - different ways to pull in computational results. your collaborators can still be writing in jupyter notebooks.

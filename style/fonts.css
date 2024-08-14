@@ -1,0 +1,8 @@
+/* bodoni-moda-regular - latin */
+@font-face {
+  font-family: "Little Days";
+  font-style: normal;
+  font-weight: 800;
+  src: local(''),
+       url("/fonts/Little days.ttf") format("ttf"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}

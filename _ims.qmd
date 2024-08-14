@@ -1,0 +1,421 @@
+# {slide-title="IMS2" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
+
+![](images/ims2.png){fig-align="center" width="30%" fig-alt="Cover of the OpenIntro textbook Introduction to Modern Statistics, 2nd Edition."}
+
+::: {.absolute top=-60 right=70 data-id="red-star"}
+![](images/little-prince-star-red.png){width="50px"}
+:::
+
+# {slide-title="IMS2" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
+
+::: {.absolute left=25 top=20}
+![](images/ims2.png){width="230px" fig-alt="Cover of the OpenIntro textbook Introduction to Modern Statistics, 2nd Edition."}
+:::
+
+::: {.absolute top=0 left=5 data-id="red-star"}
+![](images/little-prince-star-red.png){width="50px"}
+:::
+
+::: {.hand .xlarge .absolute left=275 top=50}
+::: {.fragment}
+![](images/little-prince-star-gold.png){width="8%"} multiple outputs
+:::
+::: {.fragment}
+![](images/little-prince-star-gold.png){width="8%"} accessibility
+:::
+:::
+
+## Two outputs
+
+::::: columns
+::: {.column .center-align}
+[**HTML**]{.lion}
+
+![](images/chapterintro-html-light.png)
+:::
+
+::: {.column width="40%" .center-align}
+[**PDF**]{.lion}
+
+![](images/chapterintro-pdf.png)
+:::
+:::::
+
+## From one source
+
+``` {.markdown filename="data-hello.qmd"}
+::: {.chapterintro data-latex=""}
+Scientists seek to answer questions using rigorous methods and careful observations.
+These observations -- collected from the likes of field notes, surveys, and experiments -- form the backbone of a statistical investigation and are called **data**.
+Statistics is the study of how best to collect, analyze, and draw conclusions from data.
+In this first chapter, we focus on both the properties of data and on the collection of data.
+:::
+```
+
+## With the help of meticulous styling
+
+With SCSS for HTML:
+
+``` {.scss filename="ims-style.scss"}
+.chapterintro {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #d5e6ef 5px center/3em no-repeat;
+  border-top: 3px solid #569BBD;
+  border-bottom: 3px solid #569BBD;
+  background-image: url("images/_icons/chapterintro.png");
+  background-position: 0.5em 1.5em;
+}
+```
+
+## With the help of meticulous styling
+
+With TeX for PDF:
+
+``` {.latex filename="ims-style.tex"}
+\newenvironment{mdframedwithfootChapterintro}
+{   
+    \savenotes
+    \begin{mdframed}[%
+    topline=true, bottomline=true, linecolor=oiB, linewidth=1.4pt,
+    rightline=false, leftline=false,
+    backgroundcolor=oiLB]
+    \renewcommand{\thempfootnote}{\arabic{footnote}}
+    }
+{
+    \end{mdframed}
+    \spewnotes
+}
+
+\newenvironment{chapterintro}{
+    \vspace{4mm}
+    \begin{mdframedwithfootChapterintro}
+    \begin{minipage}[t]{0.10\textwidth}
+    {$\:$ \\ \setkeys{Gin}{width=2.5em,keepaspectratio}\includegraphics{images/_icons/chapterintro.png}}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.90\textwidth}
+    \setlength{\parskip}{1em}
+    \large
+    }{\end{minipage}
+    \end{mdframedwithfootChapterintro}
+    \vspace{4mm}
+}
+```
+
+## `_quarto.yml`
+
+``` {.yaml filename="_quarto.yml" code-line-numbers="|3-5|17"}
+format:
+  html:
+    theme:
+      light: [cosmo, scss/ims-style.scss]
+      dark: [cosmo, scss/ims-style-dark.scss]
+    code-link: true
+    mainfont: Atkinson Hyperlegible
+    monofont: Source Code Pro
+    author-meta: "Mine Çetinkaya-Rundel and Johanna Hardin"
+    lightbox: 
+      match: auto
+      loop: false
+    fig-dpi: 300
+    fig-show: hold
+    fig-align: center
+  pdf:
+    include-in-header: latex/ims-style.tex
+    include-after-body: latex/after-body.tex
+    documentclass: book
+    classoption: 
+      - 10pt
+      - openany
+    pdf-engine: xelatex
+    biblio-style: apalike
+    keep-tex: true
+    block-headings: false
+    top-level-division: chapter
+    fig-dpi: 300
+    fig-show: hold
+    fig-pos: H
+    tbl-pos: H
+    fig-align: center
+    toc: true
+    toc-depth: 2
+```
+
+## Two outputs {auto-animate="true"}
+
+::::: columns
+::: {.column .center-align}
+[**HTML**]{.lion}
+
+![](images/chapterintro-html-light.png)
+:::
+
+::: {.column width="40%" .center-align}
+[**PDF**]{.lion}
+
+![](images/chapterintro-pdf.png)
+:::
+:::::
+
+## Three outputs {auto-animate="true"}
+
+::::: columns
+::: {.column width="25%" .center-align}
+[**HTML - Light**]{.lion}
+
+![](images/chapterintro-html-light.png)
+:::
+
+::: {.column width="50%" .center-align}
+[**HTML - Dark**]{.lion}
+
+![](images/chapterintro-html-dark.png)
+:::
+
+::: {.column width="25%" .center-align}
+[**PDF**]{.lion}
+
+![](images/chapterintro-pdf.png)
+:::
+:::::
+
+## With even more meticulous styling {auto-animate="true"}
+
+::::: columns
+
+::: {.column width="80%"}
+``` {.scss filename="ims-style-dark.scss" code-line-numbers="1,6"}
+$body-bg: #222;
+
+.chapterintro {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: lighten($body-bg, 10%) 5px center/3em no-repeat;
+  border-top: 3px solid #569BBD;
+  border-bottom: 3px solid #569BBD;
+  background-image: url("images/_icons/chapterintro.png");
+  background-position: 0.5em 1.5em;
+}
+```
+:::
+
+::: {.column width="20%"}
+![](images/chapterintro-html-dark.png)
+:::
+
+:::::
+
+## Unfortunately, not all is not magic... {.nostretch auto-animate="true"}
+
+![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=0 left=900}
+
+## Unfortunately, not all is not magic... {.nostretch auto-animate="true"}
+
+![](images/little-prince-star-gold.png){fig-width="5%" .absolute bottom=40 left=20}
+
+Painstakingly add `\clearpage` that qmd $\rightarrow$ LaTeX will process and qmd $\rightarrow$ HTML will ignore:
+
+<br>
+
+``` {.markdown filename="data-hello.qmd" code-line-numbers="6"}
+These two summary statistics are useful in looking for differences in the groups, and we are in for a surprise: an additional 8% of patients in the treatment group had a stroke!
+This is important for two reasons.
+First, it is contrary to what doctors expected, which was that stents would *reduce* the rate of strokes.
+Second, it leads to a statistical question: do the data show a "real" difference between the groups?
+
+\clearpage
+
+This second question is subtle.
+Suppose you flip a coin 100 times.
+While the chance a coin lands heads in any given coin flip is 50%, we probably won't observe exactly 50 heads.
+This type of variation is part of almost any type of data generating process.
+````
+
+## Unfortunately, not all is not magic...
+
+and another...
+
+<br>
+
+``` {.markdown filename="data-hello.qmd" code-line-numbers="5"}
+To answer these questions, data must be collected, such as the `county` dataset shown in @tbl-county-df.
+Examining \index{summary statistic}**summary statistics** can provide numerical insights about the specifics of each of these questions.
+Alternatively, graphs can be used to visually explore the data, potentially providing more insight than a summary statistic.
+
+\clearpage
+
+\index{scatterplot}**Scatterplots** are one type of graph used to study the relationship between two numerical variables.
+@fig-county-multi-unit-homeownership displays the relationship between the variables `homeownership` and `multi_unit`, which is the percent of housing units that are in multi-unit structures (e.g., apartments, condos).
+Each point on the plot represents a single county.
+```
+
+## Unfortunately, not all is not magic... {auto-animate="true"}
+
+![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=220 left=50}
+
+and another...
+
+<br>
+
+``` {.markdown filename="data-hello.qmd" code-line-numbers="2"}
+
+\clearpage
+
+## Exercises {#sec-chp1-exercises}
+
+Answers to odd-numbered exercises can be found in [Appendix -@sec-exercise-solutions-01].
+```
+
+## Bring back the magic {auto-animate="true"}
+
+![](images/little-prince-star-gold.png){fig-width="5%" .absolute top=0 left=900}
+
+By building on things qmd $\rightarrow$ HTML will happily ignore and qmd $\rightarrow$ will process: `\index{}`
+
+<br>
+
+``` {.markdown filename="data-hello.qmd" code-line-numbers="2"}
+We can compute summary statistics from the table to give us a better idea of how the impact of the stent treatment differed between the two groups.
+A **summary statistic** is a single number summarizing data from a sample.\index{summary statistic}
+For instance, the primary results of the study after 1 year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and control groups.
+```
+
+## In three components {.smaller auto-animate="true"}
+
+1. `\index{}` tags:
+
+``` {.markdown filename="data-hello.qmd" code-line-numbers="2"}
+We can compute summary statistics from the table to give us a better idea of how the impact of the stent treatment differed between the two groups.
+A **summary statistic** is a single number summarizing data from a sample.\index{summary statistic}
+For instance, the primary results of the study after 1 year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and control groups.
+```
+
+. . .
+
+2. A `.tex` file to be appended to the end during render:
+
+``` {.latex filename="after-body.tex"}
+\backmatter
+\printindex
+```
+
+. . .
+
+3. Calling that file from `_quarto.yml`: 
+
+``` {.yaml filename="_quarto.yml" code-line-numbers="6"}
+format:
+  html:
+    ...
+  pdf:
+    include-in-header: latex/ims-style.tex
+    include-after-body: latex/after-body.tex
+    ...
+```
+
+## Looking forward to `typst` for styling {auto-animate="true"}
+
+![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=0 left=900}
+
+::: {.columns}
+::: {.column .center-align}
+[**TODAY**]{.lion}
+
+One source \
+`+` \
+2 style files \
+[$\downarrow$]{.lion} \
+2 outputs
+:::
+::: {.column .center-align .fragment}
+[**FUTURE**]{.lion}
+
+One source \
+`+` \
+[**1**]{.red} style file \
+[$\downarrow$]{.lion} \
+2 outputs
+:::
+:::
+
+## Looking forward to `typst` for tables {auto-animate="true"}
+
+![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=50 left=900}
+
+[**TODAY**]{.lion}
+
+``` {.r filename="data-hello.qmd" code-line-numbers="szz4-12"}
+county |>
+  select(name, state, pop2017, pop_change, unemployment_rate, median_edu) |>
+  slice_head(n = 6) |>
+  kableExtra::kbl(
+    linesep = "", 
+    booktabs = TRUE,
+    format.args = list(big.mark = ",")
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "condensed"),
+    latex_options = c("striped")
+  )
+```
+
+## Looking forward to `typst` for tables {auto-animate="true"}
+
+![](images/little-prince-star-blue.png){fig-width="5%" .absolute top=30 left=910}
+
+[**TODAY**]{.lion}
+
+::: smallest
+::: columns
+::: {.column width="60%"}
+``` {.r filename="data-hello.qmd" code-line-numbers="4-12"}
+county |>
+  select(name, state, pop2017, pop_change, unemployment_rate, median_edu) |>
+  slice_head(n = 6) |>
+  kableExtra::kbl(
+    linesep = "", 
+    booktabs = TRUE,
+    format.args = list(big.mark = ",")
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "condensed"),
+    latex_options = c("striped")
+  )
+```
+:::
+:::
+:::
+
+<br>
+[**FUTURE**]{.lion}
+
+``` {.r filename="data-hello.qmd" code-line-numbers="4"}
+county |>
+  select(name, state, pop2017, pop_change, unemployment_rate, median_edu) |>
+  slice_head(n = 6) |>
+  gt::gt()
+```
+
+## Accessibility: `fig-alt` {.nostretch}
+
+``` {.r filename="data-hello.qmd" code-line-numbers="|3-7"}
+#| label: fig-county-multi-unit-homeownership
+#| ...
+#| fig-alt: A scatterplot of homeownership (on the y-axis) versus the percent of
+#|   housing units that are in multi-unit structures (on the x-axis) for US
+#|   counties. The observation from Chattahoochee County, Georgia
+#|   is highlighted as having a multi-unit rate of 39.4% and a
+#|   homeownership rate of 31.3%
+ggplot(county, aes(x = multi_unit, y = homeownership)) +
+  geom_point(alpha = 0.3, fill = IMSCOL["black", "full"], shape = 21) +
+  ...
+```
+
+::: {.fragment .absolute left=50 bottom=50}
+![](images/fig-county-multi-unit-homeownership-1-source.png)
+:::
+
+## Making sure you have alt text
+
+TO DO: Share code snippet for checking all figures have alt-text

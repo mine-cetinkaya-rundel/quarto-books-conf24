@@ -1,0 +1,139 @@
+# {slide-title="R4DS" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%" auto-animate="true" .nostretch}
+
+![](images/r4ds2.jpg){fig-align="center" width="30%" fig-alt="Cover of the book R for Data Science, 2nd Edition."}
+
+::: {.absolute top=-60 right=70 data-id="red-star"}
+![](images/little-prince-star-red.png){width="50px"}
+:::
+
+# {slide-title="R4DS" background-image="images/little-prince-stars.png" background-size="100% 100%" background-position="100% 100%"  auto-animate="true" .nostretch}
+
+::: {.absolute left=25 top=20}
+![](images/r4ds2.jpg){width="230px" fig-alt="Cover of the book R for Data Science, 2nd Edition."}
+:::
+
+::: {.absolute top=0 left=5 data-id="red-star"}
+![](images/little-prince-star-red.png){width="50px"}
+:::
+
+::: {.hand .xlarge .absolute left=275 top=50}
+::: {.fragment}
+![](images/little-prince-star-gold.png){width="8%"} leveraging R
+:::
+::: {.fragment}
+![](images/little-prince-star-gold.png){width="8%"} GitHub actions
+:::
+:::
+
+## `_common.R` for global options {.smaller}
+
+``` {.r filename="_common.R" code-line-numbers="|1|3-11|13-24|27"}
+set.seed(1014)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  # cache = TRUE,
+  fig.retina = 2,
+  fig.width = 6,
+  fig.asp = 2/3,
+  fig.show = "hold"
+)
+
+options(
+  dplyr.print_min = 6,
+  dplyr.print_max = 6,
+  pillar.max_footer_lines = 2,
+  pillar.min_chars = 15,
+  stringr.view_n = 6,
+  # Temporarily deactivate cli output for quarto
+  cli.num_colors = 0,
+  cli.hyperlink = FALSE,
+  pillar.bold = TRUE,
+  width = 77 # 80 - 3 for #> comment
+)
+
+
+ggplot2::theme_set(ggplot2::theme_gray(12))
+```
+
+**TO DO:** Check to see if there's a different way -- follow up with https://github.com/quarto-dev/quarto-cli/issues/10169, qmd filters that can prepend code blocks at the start of your document is the way to go. I opened an issue but the mechanism is not developed yet
+
+::: notes
+<https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L1-L26>
+:::
+
+## `_common.R` for setting a status {.smaller}
+
+Using R as an escape hatch -- use your R function writing skills to avoid duplication
+
+``` {.r filename="_common.R"}
+# use results: "asis" when setting a status for a chapter
+status <- function(type) {
+  status <- switch(type,
+    polishing = "should be readable but is currently undergoing final polishing",
+    restructuring = "is undergoing heavy restructuring and may be confusing or incomplete",
+    drafting = "is currently a dumping ground for ideas, and we don't recommend reading it",
+    complete = "is largely complete and just needs final proof reading",
+    stop("Invalid `type`", call. = FALSE)
+  )
+
+  class <- switch(type,
+    polishing = "note",
+    restructuring = "important",
+    drafting = "important",
+    complete = "note"
+  )
+
+  cat(paste0(
+    "\n",
+    ":::: status\n",
+    "::: callout-", class, " \n",
+    "You are reading the work-in-progress second edition of R for Data Science. ",
+    "This chapter ", status, ". ",
+    "You can find the complete first edition at <https://r4ds.had.co.nz>.\n",
+    ":::\n",
+    "::::\n"
+  ))
+}
+```
+
+**TO DO:** Consider mentioning announcement banner from Quarto 1.5 -- not available while we worked on the book
+
+::: notes
+https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/\_common.R#L28-L55
+:::
+
+## GitHub actions - daily checks
+
+don't rely on freeze
+
+``` {.yaml filename=".github/workflows /build_book.yaml"}
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+  schedule:
+    # run every day at 11 PM
+    - cron: '0 23 * * *'
+```
+
+::: notes
+https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/.github/workflows/build_book.yaml#L1-L10
+:::
+
+## GitHub actions - 2
+
+**TO DO:** Develop this idea further
+
+PR preview
+
+deploy to github pages so rendered product has a history (look at R packages book) -- mutli destination for different goodies
+
+-   <https://github.com/hadley/r-pkgs/tree/gh-pages>
+-   <https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63>
+
+# Maybe: no code book
+
+**TO DO:** Add one more section on no-code book, edit on github for example and render with action -- either at the beginning (increasing complexity) or at the end (wrap-up thoughts) or maybe here because it builds on GitHub actions
