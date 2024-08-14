@@ -9,7 +9,6 @@ title-slide-attributes:
 format: 
   revealjs:
     theme: style/slides.scss
-    css: style/fonts.css
     footer: "🔗 [bit.ly/books-conf24](https://bit.ly/books-conf24)"
 execute: 
   echo: true
