@@ -7,7 +7,9 @@
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Mine Çetinkaya-Rundel">
@@ -1005,6 +1007,7 @@ Mine Çetinkaya-Rundel
 </section>
 <section id="set-global-options-with-_common.r" class="slide level2 smaller">
 <h2>Set global options with <code>_common.R</code></h2>
+<p>Leverage your R knowledge to achieve consistent output:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>_common.R</strong></pre>
@@ -1048,41 +1051,41 @@ Mine Çetinkaya-Rundel
           display:block!important;
       }</style></aside>
 </section>
-<section id="set-status-with-_common.r" class="slide level2 smaller">
-<h2>Set status with <code>_common.R</code></h2>
+<section id="set-status-with-_common.r" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Set status with <code>_common.R</code></h2>
 <p>Use your R function writing skills to avoid duplication:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>_common.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb24" data-filename="_common.R" data-code-line-numbers="|2-9|11-16|18-27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="co"># use results: "asis" when setting a status for a chapter</span></span>
-<span id="cb24-2"><a href=""></a>status <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
-<span id="cb24-3"><a href=""></a>  status <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
-<span id="cb24-4"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"should be readable but is currently undergoing final polishing"</span>,</span>
-<span id="cb24-5"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"is undergoing heavy restructuring and may be confusing or incomplete"</span>,</span>
-<span id="cb24-6"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"is currently a dumping ground for ideas, and we don't recommend reading it"</span>,</span>
-<span id="cb24-7"><a href=""></a>    <span class="at">complete =</span> <span class="st">"is largely complete and just needs final proof reading"</span>,</span>
-<span id="cb24-8"><a href=""></a>    <span class="fu">stop</span>(<span class="st">"Invalid `type`"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb24-9"><a href=""></a>  )</span>
-<span id="cb24-10"><a href=""></a></span>
-<span id="cb24-11"><a href=""></a>  class <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
-<span id="cb24-12"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"note"</span>,</span>
-<span id="cb24-13"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"important"</span>,</span>
-<span id="cb24-14"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"important"</span>,</span>
-<span id="cb24-15"><a href=""></a>    <span class="at">complete =</span> <span class="st">"note"</span></span>
-<span id="cb24-16"><a href=""></a>  )</span>
-<span id="cb24-17"><a href=""></a></span>
-<span id="cb24-18"><a href=""></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(</span>
-<span id="cb24-19"><a href=""></a>    <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb24-20"><a href=""></a>    <span class="st">":::: status</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb24-21"><a href=""></a>    <span class="st">"::: callout-"</span>, class, <span class="st">" </span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb24-22"><a href=""></a>    <span class="st">"You are reading the work-in-progress second edition of R for Data Science. "</span>,</span>
-<span id="cb24-23"><a href=""></a>    <span class="st">"This chapter "</span>, status, <span class="st">". "</span>,</span>
-<span id="cb24-24"><a href=""></a>    <span class="st">"You can find the complete first edition at &lt;https://r4ds.had.co.nz&gt;.</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb24-25"><a href=""></a>    <span class="st">":::</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb24-26"><a href=""></a>    <span class="st">"::::</span><span class="sc">\n</span><span class="st">"</span></span>
-<span id="cb24-27"><a href=""></a>  ))</span>
-<span id="cb24-28"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24" data-filename="_common.R" data-code-line-numbers="|2-9|11-16|18-27"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb24-1" class="hljs-ln-code"><a href=""></a><span class="co"># use results: "asis" when setting a status for a chapter</span></span>
+<span id="cb24-2" class="hljs-ln-code"><a href=""></a>status <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
+<span id="cb24-3" class="hljs-ln-code"><a href=""></a>  status <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
+<span id="cb24-4" class="hljs-ln-code"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"should be readable but is currently undergoing final polishing"</span>,</span>
+<span id="cb24-5" class="hljs-ln-code"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"is undergoing heavy restructuring and may be confusing or incomplete"</span>,</span>
+<span id="cb24-6" class="hljs-ln-code"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"is currently a dumping ground for ideas, and we don't recommend reading it"</span>,</span>
+<span id="cb24-7" class="hljs-ln-code"><a href=""></a>    <span class="at">complete =</span> <span class="st">"is largely complete and just needs final proof reading"</span>,</span>
+<span id="cb24-8" class="hljs-ln-code"><a href=""></a>    <span class="fu">stop</span>(<span class="st">"Invalid `type`"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb24-9" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb24-10" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb24-11" class="hljs-ln-code"><a href=""></a>  class <span class="ot">&lt;-</span> <span class="cf">switch</span>(type,</span>
+<span id="cb24-12" class="hljs-ln-code"><a href=""></a>    <span class="at">polishing =</span> <span class="st">"note"</span>,</span>
+<span id="cb24-13" class="hljs-ln-code"><a href=""></a>    <span class="at">restructuring =</span> <span class="st">"important"</span>,</span>
+<span id="cb24-14" class="hljs-ln-code"><a href=""></a>    <span class="at">drafting =</span> <span class="st">"important"</span>,</span>
+<span id="cb24-15" class="hljs-ln-code"><a href=""></a>    <span class="at">complete =</span> <span class="st">"note"</span></span>
+<span id="cb24-16" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb24-17" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb24-18" class="hljs-ln-code"><a href=""></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(</span>
+<span id="cb24-19" class="hljs-ln-code"><a href=""></a>    <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-20" class="hljs-ln-code"><a href=""></a>    <span class="st">":::: status</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-21" class="hljs-ln-code"><a href=""></a>    <span class="st">"::: callout-"</span>, class, <span class="st">" </span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-22" class="hljs-ln-code"><a href=""></a>    <span class="st">"You are reading the work-in-progress second edition of R for Data Science. "</span>,</span>
+<span id="cb24-23" class="hljs-ln-code"><a href=""></a>    <span class="st">"This chapter "</span>, status, <span class="st">". "</span>,</span>
+<span id="cb24-24" class="hljs-ln-code"><a href=""></a>    <span class="st">"You can find the complete first edition at &lt;https://r4ds.had.co.nz&gt;.</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-25" class="hljs-ln-code"><a href=""></a>    <span class="st">":::</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-26" class="hljs-ln-code"><a href=""></a>    <span class="st">"::::</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb24-27" class="hljs-ln-code"><a href=""></a>  ))</span>
+<span id="cb24-28" class="hljs-ln-code"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p>https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L28-L55</p>
@@ -1098,37 +1101,80 @@ Mine Çetinkaya-Rundel
           display:block!important;
       }</style></aside>
 </section>
-<section id="call-status-in-.qmd" class="slide level2">
-<h2>Call <code>status()</code> in <code>.qmd</code></h2>
+<section id="set-status-with-_common.r-1" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Set status with <code>_common.R</code></h2>
+<p>Use your R function writing skills to avoid duplication:</p>
+<div class="smallest">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>_common.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb25" data-filename="_common.R" data-code-line-numbers="15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>status <span class="ot">&lt;-</span> <span class="cf">function</span>(type) {</span>
+<span id="cb25-2"><a href=""></a>  ...</span>
+<span id="cb25-3"><a href=""></a></span>
+<span id="cb25-4"><a href=""></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(</span>
+<span id="cb25-5"><a href=""></a>    <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb25-6"><a href=""></a>    <span class="st">":::: status</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb25-7"><a href=""></a>    <span class="st">"::: callout-"</span>, class, <span class="st">" </span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb25-8"><a href=""></a>    <span class="st">"You are reading the work-in-progress second edition of R for Data Science. "</span>,</span>
+<span id="cb25-9"><a href=""></a>    <span class="st">"This chapter "</span>, status, <span class="st">". "</span>,</span>
+<span id="cb25-10"><a href=""></a>    <span class="st">"You can find the complete first edition at &lt;https://r4ds.had.co.nz&gt;.</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb25-11"><a href=""></a>    <span class="st">":::</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb25-12"><a href=""></a>    <span class="st">"::::</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb25-13"><a href=""></a>  ))</span>
+<span id="cb25-14"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><br></p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>EDA.qmd</strong></pre>
 </div>
-<div class="sourceCode" id="cb25" data-filename="EDA.qmd"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="co">#| results: "asis"</span></span>
-<span id="cb25-2"><a href=""></a><span class="co">#| echo: false</span></span>
-<span id="cb25-3"><a href=""></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
-<span id="cb25-4"><a href=""></a><span class="fu">status</span>(<span class="st">"complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26" data-filename="EDA.qmd"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="co">#| results: "asis"</span></span>
+<span id="cb26-2"><a href=""></a><span class="co">#| echo: false</span></span>
+<span id="cb26-3"><a href=""></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
+<span id="cb26-4"><a href=""></a><span class="fu">status</span>(<span class="st">"complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="r-status-rightarrow-quarto-announcement" class="slide level2">
-<h2>R <code>status()</code> <span class="math inline">\(\rightarrow\)</span> Quarto <code>announcement</code></h2>
-<iframe src="https://quarto.org/docs/websites/website-tools.html#announcement-bar" title="Announcement bar" frameborder="1" height="600" width="1000"></iframe>
+<section id="todays-solution-announcement" class="slide level2">
+<h2>Today’s solution: <code>announcement</code></h2>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>_quarto.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb27" data-filename="_quarto.yml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a href=""></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb27-2"><a href=""></a><span class="at">  </span><span class="fu">announcement</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb27-3"><a href=""></a><span class="at">    </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> cone-striped</span></span>
+<span id="cb27-4"><a href=""></a><span class="at">    </span><span class="fu">dismissable</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb27-5"><a href=""></a><span class="fu">    content</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb27-6"><a href=""></a>      "You are reading the work-in-progress second edition of </span>
+<span id="cb27-7"><a href=""></a>      R for Data Science. This chapter **is currently a dumping </span>
+<span id="cb27-8"><a href=""></a>      ground for ideas, and we don't recommend reading it**. </span>
+<span id="cb27-9"><a href=""></a>      You can find the complete first edition at </span>
+<span id="cb27-10"><a href=""></a>      &lt;https://r4ds.had.co.nz&gt;."</span>
+<span id="cb27-11"><a href=""></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> primary</span></span>
+<span id="cb27-12"><a href=""></a><span class="at">    </span><span class="fu">position</span><span class="kw">:</span><span class="at"> below-navbar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="keeping-things-in-check-with-github-actions" class="slide level2">
+<h2>Keeping things in check with GitHub actions</h2>
+<p>#<a href="images/r4ds-action-fail-email.png"></a></p>
 </section>
 <section id="daily-checks-with-github-actions" class="slide level2">
 <h2>Daily checks with GitHub actions</h2>
-<p>Intentionally avoiding freeze:</p>
+<p>Intentionally avoiding <code>freeze</code>:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>.github/workflows /build_book.yaml</strong></pre>
 </div>
-<div class="sourceCode" id="cb26" data-filename=".github/workflows /build_book.yaml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb26-1"><a href=""></a><span class="fu">on</span><span class="kw">:</span></span>
-<span id="cb26-2"><a href=""></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
-<span id="cb26-3"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
-<span id="cb26-4"><a href=""></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
-<span id="cb26-5"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
-<span id="cb26-6"><a href=""></a><span class="at">  </span><span class="fu">schedule</span><span class="kw">:</span></span>
-<span id="cb26-7"><a href=""></a><span class="co">    # run every day at 11 PM</span></span>
-<span id="cb26-8"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">cron</span><span class="kw">:</span><span class="at"> </span><span class="st">'0 23 * * *'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28" data-filename=".github/workflows /build_book.yaml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb28-1"><a href=""></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb28-2"><a href=""></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb28-3"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
+<span id="cb28-4"><a href=""></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
+<span id="cb28-5"><a href=""></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
+<span id="cb28-6"><a href=""></a><span class="at">  </span><span class="fu">schedule</span><span class="kw">:</span></span>
+<span id="cb28-7"><a href=""></a><span class="co">    # run every day at 11 PM</span></span>
+<span id="cb28-8"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">cron</span><span class="kw">:</span><span class="at"> </span><span class="st">'0 23 * * *'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p>https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/.github/workflows/build_book.yaml#L1-L10</p>
@@ -1144,22 +1190,58 @@ Mine Çetinkaya-Rundel
           display:block!important;
       }</style></aside>
 </section>
-<section id="github-actions---2" class="slide level2">
-<h2>GitHub actions - 2</h2>
-<p><strong>TO DO:</strong> Develop this idea further</p>
-<p>PR preview</p>
-<p>deploy to github pages so rendered product has a history (look at R packages book) – mutli destination for different goodies</p>
-<ul>
-<li><a href="https://github.com/hadley/r-pkgs/tree/gh-pages" class="uri">https://github.com/hadley/r-pkgs/tree/gh-pages</a></li>
-<li><a href="https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63" class="uri">https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63</a></li>
-</ul>
-</section></section>
-<section id="maybe-no-code-book" class="title-slide slide level1 center">
-<h1>Maybe: no code book</h1>
-<p><strong>TO DO:</strong> Add one more section on no-code book, edit on github for example and render with action – either at the beginning (increasing complexity) or at the end (wrap-up thoughts) or maybe here because it builds on GitHub actions</p>
-</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p><br><br><br><br></p>
+<blockquote>
+<p>Whenever faced with a problem, some people say “Lets use regular expressions.” Now, they have two problems.</p>
+</blockquote>
 
-<section id="section-5" class="title-slide slide level1 nostretch center" data-slide-title="Quarto TDG" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
+<aside><div>
+<p>Source: <a href="https://news.ycombinator.com/item?id=25415441" class="uri">https://news.ycombinator.com/item?id=25415441</a></p>
+</div></aside></section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<p><br><br><br><br></p>
+<blockquote>
+<p>Whenever faced with a problem, some people say “Lets use <del>regular expressions</del><span class="red">GitHub actions</span>.” Now, they have <del>two</del><span class="red">so many more</span> problems.</p>
+</blockquote>
+
+<aside><div>
+<p>Source: Me, though others may have said this before too.</p>
+</div></aside></section>
+<section id="dont-reinvent-the-wheel" class="slide level2 nostretch">
+<h2><em>Don’t</em> reinvent the wheel!</h2>
+<div class="columns">
+<div class="column fragment" data-fragment-index="1" style="width:50%;">
+<div class="center-align medium">
+<p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/hadley/r4ds/blob/main/.github/workflows/build_book.yaml">hadley/r4ds &gt; <span class="small"><code>.github/workflows/build-book.yml</code></span></a></p>
+</div>
+</div><div class="column fragment" data-fragment-index="2" style="width:50%;">
+<div class="center-align medium">
+<p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/quarto-dev/quarto-actions">quarto-dev/quarto-actions</a></p>
+</div>
+</div></div>
+<div class="columns">
+<div class="column fragment" data-fragment-index="1" style="width:50%;">
+<div class="center-align medium">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/r4ds-render-deploy-action.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div><div class="column fragment" data-fragment-index="2" style="width:50%;">
+<div class="center-align medium">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/quarto-actions.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section></section>
+<section id="section-7" class="title-slide slide level1 nostretch center" data-slide-title="Quarto TDG" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
 <h1 data-id="quarto-animate-title"></h1>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1172,7 +1254,7 @@ Mine Çetinkaya-Rundel
 </section>
 
 <section>
-<section id="section-6" class="title-slide slide level1 nostretch center" data-slide-title="Quarto TDG" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
+<section id="section-8" class="title-slide slide level1 nostretch center" data-slide-title="Quarto TDG" data-background-image="images/little-prince-stars.png" data-background-size="100% 100%" data-background-position="100% 100%" data-auto-animate="true">
 <h1 data-id="quarto-animate-title"></h1>
 <div class="absolute" style="top: 20px; left: 25px; ">
 <p><img data-src="images/quarto-tdg.png" alt="Mockup of cover of the book Quarto - The Definitive Guide." width="230"></p>

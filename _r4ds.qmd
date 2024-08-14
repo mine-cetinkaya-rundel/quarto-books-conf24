@@ -27,6 +27,8 @@
 
 ## Set global options with `_common.R` {.smaller}
 
+Leverage your R knowledge to achieve consistent output:
+
 ``` {.r filename="_common.R" code-line-numbers="|1|3-11|12-22|24"}
 set.seed(1014)
 
@@ -58,7 +60,7 @@ ggplot2::theme_set(ggplot2::theme_gray(12))
 <https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/_common.R#L1-L26>
 :::
 
-## Set status with `_common.R` {.smaller}
+## Set status with `_common.R` {.smaller auto-animate="true"}
 
 Use your R function writing skills to avoid duplication:
 
@@ -97,7 +99,30 @@ status <- function(type) {
 https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/\_common.R#L28-L55
 :::
 
-## Call `status()` in `.qmd`
+## Set status with `_common.R` {.smaller auto-animate="true"}
+
+Use your R function writing skills to avoid duplication:
+
+:::smallest
+``` {.r filename="_common.R" code-line-numbers="15"}
+status <- function(type) {
+  ...
+
+  cat(paste0(
+    "\n",
+    ":::: status\n",
+    "::: callout-", class, " \n",
+    "You are reading the work-in-progress second edition of R for Data Science. ",
+    "This chapter ", status, ". ",
+    "You can find the complete first edition at <https://r4ds.had.co.nz>.\n",
+    ":::\n",
+    "::::\n"
+  ))
+}
+```
+:::
+
+<br>
 
 ```{.r filename="EDA.qmd"}
 #| results: "asis"
@@ -106,15 +131,30 @@ source("_common.R")
 status("complete")
 ```
 
-## R `status()` $\rightarrow$ Quarto `announcement`
+## Today's solution: `announcement`
 
-```{=html}
-<iframe src="https://quarto.org/docs/websites/website-tools.html#announcement-bar" title = "Announcement bar" frameborder="1" height="600" width="1000"></iframe>
+```{.yaml filename="_quarto.yml"}
+website:
+  announcement: 
+    icon: cone-striped
+    dismissable: true
+    content: |
+      "You are reading the work-in-progress second edition of 
+      R for Data Science. This chapter **is currently a dumping 
+      ground for ideas, and we don't recommend reading it**. 
+      You can find the complete first edition at 
+      <https://r4ds.had.co.nz>."
+    type: primary
+    position: below-navbar
 ```
+
+## Keeping things in check with GitHub actions
+
+#[](images/r4ds-action-fail-email.png)
 
 ## Daily checks with GitHub actions
 
-Intentionally avoiding freeze:
+Intentionally avoiding `freeze`:
 
 ``` {.yaml filename=".github/workflows /build_book.yaml"}
 on:
@@ -131,17 +171,53 @@ on:
 https://github.com/hadley/r4ds/blob/643ab1b4b996275411625357663b4246f3802eb1/.github/workflows/build_book.yaml#L1-L10
 :::
 
-## GitHub actions - 2
+## 
 
-**TO DO:** Develop this idea further
+<br><br><br><br>
 
-PR preview
+> Whenever faced with a problem, some people say "Lets use regular expressions."
+> Now, they have two problems.
 
-deploy to github pages so rendered product has a history (look at R packages book) -- mutli destination for different goodies
+::: aside
+Source: <https://news.ycombinator.com/item?id=25415441>
+:::
 
--   <https://github.com/hadley/r-pkgs/tree/gh-pages>
--   <https://github.com/hadley/r-pkgs/blob/87e4f7692ad7926929ddf70f3d5f9896cd88a137/.github/workflows/render.yaml#L52-L63>
+## 
 
-# Maybe: no code book
+<br><br><br><br>
 
-**TO DO:** Add one more section on no-code book, edit on github for example and render with action -- either at the beginning (increasing complexity) or at the end (wrap-up thoughts) or maybe here because it builds on GitHub actions
+> Whenever faced with a problem, some people say "Lets use ~~regular expressions~~[GitHub actions]{.red}."
+> Now, they have ~~two~~[so many more]{.red} problems.
+
+::: aside
+Source: Me, though others may have said this before too.
+:::
+
+## *Don't* reinvent the wheel! {.nostretch}
+
+::: {.columns}
+::: {.column width="50%" .fragment fragment-index=1}
+::: {.center-align .medium}
+{{< fa brands github >}} [hadley/r4ds > [`.github/workflows/build-book.yml`]{.small}](https://github.com/hadley/r4ds/blob/main/.github/workflows/build_book.yaml)
+:::
+:::
+::: {.column width="50%" .fragment fragment-index=2}
+::: {.center-align .medium}
+{{< fa brands github >}} [quarto-dev/quarto-actions](https://github.com/quarto-dev/quarto-actions)
+:::
+:::
+:::
+
+::: {.columns}
+::: {.column width="50%" .fragment fragment-index=1}
+::: {.center-align .medium}
+![](images/r4ds-render-deploy-action.png){fig-align="center"}
+:::
+:::
+::: {.column width="50%" .fragment fragment-index=2}
+::: {.center-align .medium}
+![](images/quarto-actions.png){fig-align="center"}
+:::
+:::
+:::
+
